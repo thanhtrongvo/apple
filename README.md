@@ -3,7 +3,7 @@
 <hr> 
 Thành viên: <br> 
   <i> Võ Thanh Trọng </i> <br>
-  <i>  </i>  <br>
+  <i> Nguyên  </i>  <br>
   <i> Khải</i> <br> 
   <i> Phong </i>  
 <br> 
