@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,16 +71,25 @@
                   }
                   echo "<td>" . date('Y-m-d', strtotime($row['created_at'])) . "</td>";
                   echo "<td class='text-right'>";
-                  echo "<a href='edit_category.php?id=".$row['id']."' class='btn btn-sm btn-success'>
+                  echo "<a href='edit_category.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
                       <i class='fas fa-edit'></i>
-                  </a>
-                  <a  href='#' class='btn btn-sm btn-danger btn-destroy'>
+                  </a> ";
+                  echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_category.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>
                       <i class='fas fa-trash'></i>
                   </a>
               </td>
 
 
                   </tr>";
+                }
+              }
+              if (isset($_GET['action']) == 'delete' && isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $sql = "DELETE FROM Category WHERE id = " . $_GET['id'] . "";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                  echo "<script>alert('Category Deleted Successfully')</script>";
+                  echo "<script>window.location.href='all_category.php'</script>";
                 }
               }
               ?>
@@ -116,6 +126,13 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <script>
+
+
+
+  </script>
 </body>
 
 </html>
