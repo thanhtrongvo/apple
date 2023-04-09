@@ -1,3 +1,7 @@
+<?php
+include_once('../database/connection.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +60,6 @@
           <tbody>
             <tr>
               <?php
-              include('../database/connection.php');
               $sql = "SELECT * FROM Category";
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -83,6 +86,7 @@
                   </tr>";
                 }
               }
+
               if (isset($_GET['action']) == 'delete' && isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $sql = "DELETE FROM Category WHERE id = " . $_GET['id'] . "";
@@ -96,8 +100,6 @@
             </tr>
           </tbody>
         </table>
-
-
       </section>
       <!-- /.content -->
     </div>
