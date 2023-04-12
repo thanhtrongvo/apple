@@ -1,3 +1,11 @@
+<?php 
+    ob_start();
+    session_start();
+    if(!isset($_SESSION['signin'])){
+        header('location:index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +43,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../#">Home</a></li>
-                <li class="breadcrumb-item active">Blank Page</li>
+                <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
               </ol>
             </div>
           </div>

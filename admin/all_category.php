@@ -11,7 +11,7 @@ include_once('../database/connection.php');
   <title>Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
@@ -37,7 +37,7 @@ include_once('../database/connection.php');
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../#">Home</a></li>
+                <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
                 <li class="breadcrumb-item active">Category</li>
               </ol>
             </div>
@@ -47,6 +47,16 @@ include_once('../database/connection.php');
 
       <!-- Main content -->
       <section class="content">
+      <form method="get"  > 
+        <div class="form-group">
+          <label for="search">Search by Name</label>
+          <input name="search" type="text" class="form-control" id="search"  placeholder="">
+
+        </div>
+        <div class="form-group" >
+        <button name="submit" type="submit" class="btn btn-primary">Search</button>   
+      </div>
+      </form>
         <table class="table">
           <thead>
             <tr>

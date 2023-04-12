@@ -10,7 +10,6 @@ if (isset($_POST['submit'])) {
         die("Query failed: ".mysqli_error($conn));
     }
     else {
-
         echo "<script> alert('Add success') </script>";
         echo "<script> window.location.href='all_category.php' </script>";
     }
@@ -29,7 +28,7 @@ if (isset($_POST['submit'])) {
     <title>Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
