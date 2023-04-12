@@ -94,6 +94,15 @@
           </a>
         </li>
       </ul>
+      <li class="nav-item">
+      <a href="../admin/logout.php" class="nav-link">
+        <i class="nav-icon right-from-bracket"></i>
+
+        <p>
+          Log Out
+        </p>
+      </a>
+    </li>
 
 </nav>
 <!-- /.sidebar-menu -->

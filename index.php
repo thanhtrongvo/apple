@@ -3,7 +3,7 @@
     include('php/signup.php');   
     include('php/signin.php');
 
-
+    var_dump($_SESSION['role'])
 ?> 
 
 <!DOCTYPE html>
