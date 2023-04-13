@@ -32,9 +32,9 @@
       <?php include('left_menu.php');  ?>
     </aside>
 
-    <!-- Content Wrapper. Contains page content -->
+
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
+
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
@@ -47,13 +47,13 @@
               </ol>
             </div>
           </div>
-        </div><!-- /.container-fluid -->
+        </div><
       </section>
 
       <!-- Main content -->
       <section class="content">
 
-        <!-- Default box -->
+
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Title</h3>
