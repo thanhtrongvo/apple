@@ -3,10 +3,8 @@
     include('php/signup.php');   
     include('php/signin.php');
 ?> 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,11 +60,24 @@
                                 Support
                             </a>
                         </li>
-                        <li class="header__navbar-item">
-                            <a onclick="showModal()" class="header__navbar-join-us">
-                                Join Us
+                        <?php
+                        ob_start();
+                        session_start();
+                        if(!isset($_SESSION['name'])) {
+                            echo '<li class="header__navbar-item">
+                            <a onclick="showModal()" class="header__navbar-login">
+                                Join us
                             </a>
-                        </li>
+                        ';}
+                        else {
+                            echo '<li class="header__navbar-item">
+                            <a href="admin/logout.php" class="header__navbar-logout">
+                            '.$_SESSION['name'].'
+                            </a>
+                        </li>';
+                        }
+
+                        ?>
                         <li class="header__navbar-item">
                             <a href="" class="header__navbar-cart">
                                 Cart
@@ -159,7 +170,6 @@
                         <button type="submit" name="signup" >Sign up</button>
                     </form>
                 </div>
-
                 <div class="auth-form__login">
                     <form method="post">
                         <label for="chk" aria-hidden="true">Sign In</label>
@@ -171,8 +181,6 @@
             </div>
         </div>
     </div>
-    <!-- end modal -->
-
 </body>
 <div id="footer">
     <div class="footer__content">
