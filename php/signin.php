@@ -25,7 +25,6 @@
         }
         else {
             echo "<script> alert('Sign in failed!') </script>";
-        
         }
        
     }
