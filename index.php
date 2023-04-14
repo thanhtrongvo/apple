@@ -13,7 +13,7 @@ include('php/signin.php');
     <title>Apple Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/base.css"> 
     <link rel="stylesheet" href="css/home_products.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -166,58 +166,26 @@ include('php/signin.php');
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
+                            <?php include('database/connection.php');
+                                $syn = "SELECT * FROM `product` WHERE category_id = '23'";
+                                $result = mysqli_query($conn,$syn);
+                                    for($i=0; $i < mysqli_num_rows($result); $i++ ){
+                                        $row = mysqli_fetch_row($result);
+                                        echo '<li class="home__product--info">
+                                        <a href="">
+                                            <img src="'.$row[4].'" />
+                                            <h3>'.$row[2].'</h3>
+                                            <span class="price">'.number_format("$row[3]",0,".",".").'<u>đ</u></span>
+                                            <div class="tooltip">
+                                                <button class="themvaogio">
+                                                    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                                    +
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </li>';
+                                    }
+                            ?>
                         </ul>
                     </div>
                 </div>
