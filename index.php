@@ -1,10 +1,11 @@
-<?php 
-    include('database/connection.php');
-    include('php/signup.php');   
-    include('php/signin.php');
-?> 
+<?php
+include('database/connection.php');
+include('php/signup.php');
+include('php/signin.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,10 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/base.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="js/login.js"></script>
-
-    <link rel="shortcut icon" type="image/png" href="img/logo.png" />
+    <link rel="stylesheet" href="css/home_products.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet">
+    <link rel="shortcut icon" type="image/png" href="img/logo.png">
 </head>
 
 <body>
@@ -63,16 +63,16 @@
                         <?php
                         ob_start();
                         session_start();
-                        if(!isset($_SESSION['name'])) {
+                        if (!isset($_SESSION['name'])) {
                             echo '<li class="header__navbar-item">
                             <a onclick="showModal()" class="header__navbar-login">
                                 Join us
                             </a>
-                        ';}
-                        else {
+                        ';
+                        } else {
                             echo '<li class="header__navbar-item">
                             <a href="admin/logout.php" class="header__navbar-logout">
-                            '.$_SESSION['name'].'
+                            ' . $_SESSION['name'] . '
                             </a>
                         </li>';
                         }
@@ -151,9 +151,293 @@
             </div>
         </div>
 
+<!-- Product -->
+        <div class="product">
+            <div class="product__content">
+                <h1 class="product__content-heading">NEW IPHONE</h1>
+                <div class="product__content-iphone">
+                    <div class="home__product">
+                        <ul>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/iphone13.png" />
+                                    <h3>iphone13</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/iphone13.png" />
+                                    <h3>iphone13</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/iphone13.png" />
+                                    <h3>iphone13</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/iphone13.png" />
+                                    <h3>iphone13</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
+                <h1 class="product__content-heading">NEW WATCH</h1>
+                <div class="product__content-watch">
+                    <div class="home__product">
+                        <ul>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
+                                    <h3>apple watch</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
+                                    <h3>apple watch</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
+                                    <h3>apple watch</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
+                                    <h3>apple watch</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h1 class="product__content-heading">NEW IPAD</h1>
+                <div class="product__content-ipad">
+                    <div class="home__product">
+                        <ul>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/ipad.jpg" />
+                                    <h3>ipad</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/ipad.jpg" />
+                                    <h3>ipad</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/ipad.jpg" />
+                                    <h3>ipad</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/ipad.jpg" />
+                                    <h3>ipad</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h1 class="product__content-heading">NEW MAC</h1>
+                <div class="product__content-mac">
+                    <div class="home__product">
+                        <ul>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/macbook.jpg" />
+                                    <h3>macbook</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/macbook.jpg" />
+                                    <h3>macbook</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/macbook.jpg" />
+                                    <h3>macbook</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="home__product--info">
+                                <a href="">
+                                    <img src="img/macbook.jpg" />
+                                    <h3>macbook</h3>
+                                    <span class="price">20.000.000<u>đ</u></span>
+                                    <div class="tooltip">
+                                        <button class="themvaogio">
+                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                            +
+                                        </button>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-
+    <div id="footer">
+        <div class="footer__content">
+            <div class="footer__content--link">
+                <ul>
+                    <h2>Product</h2>
+                    <li><a href="">MAC</a></li>
+                    <li><a href="">IPAD</a></li>
+                    <li><a href="">IPHONE</a></li>
+                    <li><a href="">WATCH</a></li>
+                    <li><a href="">AIRPOD</a></li>
+                </ul>
+            </div>
+            <div class="footer__content--link">
+                <ul>
+                    <h2>About Apple</h2>
+                    <li><a href="">Newsroom</a></li>
+                    <li><a href="">Career Opportunities</a> </li>
+                    <li><a href="">Investors</a></li>
+                    <li><a href="">Contact Apple </a></li>
+                </ul>
+            </div>
+            <div class="footer__content--link">
+                <ul>
+                    <h2>Social</h2>
+                    <li><a href=""><i class='bx bxl-facebook-circle'></i> Facebook</a></li>
+                    <li><a href=""><i class='bx bxl-instagram-alt'></i> Instagram</a> </li>
+                    <li><a href=""><i class='bx bxl-youtube'></i> Youtube</a> </li>
+                    <li><a href=""><i class='bx bxl-twitter'></i> Twitter</a></li>
+                </ul>
+            </div>
+            <div class="footer__content--link">
+                <ul>
+                    <h2>Create By</h2>
+                    <li><a href="">Thanh Phong</a> </li>
+                    <li><a href="">Thanh Trọng</a> </li>
+                    <li><a href="">Nhật Khải</a> </li>
+                    <li><a href="">Khôi Nguyên</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- modal -->
     <div id="modal" class="modal">
         <div class="modal__body">
@@ -163,18 +447,18 @@
                 <div class="auth-form__signup">
                     <form method="post">
                         <label for="chk" aria-hidden="true">Join Us</label>
-                        <input type="text" name="name" placeholder="Full Name" required >
-                        <input type="text" name="phone" placeholder="Phone Number" required >
-                        <input type="email" name="email" placeholder="Email" required >
-                        <input type="password" name="pswd" placeholder="Password" required >
-                        <button type="submit" name="signup" >Sign up</button>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="text" name="phone" placeholder="Phone Number" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="pswd" placeholder="Password" required>
+                        <button type="submit" name="signup">Sign up</button>
                     </form>
                 </div>
                 <div class="auth-form__login">
                     <form method="post">
                         <label for="chk" aria-hidden="true">Sign In</label>
-                        <input type="email" name="email" placeholder="Email" required >
-                        <input type="password" name="pswd" placeholder="Password" required >
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="pswd" placeholder="Password" required>
                         <button type="submit" name="signin">Sign In</button>
                     </form>
                 </div>
@@ -182,9 +466,6 @@
         </div>
     </div>
 </body>
-<div id="footer">
-    <div class="footer__content">
-    </div>
-</div>
+<script src="js/login.js"> </script>
 
 </html>

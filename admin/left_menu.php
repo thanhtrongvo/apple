@@ -52,7 +52,7 @@
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+      <i class="nav-icon fas fa-store-alt"></i>
         <p>
           Product
           <i class="right fas fa-angle-left"></i>
@@ -74,7 +74,7 @@
       </ul>
       <li class="nav-item">
       <a href="../#" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+      <i class="nav-icon fa-solid fa-user"></i>
         <p>
             User
           <i class="right fas fa-angle-left"></i>
@@ -82,7 +82,7 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="all_user.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>All User</p>
           </a>
@@ -96,7 +96,7 @@
       </ul>
       <li class="nav-item">
       <a href="../admin/logout.php" class="nav-link">
-        <i class="nav-icon right-from-bracket"></i>
+      <i class=" nav-icon fas fa-sign-out-alt"></i>
 
         <p>
           Log Out

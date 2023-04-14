@@ -1,5 +1,5 @@
 :root{
-    --primary-color: #3F3F3F;
+    --primary-color: rgba(63,63,63, 0.9);
     --white-color: #fff;
     --black-color:#000;
     --text-color: #333;
@@ -67,7 +67,7 @@ html{
     bottom: 0;
     left: 0;
     display: none;
-    
+    z-index: 10;
 }
 .modal__blur{
     filter: blur(8px);
