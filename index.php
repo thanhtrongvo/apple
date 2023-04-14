@@ -24,7 +24,7 @@ include('php/signin.php');
         <header class="header">
             <div class="grid">
                 <nav class="header__navbar">
-                    <ul class="header__navbar-list">l
+                    <ul class="header__navbar-list">
                         <li class="header__navbar-item .header__navbar-item--strong ">
                             <a href="" class="header__navbar-logo">
                                 <i class='header__navbar-item-logo bx bxl-apple'></i>
