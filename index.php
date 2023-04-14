@@ -13,10 +13,16 @@ include('php/signin.php');
     <title>Apple Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/base.css"> 
     <link rel="stylesheet" href="css/home_products.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +33,7 @@ include('php/signin.php');
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item .header__navbar-item--strong ">
                             <a href="" class="header__navbar-logo">
-                                <i class='header__navbar-item-logo bx bxl-apple'></i>
+                                <i class='header__navbar-item-logo fa-brands fa-apple '></i>
                             </a>
                         </li>
                         <li class="header__navbar-item">
@@ -61,10 +67,9 @@ include('php/signin.php');
                             </a>
                         </li>
                         <?php
-                        if(!isset($_SESSION)) 
-                        { 
-                            session_start(); 
-                        } 
+                        if (!isset($_SESSION)) {
+                            session_start();
+                        }
                         if (!isset($_SESSION['name'])) {
                             echo '<li class="header__navbar-item">
                             <a onclick="showModal()" class="header__navbar-login">
@@ -87,7 +92,8 @@ include('php/signin.php');
                         </li>
                         <li class="header__navbar-item">
                             <a href="" class=" header__navbar-search">
-                                <i class='header__navbar-item-logo bx bx-search-alt-2'></i>
+                                <i class='header__navbar-item-logo fa-solid fa-magnifying-glass'></i>
+                                
                             </a>
                         </li>
                     </ul>
@@ -145,65 +151,33 @@ include('php/signin.php');
             </div>
         </div>
 
-<!-- Product -->
+        <!-- Product -->
         <div class="product">
             <div class="product__content">
                 <h1 class="product__content-heading">NEW IPHONE</h1>
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/iphone13.png" />
-                                    <h3>iphone13</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
+                            <?php include('database/connection.php');
+                                $syn = "SELECT * FROM `product` WHERE category_id = '23'";
+                                $result = mysqli_query($conn,$syn);
+                                    for($i=0; $i < mysqli_num_rows($result); $i++ ){
+                                        $row = mysqli_fetch_row($result);
+                                        echo '<li class="home__product--info">
+                                        <a href="">
+                                            <img src="'.$row[4].'" />
+                                            <h3>'.$row[2].'</h3>
+                                            <span class="price">'.number_format("$row[3]",0,".",".").'<u>đ</u></span>
+                                            <div class="tooltip">
+                                                <button class="themvaogio">
+                                                    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                                                    +
+                                                </button>
+                                            </div>
+                                        </a>
+                                    </li>';
+                                    }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -437,7 +411,7 @@ include('php/signin.php');
         <div class="modal__body">
             <div class="auth-form">
                 <input type="checkbox" id="chk" aria-hidden="true">
-                <i onclick="exitModal()" class='bx bx-x auth-form__btn--cancel'></i>
+                <i onclick="exitModal()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
                 <div class="auth-form__signup">
                     <form method="post">
                         <label for="chk" aria-hidden="true">Join Us</label>
@@ -461,5 +435,7 @@ include('php/signin.php');
     </div>
 </body>
 <script src="js/login.js"> </script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
 
 </html>
