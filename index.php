@@ -123,11 +123,7 @@ include('php/signin.php');
             <div class="container__content-last">
                 <div class="container__content-mac">
                     <div class="container__content-mac--photo">
-                        <img src="img/macbook.jpg" alt="">
-                    </div>
-                    <div class="container__content-mac--dec">
-                        <h1 href="" class="container__content-mac--heading">MacBook Pro</h1>
-                        <span href="" class="container__content-mac--text">Superchanged by M2 Pro and M2 Max</span>
+                        <img src="img/AdMac.png" alt="">
                     </div>
                     <div class="container__content-mac--btn">
                         <button>
@@ -137,11 +133,7 @@ include('php/signin.php');
                 </div>
                 <div class="container__content-ipad">
                     <div class="container__content-ipad--photo">
-                        <img src="img/ipad.jpg" alt="">
-                    </div>
-                    <div class="container__content-ipad--dec">
-                        <h1 href="" class="container__content-ipad--heading">iPad </h1>
-                        <span href="" class="container__content-ipad--text">Lovable. Drawable. Magical</span>
+                        <img src="img/AdIpad.png" alt="">
                     </div>
                     <div class="container__content-ipad--btn">
                         <button>

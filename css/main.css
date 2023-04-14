@@ -87,16 +87,17 @@
 }
 .container__content{
     cursor: pointer;
+    height: fit-content;
 }
 .container__content-ip14--video{
     position: relative;
     top: 44px;
+    display: inline;
 }
 .container__content-ip14--dec{
     position: absolute;
-    top: 450px;
-    width: 370px;
-    height: 140px;
+    top: 24%;
+    margin-left: 40px;
     text-align: center;
 }
 .container__content-ip14--dec .container__content-ip14--heading{
@@ -112,7 +113,7 @@
 .container__content-ip14--btn{
     position: absolute;
     top: 550px;
-    left: 130px;
+    left: 120px;
 }
 .container__content-ip14--btn button {
     background-color: #ecec00;
@@ -149,7 +150,7 @@
 }
 .container__content-watch--btn{
     position: absolute;
-    top: 170px;
+    top: 25%;
     left: 658px;
 }
 .container__content-watch--btn button {
@@ -186,26 +187,10 @@
     height: 600px;
     padding: 10px 0px 10px 10px;
 }
-.container__content-mac--dec{
-    position: absolute;
-    top:40px;
-    left: 230px;
-    width: 370px;
-    height: 140px;
-    text-align: center;
-}
-.container__content-mac--dec .container__content-mac--heading{
-    color: #b1b1b1;
-    font-size: 4rem;
-}
-.container__content-mac--dec .container__content-mac--text{
-    color: var(--white-color);
-    font-size: 2rem;
-}
 
 .container__content-mac--btn{
     position: absolute;
-    top: 150px;
+    top: 180px;
     left: 360px;
 }
 .container__content-mac--btn button {
@@ -236,26 +221,11 @@
     width: 100%;
     height: 600px;
     padding: 10px 10px 10px 10px;
-}.container__content-ipad--dec{
-    position: absolute;
-    top:40px;
-    right: 200px;
-    width: 370px;
-    height: 140px;
-    text-align: center;
-}
-.container__content-ipad--dec .container__content-ipad--heading{
-    color: #b22ac4;
-    font-size: 4rem;
-}
-.container__content-ipad--dec .container__content-ipad--text{
-    color: var(--white-color);
-    font-size: 2rem;
 }
 .container__content-ipad--btn{
     position: absolute;
-    top: 150px;
-    right: 330px;
+    top: 180px;
+    right: 360px;
 }
 .container__content-ipad--btn button {
     background-color: #b22ac4;
