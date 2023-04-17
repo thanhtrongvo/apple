@@ -4,3 +4,4 @@
     $result = mysqli_query($conn,$syn);
         $row = mysqli_fetch_array($result);
 ?>
+    

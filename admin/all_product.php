@@ -16,8 +16,18 @@ include_once('../database/connection.php');
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style> 
+    .img-product {
+      width: 35px;
+      height: 35px;
+
+    }
+
+ </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -34,12 +44,12 @@ include_once('../database/connection.php');
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>All Category</h1>
+              <h1>All Product</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="../admin/index.php">Home</a></li>
-                <li class="breadcrumb-item active">Category</li>
+                <li class="breadcrumb-item active">Product</li>
               </ol>
             </div>
           </div>
@@ -63,32 +73,38 @@ include_once('../database/connection.php');
             <tr >
               <th>Id</th>
               <th>Name</th>
+              <th>Price</th>
+              <th>Image</th>
+              <th>Option </th>     
+              <th>Decription</th>
               <th>Status</th>
-              <th>Created at </th>
               <th class='text-right'>Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <?php
-              $sql = "SELECT * FROM Category";
+              $sql = "SELECT * FROM Product";
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
               if (mysqli_num_rows($result) > 0) {
                 foreach ($data as $row) {
                   echo "<td>" . $row['id'] . "</td>";
-                  echo "<td>" . $row['name'] . "</td>";
+                  echo "<td>" . $row['title'] . "</td>";
+                  echo "<td>" . number_format($row['price'])  . "đ</td>";
+                  echo "<td> <img class='img-product' src='../".$row['thumbnail']. "'</td>";
+                  echo "<td>" . $row['option'] . "</td>";
+                  echo "<td><small>" . $row['decription'] . "</small></td>";
                   if ($row['status'] == 0) {
                     echo "<td><span class='badge badge-danger'>Private </span></td>";
                   } elseif ($row['status'] == 1) {
                     echo "<td><span class='badge badge-success'>Public </span>";
                   }
-                  echo "<td>" . date('Y-m-d', strtotime($row['created_at'])) . "</td>";
                   echo "<td class='text-right'>";
-                  echo "<a href='edit_category.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
+                  echo "<a href='edit_product.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
                       <i class='fas fa-edit'></i>
                   </a> ";
-                  echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_category.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>
+                  echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_product.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>
                       <i class='fas fa-trash'></i>
                   </a>
               </td>

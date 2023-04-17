@@ -1,19 +1,21 @@
 <?php
 include('../database/connection.php');
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
+    $name = $_POST['fullname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $phone = $_POST['phone_number'];
     $status = $_POST['status'];
+    $role = $_POST['role'];
 
-    $sql = "INSERT INTO Category (name, status) VALUES ('$name', '$status')";
+    $sql = "INSERT INTO `user`(`fullname`, `email`, `password`, `phone_number`, `status`,`role_id`) VALUES ('$name','$email','$password','$phone','$status','$role')";
     $result = mysqli_query($conn, $sql);
-    if(!$result) {
-        die("Query failed: ".mysqli_error($conn));
-    }
-    else {
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    } else {
         echo "<script> alert('Add success') </script>";
-        echo "<script> window.location.href='all_category.php' </script>";
+        echo "<script> window.location.href='all_user.php' </script>";
     }
-
 }
 
 
@@ -36,7 +38,7 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+</head> 
 
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
@@ -55,12 +57,12 @@ if (isset($_POST['submit'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Add Category</h1>
+                            <h1>Add User</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Add Category</li>
+                                <li class="breadcrumb-item active">Add User </li>
                             </ol>
                         </div>
                     </div>
@@ -71,9 +73,32 @@ if (isset($_POST['submit'])) {
             <section class="content">
                 <form method="post" role="form">
                     <div class="form-group">
-                        <label for="">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                        <div class="row">
+                            <div class="col">
+                                <label for="">Name</label>
+                                <input name="fullname" type="text" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col">
+                                <label for="">Email</label>
+                                <input name="email"  type="text" class="form-control" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phone</label>
+                            <input name="phone_number" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                        </div>
                     </div>
+                    <div class="row">
+                            <div class="col">
+                                <label for="">Password</label>
+                                <input name="password" type="text" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col">
+                                <label for="">Role</label>
+                                <input name="role"  type="text" class="form-control" placeholder="Last name">
+                                <small id="emailHelp" class="form-text text-muted">* 1 is admin - 2 is customer</small>
+                            </div>
+                        </div>
                     <label for="">Status</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>

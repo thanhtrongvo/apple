@@ -13,6 +13,7 @@
             $role = $row['role_id'];
             if($role == 1) {
                 $_SESSION['role'] = 1;
+                $_SESSION['name'] = $row['fullname'];
                 header('location:admin/index.php');
             }
             else {

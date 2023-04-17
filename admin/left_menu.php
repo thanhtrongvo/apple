@@ -1,7 +1,7 @@
 
  <a href="" class="brand-link">
-
-<span class="brand-text font-weight-light">Apple</span>
+ <i class="fa-brands fa-apple fa-2xl"></i>
+ <span> Apple </span>
 </a>
 
 <!-- Sidebar -->
@@ -16,9 +16,9 @@
   </div>
 </div>
 <nav class="mt-2">
-  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <ul class="nav nav-pills nav-sidebar  flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <!-- Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library -->
+       with font-awesome or any other icon font library --> 
     <li class="nav-item">
       <a href="../admin/index.php" class="nav-link">
         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -60,13 +60,13 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="../index.html" class="nav-link">
+          <a href="all_product.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>All Product</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="../index2.html" class="nav-link">
+          <a href="add_product.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>Add Product</p>
           </a>
@@ -88,7 +88,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="add_user.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>Add User</p>
           </a>
