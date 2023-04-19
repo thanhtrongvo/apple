@@ -1,20 +1,21 @@
 <?php
 include('../database/connection.php');
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
+if (isset($_POST['add'])) {
+    $title = $_POST['title'];
+    $price = $_POST['price'];
+    $decription = $_POST['decription'];
+    $option = $_POST['option'];
+    $thumbnail = $_POST['thumbnail'];
     $status = $_POST['status'];
-
-    $sql = "INSERT INTO Category (name, status) VALUES ('$name', '$status')";
+    $sql = "INSERT INTO Product (title, price, decription, option, thumbnail, status) VALUES ('$title', '$price', '$decription', '$option', '$file', '$status')";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
         die("Query failed: " . mysqli_error($conn));
     } else {
         echo "<script> alert('Add success') </script>";
-        echo "<script> window.location.href='all_category.php' </script>";
+        echo "<script> window.location.href='all_product.php' </script>";
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -53,29 +54,53 @@ if (isset($_POST['submit'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Add Category</h1>
+                            <h1>Add Product</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Add Category</li>
+                                <li class="breadcrumb-item active"> Add User </li>
                             </ol>
                         </div>
                     </div>
-                </div>  
+                </div>
             </section>
-
-            <!-- Main content -->
             <section class="content">
-                <form class="form-lable-left input-mark" method="post" role="form ">
-                    <div class="col-md-6 col-sm-6 form-group has-feedback">
-                        <input id="name" type="text" name="name" class="form-control" placeholder="Product Name" required>
+                <form method="post" role="form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <label for="title">Name</label>
+                                <input name="title" type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for="">Price</label>
+                                <input name="price" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 form-group has-feedback">
-                        <select class="form-control">
-                            <option>Public</option>
-                            <option>Private</option>
-                        </select>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="category_id">Category</label>
+                            <select name="category_id" class="form-control">
+                                <?php
+                                $sql = "SELECT * FROM category";
+                                $result = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input name="thumbnail" type="file">
+                        </div>
+                    </div>
+                    <div class="row col-md-12 col-sm-12 x_content">
+                        <lable style="font-weight:700;" for="desc"> Decription </lable>
+                        <textarea name="decription" id="decription" class="resizable form-control">
+                        </textarea>
+
                     </div>
                     <label for="">Status</label>
                     <div class="form-check">
@@ -90,7 +115,7 @@ if (isset($_POST['submit'])) {
                             Private
                         </label>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="add" class="btn btn-primary">Submit</button>
 
                 </form>
 

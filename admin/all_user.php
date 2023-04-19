@@ -1,5 +1,7 @@
 <?php
 include_once('../database/connection.php');
+// Validate form data
+
 
 ?>
 <!DOCTYPE html>

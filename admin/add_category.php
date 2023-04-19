@@ -1,19 +1,40 @@
 <?php
 include('../database/connection.php');
+// if (isset($_POST['submit'])) {
+//     $name = $_POST['name'];
+//     $status = $_POST['status'];
+
+//     $sql = "INSERT INTO Category (name, status) VALUES ('$name', '$status')";
+//     $result = mysqli_query($conn, $sql);
+//     if(!$result) {
+//         die("Query failed: ".mysqli_error($conn));
+//     }
+//     else {
+//         echo "<script> alert('Add success') </script>";
+//         echo "<script> window.location.href='all_category.php' </script>";
+//     }
+// Check if the name and status fields are not empty
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $status = $_POST['status'];
-
-    $sql = "INSERT INTO Category (name, status) VALUES ('$name', '$status')";
-    $result = mysqli_query($conn, $sql);
-    if(!$result) {
-        die("Query failed: ".mysqli_error($conn));
+    if (empty($name)) {
+        echo "<script> alert('Name fields cannot be empty') </script>";
     }
+    // Check if the status field is not a number
+    elseif (is_numeric($name)) {
+        echo "<script> alert('Category field not a number') </script>";
+    }
+    // If all validations pass, insert data into the database
     else {
-        echo "<script> alert('Add success') </script>";
-        echo "<script> window.location.href='all_category.php' </script>";
+        $sql = "INSERT INTO Category (name, status) VALUES ('$name', '$status')";
+        $result = mysqli_query($conn, $sql);
+        if (!$result) {
+            die("Query failed: " . mysqli_error($conn));
+        } else {
+            echo "<script> alert('Add success') </script>";
+            echo "<script> window.location.href='all_category.php' </script>";
+        }
     }
-
 }
 
 
@@ -22,20 +43,20 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-  
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">

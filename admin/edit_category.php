@@ -8,6 +8,8 @@
         $name = $data['name'];
         $status = $data['status'];
     }
+    // To validate unique in database form, we can use the following code:
+// First, we need to check if the form has been submitted
 
 
 
