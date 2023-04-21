@@ -1,21 +1,54 @@
 <?php
 include('../database/connection.php');
-if (isset($_POST['add'])) {
+include('../php/checkfile.php');
+if(isset($_POST['submit'])) {
     $title = $_POST['title'];
     $price = $_POST['price'];
     $decription = $_POST['decription'];
     $option = $_POST['option'];
-    $thumbnail = $_POST['thumbnail'];
     $status = $_POST['status'];
-    $sql = "INSERT INTO Product (title, price, decription, option, thumbnail, status) VALUES ('$title', '$price', '$decription', '$option', '$file', '$status')";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        die("Query failed: " . mysqli_error($conn));
+    
+    // Check if file is uploaded and is an image
+    if(isset($_FILES['thumbnail']) && getimagesize($_FILES['thumbnail']['tmp_name']) !== false) {
+        $file = $_FILES['thumbnail'];
+        $filename = $file['name'];
+        $filesize = $file['size'];
+        $filetype = $file['type'];
+        $filetmp = $file['tmp_name'];
+        $fileext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        $allowed_ext = array('jpg', 'jpeg', 'png');
+        
+        // Check if file size is not too large and extension is allowed
+        if($filesize <= 5000000 && in_array($fileext, $allowed_ext)) {
+            $filepath = '../uploads/' . $filename;
+            
+            // Check if file does not already exist
+            if(!file_exists($filepath)) {
+                move_uploaded_file($filetmp, $filepath);
+                
+                $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>alert('Product Added Successfully')</script>";
+                    echo "<script>window.location.href='all_product.php'</script>";
+                }
+            } else {
+                echo "<script>alert('File already exists')</script>";
+            }
+        } else {
+            echo "<script>alert('File size is too large or file type is not allowed')</script>";
+        }
     } else {
-        echo "<script> alert('Add success') </script>";
-        echo "<script> window.location.href='all_product.php' </script>";
+        echo "<script>alert('Please upload an image file')</script>";
     }
 }
+
+    //     $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
+    //     $result = mysqli_query($conn, $sql);
+    //     if ($result) {
+    //         echo "<script>alert('Product Added Successfully')</script>";
+    //         echo "<script>window.location.href='all_product.php'</script>";
+    //     }
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +99,7 @@ if (isset($_POST['add'])) {
                 </div>
             </section>
             <section class="content">
-                <form method="post" role="form" enctype="multipart/form-data">
+                <form method="post" role="form" enctype="multipart/form-data" accept=".jpg,.jpeg,.png">
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
@@ -115,7 +148,7 @@ if (isset($_POST['add'])) {
                             Private
                         </label>
                     </div>
-                    <button type="submit" name="add" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
                 </form>
 
