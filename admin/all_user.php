@@ -7,7 +7,7 @@ include_once('../database/connection.php');
 <!DOCTYPE html>
 <html lang="en">
 
-  
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,16 +51,16 @@ include_once('../database/connection.php');
 
       <!-- Main content -->
       <section class="content">
-      <form method="get"  > 
-        <div class="form-group">
-          <label for="search">Search by Name</label>
-          <input name="search" type="text" class="form-control" id="search"  placeholder="">
+        <form method="get">
+          <div class="form-group">
+            <label for="search">Search by Name</label>
+            <input name="search" type="text" class="form-control" id="search" placeholder="">
 
-        </div>
-        <div class="form-group" >
-        <button name="submit" type="submit" class="btn btn-primary">Search</button>   
-      </div>
-      </form>
+          </div>
+          <div class="form-group">
+            <button name="submit" type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </form>
         <table class="table">
           <thead>
             <tr>
@@ -77,21 +77,80 @@ include_once('../database/connection.php');
           <tbody>
             <tr>
               <?php
-              $sql = "SELECT * FROM User ";
+              // $sql = "SELECT * FROM User ";
+              // $result = mysqli_query($conn, $sql);
+              // $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+              // if (mysqli_num_rows($result) > 0) {
+              //   foreach ($data as $row) {
+              //     echo "<td>" . $row['id'] . "</td>";
+              //     echo "<td>" . $row['fullname'] . "</td>";
+              //     echo "<td>" . $row['email'] . "</td>";
+              //     echo "<td>" . $row['password'] . "</td>";
+              //     if ($row['role_id'] == 1) {
+              //       echo "<td>Admin</td>";
+              //     } else {
+              //       echo "<td>User</td>";
+              //     }
+              //     echo "<td>" . $row['phone_number'] . "</td>";
+              //     if ($row['status'] == 0) {
+              //       echo "<td><span class='badge badge-danger'>Private </span></td>";
+              //     } elseif ($row['status'] == 1) {
+              //       echo "<td><span class='badge badge-success'>Public </span>";
+              //     }
+              //     echo "<td class='text-right'>";
+              //     echo "<a href='edit_category.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
+              //         <i class='fas fa-edit'></i>
+              //     </a> ";
+              //     echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_user.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>
+              //         <i class='fas fa-trash'></i>
+              //     </a>
+              // </td>
+
+
+              //     </tr>";
+              //   }
+              // }
+              // We will use the PHP pagination technique to create pagination for the page.
+              // First, we need to define the number of records to display per page and the current page number.
+              // We will set the number of records to display per page to 10.
+              // We will get the current page number from the URL parameter using $_GET['page'].
+              // If the page number is not set, we will set it to 1.
+              // We will then modify the SQL query to limit the number of records to display per page using the LIMIT clause.
+              // We will calculate the total number of pages by dividing the total number of records by the number of records per page.
+              // We will then display the pagination links using a for loop and the HTML anchor tag. 
+
+              // Define the number of records to display per page
+              $records_per_page = 3;
+
+              // Get the current page number from the URL parameter
+              if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+              } else {
+                $page = 1;
+              }
+
+              // Calculate the starting record for the current page
+              $start_from = ($page - 1) * $records_per_page;
+
+              // Modify the SQL query to limit the number of records to display per page
+              $sql = "SELECT * FROM User LIMIT $start_from, $records_per_page";
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+              // Display the records
               if (mysqli_num_rows($result) > 0) {
                 foreach ($data as $row) {
+                  echo "<tr>";
                   echo "<td>" . $row['id'] . "</td>";
                   echo "<td>" . $row['fullname'] . "</td>";
-                  echo "<td>".$row['email']."</td>";
-                  echo "<td>".$row['password']."</td>";
-                  if($row['role_id']== 1){
+                  echo "<td>" . $row['email'] . "</td>";
+                  echo "<td>" . $row['password'] . "</td>";
+                  if ($row['role_id'] == 1) {
                     echo "<td>Admin</td>";
-                  }else{
+                  } else {
                     echo "<td>User</td>";
                   }
-                  echo "<td>".$row['phone_number']."</td>";
+                  echo "<td>" . $row['phone_number'] . "</td>";
                   if ($row['status'] == 0) {
                     echo "<td><span class='badge badge-danger'>Private </span></td>";
                   } elseif ($row['status'] == 1) {
@@ -99,17 +158,30 @@ include_once('../database/connection.php');
                   }
                   echo "<td class='text-right'>";
                   echo "<a href='edit_category.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
-                      <i class='fas fa-edit'></i>
-                  </a> ";
+        <i class='fas fa-edit'></i>
+    </a> ";
                   echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_user.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>
-                      <i class='fas fa-trash'></i>
-                  </a>
-              </td>
-
-
-                  </tr>";
+        <i class='fas fa-trash'></i>
+    </a>
+    </td>
+    </tr>";
                 }
               }
+
+              // Calculate the total number of pages
+              $sql = "SELECT COUNT(*) AS total FROM User";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_assoc($result);
+              $total_pages = ceil($row['total'] / $records_per_page);
+
+              // Display the pagination links
+              echo "<nav aria-label='Page navigation example'>";
+              echo "<ul class='pagination'>";
+              for ($i = 1; $i <= $total_pages; $i++) {
+                echo "<li class='page-item'><a class='page-link' href='all_user.php?page=" . $i . "'>" . $i . "</a></li>";
+              }
+              echo "</ul>";
+              echo "</nav>";
 
               if (isset($_GET['action']) == 'delete' && isset($_GET['id'])) {
                 $id = $_GET['id'];
