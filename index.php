@@ -2,6 +2,7 @@
 include('database/connection.php');
 include('php/signup.php');
 include('php/signin.php');
+include('php/product.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +41,7 @@ include('php/signin.php');
                             <a href="" class="header__navbar-mac">
                                 Mac
                             </a>
+                            
                         </li>
                         <li class="header__navbar-item">
                             <a href="" class="header__navbar-ipad">
@@ -99,6 +101,13 @@ include('php/signin.php');
                     </ul>
                 </nav>
             </div>
+            <ul class="header__subnav-mac">
+                    <li><p>Explore Mac</p></li>
+                    <li><a href="">MacBook Air</a></li>
+                    <li><a href="">MacBook Pro</a></li>
+                    <li><a href="">iMac</a></li>
+                    <li><a href="">Mac Mini</a></li>
+            </ul>
         </header>
         <div class="container">
             <div class="container__content">
@@ -158,86 +167,15 @@ include('php/signin.php');
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>
-                            <?php include('database/connection.php');
-                                $syn = "SELECT * FROM `product` WHERE category_id = '23'";
-                                $result = mysqli_query($conn,$syn);
-                                    for($i=0; $i < mysqli_num_rows($result); $i++ ){
-                                        $row = mysqli_fetch_row($result);
-                                        echo '<li class="home__product--info">
-                                        <a href="">
-                                            <img src="'.$row[4].'" />
-                                            <h3>'.$row[2].'</h3>
-                                            <span class="price">'.number_format("$row[3]",0,".",".").'<u>đ</u></span>
-                                            <div class="tooltip">
-                                                <button class="themvaogio">
-                                                    <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                                    +
-                                                </button>
-                                            </div>
-                                        </a>
-                                    </li>';
-                                    }
-                            ?>
+                            <?php product_home("23");?>
                         </ul>
                     </div>
                 </div>
-
                 <h1 class="product__content-heading">NEW WATCH</h1>
                 <div class="product__content-watch">
                     <div class="home__product">
                         <ul>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
-                                    <h3>apple watch</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
-                                    <h3>apple watch</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
-                                    <h3>apple watch</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" />
-                                    <h3>apple watch</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
+                            <?php product_home("24"); ?>
                         </ul>
                     </div>
                 </div>
@@ -246,58 +184,7 @@ include('php/signin.php');
                 <div class="product__content-ipad">
                     <div class="home__product">
                         <ul>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/ipad.jpg" />
-                                    <h3>ipad</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/ipad.jpg" />
-                                    <h3>ipad</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/ipad.jpg" />
-                                    <h3>ipad</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/ipad.jpg" />
-                                    <h3>ipad</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
+                            <?php product_home("18");?>
                         </ul>
                     </div>
                 </div>
@@ -306,58 +193,7 @@ include('php/signin.php');
                 <div class="product__content-mac">
                     <div class="home__product">
                         <ul>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/macbook.jpg" />
-                                    <h3>macbook</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/macbook.jpg" />
-                                    <h3>macbook</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/macbook.jpg" />
-                                    <h3>macbook</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="home__product--info">
-                                <a href="">
-                                    <img src="img/macbook.jpg" />
-                                    <h3>macbook</h3>
-                                    <span class="price">20.000.000<u>đ</u></span>
-                                    <div class="tooltip">
-                                        <button class="themvaogio">
-                                            <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
-                                            +
-                                        </button>
-                                    </div>
-                                </a>
-                            </li>
+                            <?php product_home("19");?>
                         </ul>
                     </div>
                 </div>

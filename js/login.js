@@ -1,7 +1,7 @@
 function showModal(){
     var a = document.getElementById("modal");
     a.style.display = "block";
-    a.style.webkitTransform = "70% top";
+    a.style.transformOrigin = "top 70%";
     a.style.animation = "Grow ease-in .3s";
 }
 function exitModal(){
