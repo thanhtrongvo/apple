@@ -41,7 +41,13 @@ include('php/product.php');
                             <a href="" class="header__navbar-mac">
                                 Mac
                             </a>
-                            
+                            <ul class="header__subnav-mac">
+                                <li><p>Explore Mac</p></li>
+                                <li><a href="">MacBook Air</a></li>
+                                <li><a href="">MacBook Pro</a></li>
+                                <li><a href="">iMac</a></li>
+                                <li><a href="">Mac Mini</a></li>
+                            </ul>
                         </li>
                         <li class="header__navbar-item">
                             <a href="" class="header__navbar-ipad">
@@ -101,13 +107,7 @@ include('php/product.php');
                     </ul>
                 </nav>
             </div>
-            <ul class="header__subnav-mac">
-                    <li><p>Explore Mac</p></li>
-                    <li><a href="">MacBook Air</a></li>
-                    <li><a href="">MacBook Pro</a></li>
-                    <li><a href="">iMac</a></li>
-                    <li><a href="">Mac Mini</a></li>
-            </ul>
+            
         </header>
         <div class="container">
             <div class="container__content">

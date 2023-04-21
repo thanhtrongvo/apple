@@ -24,12 +24,12 @@
     min-height: 32px;
     cursor: pointer;
 }
-.header__navbar-mac a:hover .header__subnav-mac{
-    display: block;
+.header__navbar-mac:hover ~ .header__subnav-mac{
+    display:block ;
 }
 .header__subnav-mac{
     display: none;
-    position:relative;
+    position:absolute;
     top:-60px;
     width: 100%;
     height: 350px;
