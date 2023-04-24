@@ -7,41 +7,24 @@ if(isset($_POST['submit'])) {
     $decription = $_POST['decription'];
     $option = $_POST['option'];
     $status = $_POST['status'];
-    
-    // Check if file is uploaded and is an image
-    if(isset($_FILES['thumbnail']) && getimagesize($_FILES['thumbnail']['tmp_name']) !== false) {
-        $file = $_FILES['thumbnail'];
-        $filename = $file['name'];
-        $filesize = $file['size'];
-        $filetype = $file['type'];
-        $filetmp = $file['tmp_name'];
-        $fileext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-        $allowed_ext = array('jpg', 'jpeg', 'png');
-        
-        // Check if file size is not too large and extension is allowed
-        if($filesize <= 5000000 && in_array($fileext, $allowed_ext)) {
-            $filepath = '../uploads/' . $filename;
-            
-            // Check if file does not already exist
-            if(!file_exists($filepath)) {
-                move_uploaded_file($filetmp, $filepath);
-                
-                $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
-                $result = mysqli_query($conn, $sql);
-                if ($result) {
-                    echo "<script>alert('Product Added Successfully')</script>";
-                    echo "<script>window.location.href='all_product.php'</script>";
-                }
-            } else {
-                echo "<script>alert('File already exists')</script>";
-            }
-        } else {
-            echo "<script>alert('File size is too large or file type is not allowed')</script>";
+    $path = '/uploads' ;
+    $filepath = $path . basename($_FILES['thumbnail']['name']);
+   if(isset($_FILES['thumbnail']) && $_FILES['thumbnail'] ) {
+       move_uploaded_file($_FILES['thumbnail']['tmp_name'], $filepath);
+   } 
+   else {
+       $filepath = $_POST['thumbnail'];
+
+   }
+           $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            echo "<script>alert('Product Added Successfully')</script>";
+            echo "<script>window.location.href='all_product.php'</script>";
         }
-    } else {
-        echo "<script>alert('Please upload an image file')</script>";
-    }
 }
+    
+    
 
     //     $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
     //     $result = mysqli_query($conn, $sql);
