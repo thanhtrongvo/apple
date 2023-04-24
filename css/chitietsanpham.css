@@ -1,0 +1,222 @@
+.main_container {
+    font-family: Arial;
+    background-color: #EEEEEE;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container {
+    background-color: white;
+    width: 90%;
+    position: relative;
+    margin: auto;
+    border-spacing: 20px;
+    color: #222;
+    display: flex;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.left {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+.picture {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    /*định vị trí phụ thuộc vào thành phần bao ngoài*/
+    display: block;
+}
+
+.picture img {
+    display: block;
+    margin: 15px auto;
+    -webkit-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    width: 600px;
+    height: 600px;
+}
+
+.picture:hover>img {
+    margin: 5px auto 25px;
+}
+
+.right {
+    display: flex;
+    position: relative;
+    vertical-align: top;
+    flex-direction: column;
+    width: 50%;
+}
+
+.right h2 {
+    margin-left: 15px;
+}
+
+.price {
+    margin-left: 15px;
+    display: block;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}
+
+.themgio {
+    display: flex;
+    margin: 15px auto;
+    width: 95%;
+}
+
+.themgio button {
+    margin: 15px auto;
+    -webkit-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    width: 100%;
+    height: 50px;
+    background-color: blue;
+    color: white;
+    font-size: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.themgio button:hover {
+    background-color: cornflowerblue;
+    margin: 5px auto 25px;
+}
+
+.uudai {
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto;
+    width: 95%;
+    border: 2px solid lightgreen;
+    border-radius: 10px;
+}
+
+.tieude {
+    background-color: lightgreen;
+    font-weight: bold;
+}
+
+.uudai span {
+    margin-bottom: 15px;
+}
+
+.promo {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    /*định vị trí phụ thuộc vào thành phần bao ngoài*/
+    display: block;
+    flex-direction: column;
+}
+
+.promo span {
+    display: block;
+    width: 95%;
+    margin: 15px auto;
+    word-wrap: break-word;
+}
+
+.other {
+    background-color: white;
+    width: 90%;
+    position: relative;
+    margin: auto;
+    border-spacing: 20px;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.other h3 {
+    font-weight: bold;
+    color: red;
+    margin-left: 15px;
+}
+
+.bottom {
+    width: 90%;
+    position: relative;
+    margin: auto;
+    border-spacing: 20px;
+    color: #222;
+    display: flex;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.end_promo {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    /*định vị trí phụ thuộc vào thành phần bao ngoài*/
+    display: block;
+    width: 55%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.end_promo span {
+    display: block;
+    width: 90%;
+    margin: 15px auto;
+    word-wrap: break-word;
+}
+
+.detail {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    /*định vị trí phụ thuộc vào thành phần bao ngoài*/
+    display: flex;
+    width: 50%;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.detail h3 {
+    font-weight: bold;
+    color: red;
+    margin-left: 15px;
+}
+
+.ds_linh_kien {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-left: 35px;
+}
+
+.ten_linh_kien {
+    display: block;
+    height: 25px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+}

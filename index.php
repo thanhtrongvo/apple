@@ -98,10 +98,9 @@ include('php/product.php');
                                 Cart
                             </a>
                         </li>
-                        <li class="header__navbar-item">
+                        <li class="header__navbar-item ">
                             <a href="" class=" header__navbar-search">
-                                <i class='header__navbar-item-logo fa-solid fa-magnifying-glass'></i>
-                                
+                                <i class='header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass'></i>    
                             </a>
                         </li>
                     </ul>
@@ -112,11 +111,7 @@ include('php/product.php');
         <div class="container">
             <div class="container__content">
                 <div class="container__content-ip14--video">
-                    <video src="video/AdApple.mp4" loop="" autoplay="" muted="" width="100%"></video>
-                </div>
-                <div class="container__content-ip14--dec">
-                    <h1 href="" class="container__content-ip14--heading">iPhone 14 Pro</h1>
-                    <span href="" class="container__content-ip14--text">Pro.Beyond.</span>
+                    <video src="video/Ad_iPhone14pro.mp4" loop="" autoplay="" muted="" width="100%"></video>
                 </div>
                 <div class="container__content-ip14--btn">
                     <button>
