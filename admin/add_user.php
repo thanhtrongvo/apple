@@ -8,18 +8,37 @@ if (isset($_POST['submit'])) {
     $phone = $_POST['phone_number'];
     $status = $_POST['status'];
     $role = $_POST['role'];
+    $nameErr = $emailErr = $passwordErr = $phoneErr = $statusErr = $roleErr = "";
     // Validate form data
-    if (empty($name) || empty($email) || empty($password) || empty($phone)  || empty($role)) {
-        echo "<div class='alert alert-danger'>All fields are required.</div>";
-    } elseif (!preg_match("/^[a-zA-Z ]*$/", $name)) {
-        echo "<div class='alert alert-danger'>Name must contain only letters and spaces.</div>";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<div class='alert alert-danger'>Invalid email format.</div>";
-    } elseif (!preg_match("/^0\d{9}$/", $phone)) {
-        echo "<div class='alert alert-danger'>Phone number must start with 0 and have 10 digits.</div>";
-    } elseif ($role >= 10) {
-        echo "<div class='alert alert-danger'>Role must be less than 10.</div>";
-    } else {
+    if (empty($name)) {
+        $nameErr = "Name is required";
+    }
+    if (empty($email)) {
+        $emailErr = "Email is required";
+    }
+    if (empty($password)) {
+        $passwordErr = "Password is required";
+    }
+    if (empty($phone)) {
+        $phoneErr = "Phone is required";
+    }
+    if (empty($role)) {
+        $roleErr = "Role is required";
+    }
+    if (is_numeric($name) == false) {
+        $nameErr = "Name is invalid";
+    }
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
+        $emailErr = "Email is invalid";
+    }
+    if (is_numeric($phone) == false) {
+        $phoneErr = "Phone is invalid";
+    }
+    if ($role != 1 && $role != 2) {
+        $roleErr = "Role is invalid";
+    }
+
+    if (empty($nameErr) && empty($emailErr) && empty($passwordErr) && empty($phoneErr) && empty($statusErr) && empty($roleErr)) {
         // Insert data into database
         $sql = "INSERT INTO `user`(`fullname`, `email`, `password`, `phone_number`, `status`,`role_id`) VALUES ('$name','$email','$password','$phone','$status','$role')";
         $result = mysqli_query($conn, $sql);
@@ -30,14 +49,17 @@ if (isset($_POST['submit'])) {
             echo "<script> window.location.href='all_user.php' </script>";
         }
     }
-    // $sql = "INSERT INTO `user`(`fullname`, `email`, `password`, `phone_number`, `status`,`role_id`) VALUES ('$name','$email','$password','$phone','$status','$role')";
-    // $result = mysqli_query($conn, $sql);
-    // if (!$result) {
-    //     die("Query failed: " . mysqli_error($conn));
-    // } else {
-    //     echo "<script> alert('Add success') </script>";
-    //     echo "<script> window.location.href='all_user.php' </script>";
-    // }
+}
+if(isset($_GET['id'])&&$_GET['action']=='delete') {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `user` WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    } else {
+        echo "<script> alert('Delete success') </script>";
+        echo "<script> window.location.href='all_user.php' </script>";
+    }
 }
 
 
@@ -98,43 +120,82 @@ if (isset($_POST['submit'])) {
                         <div class="row">
                             <div class="col">
                                 <label for="">Name</label>
-                                <input name="fullname" type="text" class="form-control" placeholder="First name">
+                                *
+                                <input name="fullname" type="text" class="form-control" placeholder="">
+                                <?php
+                                if (isset($nameErr)) {
+                                    echo "<span class='text-danger'> $nameErr </span>";
+                                }
+                                ?>
                             </div>
                             <div class="col">
                                 <label for="">Email</label>
-                                <input name="email" type="text" class="form-control" placeholder="Last name">
+                                *
+                                <input name="email" type="text" class="form-control" placeholder="">
+                                <?php
+                                if (isset($emailErr)) {
+                                    echo "<span class='text-danger'> $emailErr </span>";
+                                }
+                                ?>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Phone</label>
-                            <input name="phone_number" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="">Password</label>
-                            <input name="password" type="text" class="form-control" placeholder="First name">
+                            *
+                            <input name="password" type="text" class="form-control" placeholder="">
+                            <?php
+                            if (isset($passwordErr)) {
+                                echo "<span class='text-danger'> $passwordErr </span>";
+                            }
+                            ?>
                         </div>
                         <div class="col">
                             <label for="">Role</label>
-                            <input name="role" type="text" class="form-control" placeholder="Last name">
+                            *
+                            <input name="role" type="text" class="form-control" placeholder="">
                             <small id="emailHelp" class="form-text text-muted">* 1 is admin - 2 is customer</small>
+                            <?php
+                            if (isset($roleErr)) {
+                                echo "<span class='text-danger'> $roleErr </span>";
+                            }
+                            ?>
                         </div>
+
                     </div>
-                    <label for="">Status</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
-                        <label class="form-check-label" for="status">
-                            Public
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status" value="0" checked>
-                        <label class="form-check-label" for="status">
-                            Private
-                        </label>
+                    <div class="row">
+                        <div class="col">
+                        <div class="form-group">
+                                <label for="">Phone</label>
+                                *
+                                <input name="phone_number" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                                <?php
+                                if (isset($phoneErr)) {
+                                    echo "<span class='text-danger'> $phoneErr </span>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col">
+                        <label for="">Status</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
+                                <label class="form-check-label" for="status">
+                                    Public
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="status" value="0" checked>
+                                <label class="form-check-label" for="status">
+                                    Private
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    <small id="emailHelp" class="form-text text-muted">* Required</small>
 
                 </form>
 

@@ -1,37 +1,35 @@
 <?php
 include('../database/connection.php');
 include('../php/checkfile.php');
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $price = $_POST['price'];
     $decription = $_POST['decription'];
     $option = $_POST['option'];
     $status = $_POST['status'];
-    $path = '/uploads' ;
-    $filepath = $path . basename($_FILES['thumbnail']['name']);
-   if(isset($_FILES['thumbnail']) && $_FILES['thumbnail'] ) {
-       move_uploaded_file($_FILES['thumbnail']['tmp_name'], $filepath);
-   } 
-   else {
-       $filepath = $_POST['thumbnail'];
-
-   }
-           $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-            echo "<script>alert('Product Added Successfully')</script>";
-            echo "<script>window.location.href='all_product.php'</script>";
+    $nameErr = $emailErr = $passwordErr = $phoneErr = $statusErr = $roleErr =$imageErr= "";
+    $target_dir = "../img/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check !== false) {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            $finalpath = str_replace("../", "", $target_file);
+            $sql = "INSERT INTO Product (title,price,thumbnail,decription,option,status) VALUES ('$title','$price','$finalpath','$decription','$option','$status')";
+            if (mysqli_query($conn, $sql)) {
+                echo "<script>alert('Add product successfully')</script>";
+                header('location:all_product.php');
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+        } else {
+            echo "Sorry, there was an error uploading your file.";
         }
+    } else {
+        $imageErr = "File is not an image.";
+    }
 }
-    
-    
 
-    //     $sql = "INSERT INTO Product (title, price, decription, thumbnail, option, status) VALUES ('$title', '$price', '$decription', '$filepath', '$option', '$status')";
-    //     $result = mysqli_query($conn, $sql);
-    //     if ($result) {
-    //         echo "<script>alert('Product Added Successfully')</script>";
-    //         echo "<script>window.location.href='all_product.php'</script>";
-    //     }
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +80,7 @@ if(isset($_POST['submit'])) {
                 </div>
             </section>
             <section class="content">
-                <form method="post" role="form" enctype="multipart/form-data" accept=".jpg,.jpeg,.png">
+                <form method="post" role="form" enctype="multipart/form-data">
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
@@ -109,7 +107,7 @@ if(isset($_POST['submit'])) {
                             </select>
                         </div>
                         <div class="col">
-                            <input name="thumbnail" type="file">
+                            <input name="image" type="file">
                         </div>
                     </div>
                     <div class="row col-md-12 col-sm-12 x_content">
@@ -134,6 +132,11 @@ if(isset($_POST['submit'])) {
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
                 </form>
+                <?php if (!empty($resMessage)) { ?>
+                    <div class="alert <?php echo $resMessage['status'] ?>">
+                        <?php echo $resMessage['message'] ?>
+                    </div>
+                <?php } ?>
 
 
 

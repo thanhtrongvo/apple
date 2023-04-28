@@ -123,11 +123,11 @@ include_once('../database/connection.php');
               }
               if (isset($_GET['action']) == 'delete' && isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql = "DELETE FROM Category WHERE id = " . $_GET['id'] . "";
+                $sql = "DELETE FROM Product WHERE id = " . $_GET['id'] . "";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
-                  echo "<script>alert('Category Deleted Successfully')</script>";
-                  echo "<script>window.location.href='all_category.php'</script>";
+                  echo "<script>alert('Product Deleted Successfully')</script>";
+                  echo "<script>window.location.href='all_product.php'</script>";
                 }
               }
               ?>

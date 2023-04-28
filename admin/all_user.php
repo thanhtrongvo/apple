@@ -113,7 +113,7 @@ include_once('../database/connection.php');
                     echo "<td><span class='badge badge-success'>Public </span>";
                   }
                   echo "<td class='text-right'>";
-                  echo "<a href='edit_category.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
+                  echo "<a href='edit_user.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
         <i class='fas fa-edit'></i>
     </a> ";
                   echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_user.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>

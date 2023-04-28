@@ -31,6 +31,69 @@ function uploadfile($origin, $dest, $tmp_name)
   return false;
 }
 
+// Usage: uploadimage($_FILE['image'],'temp/')
+function uploadimage($image, $dest)
+{
+  $origin = strtolower(basename($image['name']));
+  $fulldest = $dest.$origin;
+  $filename = $origin;
+  for ($i=1; file_exists($fulldest); $i++)
+  {
+    $fileext = (strpos($origin,'.')===false?'':'.'.substr(strrchr($origin, "."), 1));
+    $filename = substr($origin, 0, strlen($origin)-strlen($fileext)).'['.$i.']'.$fileext;
+    $fulldest = $dest.$filename;
+  }
+  
+  if (move_uploaded_file($image['tmp_name'], $fulldest))
+    return $filename;
+  return false;
+}
+function checkfile($file)
+{
+  $file = strtolower(basename($file['name']));
+  $fileext = (strpos($file,'.')===false?'':'.'.substr(strrchr($file, "."), 1));
+  $filetype = $fileext;
+  $filetype = strtolower($filetype);
+  $filetype = ltrim($filetype, '.');
+  $filetype = rtrim($filetype, '.');
+  $filetype = trim($filetype);   
+  $filetype = preg_replace('/\s\s+/', ' ', $filetype);
+  $filetype = str_replace(' ', '', $filetype);
+  $filetype = str_replace(';', '', $filetype);
+  $filetype = str_replace(',', '', $filetype);
+  $filetype = str_replace('(', '', $filetype);
+  $filetype = str_replace(')', '', $filetype);
+  $filetype = str_replace('=', '', $filetype);
+  $filetype = str_replace('+', '', $filetype);
+  $filetype = str_replace('-', '', $filetype);
+  $filetype = str_replace('_', '', $filetype);
+  $filetype = str_replace('`', '', $filetype);
+  $filetype = str_replace('~', '', $filetype);
+  $filetype = str_replace('!', '', $filetype);
+  $filetype = str_replace('@', '', $filetype);
+  $filetype = str_replace('#', '', $filetype);
+  $filetype = str_replace('$', '', $filetype);
+  $filetype = str_replace('%', '', $filetype);
+  $filetype = str_replace('^', '', $filetype);
+  $filetype = str_replace('&', '', $filetype);
+  $filetype = str_replace('*', '', $filetype);
+  $filetype = str_replace('{', '', $filetype);
+  $filetype = str_replace('}', '', $filetype);
+  $filetype = str_replace('[', '', $filetype);
+  $filetype = str_replace(']', '', $filetype);
+  $filetype = str_replace('|', '', $filetype);
+  $filetype = str_replace(':', '', $filetype);
+  $filetype = str_replace('"', '', $filetype);
+  $filetype = str_replace('\'', '', $filetype);
+  $filetype = str_replace('<', '', $filetype);
+  $filetype = str_replace('>', '', $filetype);
+  $filetype = str_replace('?', '', $filetype);
+  $filetype = str_replace('/', '', $filetype);
+  $filetype = str_replace('\\', '', $filetype);
+  $filetype = str_replace('`', '', $filetype);
+
+
+}
 
 
 // if(isset($_GET['submit'])){

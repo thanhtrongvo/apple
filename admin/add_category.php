@@ -14,18 +14,18 @@ include('../database/connection.php');
 //         echo "<script> window.location.href='all_category.php' </script>";
 //     }
 // Check if the name and status fields are not empty
+$nameErr = $statusErr = "";
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $status = $_POST['status'];
     if (empty($name)) {
-        echo "<script> alert('Name fields cannot be empty') </script>";
+        $nameErr = "*Name is required";
     }
-    // Check if the status field is not a number
-    elseif (is_numeric($name)) {
-        echo "<script> alert('Category field not a number') </script>";
+    if(is_numeric($name)){
+        $nameErr = "*Name must be string";
     }
     // If all validations pass, insert data into the database
-    else {
+    elseif($nameErr == "" && $statusErr == "") {
         $sql = "INSERT INTO Category (name, status) VALUES ('$name', '$status')";
         $result = mysqli_query($conn, $sql);
         if (!$result) {
@@ -94,6 +94,11 @@ if (isset($_POST['submit'])) {
                     <div class="form-group">
                         <label for="">Name</label>
                         <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                        <?php 
+                            if(isset($nameErr)){
+                                echo "<span class='text-danger'> $nameErr </span>";
+                            }
+                        ?>
                     </div>
                     <label for="">Status</label>
                     <div class="form-check">
