@@ -69,17 +69,24 @@ html{
     display: none;
     z-index: 10;
 }
-.modal__blur{
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-}
-.modal__overlay{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 0, 0, 0.3);
-}
+
 .modal__body{
+    margin: auto;
+    z-index: 1;
+
+}
+/* modal infor */
+.modal__in4{
+    position: fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    z-index: 10;
+}
+
+.modal__body__in4{
     margin: auto;
     z-index: 1;
 
@@ -122,4 +129,18 @@ html{
     cursor: default;
     background-color: #999;
 
+}
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.col{
+    float: left;
+    margin-top: 16px;
+    padding-left: 16px;
+    padding-right: 0px;
+    margin-bottom: 50px
+}
+.col-half{
+    width: 50%;
 }

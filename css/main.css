@@ -1,3 +1,4 @@
+
 .header {
   height: 44px;
   background-color: var(--primary-color);
@@ -7,6 +8,7 @@
   z-index: 10;
   backdrop-filter: blur(10px);
 }
+
 .header__navbar {
   display: flex;
   justify-content: center;
@@ -24,6 +26,7 @@
   min-height: 32px;
   cursor: pointer;
 }
+
 .header__navbar-mac:hover ~ .header__subnav-mac {
   display: block;
 }
@@ -51,6 +54,29 @@
   line-height: normal;
   font-weight: 500px;
 }
+
+/* .header__subnav{
+    position: absolute;
+    top: 38px;
+    right: 0;
+    left: 0;
+    height: 400px;
+    width: 10000px;
+    background-color: #000;
+}
+
+
+.header__subnav-mac p{
+    color:rgba(255, 255, 255, 0.779);
+    cursor: default;
+}
+.header__subnav-mac a{
+    color: var(--white-color);
+    font-size: 3rem;
+    line-height: normal;
+    font-weight: 500px;
+} */
+
 
 .header__navbar-item a {
   text-decoration: none;
@@ -82,14 +108,16 @@
   font-weight: 500;
 }
 .header__navbar-item--separate::after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-left: 1px solid #ffffff;
-  height: 12px;
-  right: -9px;
-  top: 50%;
-  transform: translateY(-50%);
+
+    content: "";
+    display: block;
+    position: absolute;
+    border-left: 1px solid #ffffff;
+    height: 12px;
+    right: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+
 }
 .header__navbar-icon-link {
   color: var(--white-color);
@@ -112,6 +140,7 @@
   cursor: default;
   height: fit-content;
 }
+
 .container__content-ip14--video {
   position: relative;
   top: 44px;
@@ -137,11 +166,46 @@
   box-shadow: 1px 5px 0 0 #9a9a19;
   width: 100px;
 }
+.container__content-ip14--video{
+    top: 44px;
+}
+
+.container__content-ip14--btn{
+    position: absolute;
+    top: 520px;
+    left: 250px;
+}
+.container__content-ip14--btn .hide__btn {
+    background-color: #ecec00;
+    color: black;
+    text-shadow: 2px 2px 5px whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #9a9a19;
+    width: 100px;
+}
+  
+.container__content-ip14--btn .hide__btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 1px 9px 0 0 #9a9a19;
+}
+  
+.container__content-ip14--btn .hide__btn:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0 0 #9a9a19;
+
+}
 
 .container__content-ip14--btn button:hover {
   transform: translateY(-4px);
   box-shadow: 1px 9px 0 0 #9a9a19;
 }
+
 
 .container__content-ip14--btn button:active {
   transform: translateY(4px);
@@ -259,10 +323,122 @@
   transform: translateY(4px);
   box-shadow: 0px 0px 0 0 #761e82;
 }
+.container__content-watch--photo img{
+    width: 100%;
+    cursor: pointer;
+}
+.container__content-watch--btn{
+    position: absolute;
+    top:20%;
+    left: 660px;
+}
+.container__content-watch--btn .hide__btn {
+    background-color: #cbc2bd;
+    color: #000000;
+    text-shadow: 2px 2px 5px whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #8a8277;
+    width: 100px;
+}
+  
+.container__content-watch--btn .hide__btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 1px 9px 0 0 #8a8277;
+}
+  
+.container__content-watch--btn .hide__btn:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0 0 #8a8277;
+}
+.container__content-last{
+    padding-bottom: 48px ;
+    margin-top: 32px;
+    width: 100%;
+    position: relative;
+
+}
+
+.container__content-mac img{
+    width: 100%;
+    height: 600px;
+    display: block;
+}
+
+.container__content-mac--btn{
+    position: absolute;
+    top: 190px;
+    left: 320px;
+}
+.container__content-mac--btn .hide__btn {
+    background-color: #b1b1b1;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 5px whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #929292;
+    width: 100px;
+}
+
+.container__content-mac--btn .hide__btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 1px 9px 0 0 #929292;
+}
+
+.container__content-mac--btn .hide__btn:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0 0 #929292;
+}
+.container__content-ipad img{
+    width: 100%;
+    height: 600px;
+    display: block;
+}
+.container__content-ipad--btn{
+    position: absolute;
+    top: 180px;
+    right: 300px;
+}
+.container__content-ipad--btn .hide__btn {
+    background-color: #b22ac4;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 5px plum;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #761e82;
+    width: 100px;
+}
+  
+.container__content-ipad--btn .hide__btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 1px 9px 0 0 #761e82;
+}
+  
+.container__content-ipad--btn .hide__btn:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0 0 #761e82;
+
+}
 
 /* modal */
 
 .auth-form {
+
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -287,6 +463,16 @@
   top: 20px;
   color: #3f3f3f;
   cursor: pointer;
+}
+
+.auth-form__btn--cancel, .auth-form__in4{
+    position: absolute;
+    font-size: 3rem;
+    right: 20px;
+    top: 20px;
+    color: #3F3F3F;
+    cursor: pointer;
+    
 }
 #chk {
   display: none;
@@ -319,6 +505,7 @@
   outline: none;
   border-radius: 5px;
 }
+
 .auth-form button {
   background-color: #b1b1b1;
   color: #000000;
@@ -336,6 +523,25 @@
 .auth-form button:hover {
   transform: translateY(-4px);
   box-shadow: 1px 9px 0 0 #929292;
+}
+.auth-form  button{
+	background-color: #b1b1b1;
+    color: #000000;
+    text-shadow: 2px 2px 5px whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #929292;
+    width: 60%;
+}
+.auth-form  button:hover{
+	transform: translateY(-4px);
+    box-shadow: 1px 9px 0 0 #929292;
+
 }
 .auth-form button:active {
   transform: translateY(4px);
@@ -362,6 +568,78 @@
 }
 #chk:checked ~ .auth-form__signup label {
   transform: scale(0.6);
+}
+/* modal infor */
+.auth-form__in4{
+    position: absolute ;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 100px;
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	backdrop-filter: blur(50px);
+    border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+    will-change: opacity, transform;
+}
+.auth-form__in4__btn--cancel{
+    position: absolute;
+    font-size: 3rem;
+    right: 20px;
+    top: 20px;
+    color: #3F3F3F;
+    cursor: pointer;
+    
+}
+.auth-form__in4 h1{
+	color: #929292;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+	font-size: 3.5rem;
+	justify-content: center;
+	display: flex;
+	margin: 30px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.auth-form__in4 p{
+    font-size: 1.5rem;
+	width: 80%;
+	height: 40px;
+	background: #efefef;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.auth-form__in4 button{
+	background-color: #b1b1b1;
+    color: #000000;
+    text-shadow: 2px 2px 5px whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #929292;
+    width: 60%;
+}
+.auth-form__in4  button:hover{
+	transform: translateY(-4px);
+    box-shadow: 1px 9px 0 0 #929292;
+}
+.auth-form__in4 button:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0 0 #929292;
 }
 /* poduct */
 .product__content-heading {

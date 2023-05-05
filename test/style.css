@@ -1,0 +1,82 @@
+.auth-form__in4{
+    position: absolute ;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 100px;
+	width: 400px;
+	height: 550px;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	backdrop-filter: blur(50px);
+    border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+    will-change: opacity, transform;
+}
+.auth-form__in4__btn--cancel{
+    position: absolute;
+    font-size: 3rem;
+    right: 20px;
+    top: 20px;
+    color: #3F3F3F;
+    cursor: pointer;
+    
+}
+.auth-form__in4 h1{
+	color: #929292;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+	font-size: 3rem;
+	justify-content: center;
+	display: flex;
+	margin: 30px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.auth-form__in4 p{
+	width: 60%;
+	height: 40px;
+	background: #efefef;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.auth-form__in4 button{
+	background-color: #b1b1b1;
+    color: #000000;
+    text-shadow: 2px 2px 5px whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border-width: 0;
+    box-shadow: 1px 5px 0 0 #929292;
+    width: 60%;
+}
+/* modal */
+.modal{
+    position: fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    z-index: 10;
+}
+.modal__blur{
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+.modal__body{
+    margin: auto;
+    z-index: 1;
+}

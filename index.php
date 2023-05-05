@@ -16,6 +16,7 @@ include('php/cart.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/base.css"> 
+    <link rel="stylesheet" href="css/reponsive.css">
     <link rel="stylesheet" href="css/home_products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,13 +48,15 @@ include('php/cart.php');
                             <a href="" class="header__navbar-mac">
                                 Mac
                             </a>
-                            <ul class="header__subnav-mac">
-                                <li><p>Explore Mac</p></li>
-                                <li><a href="">MacBook Air</a></li>
-                                <li><a href="">MacBook Pro</a></li>
-                                <li><a href="">iMac</a></li>
-                                <li><a href="">Mac Mini</a></li>
-                            </ul>
+                            <!-- <div class="header__subnav">
+                                <ul class="header__subnav-mac">
+                                    <li><p>Explore Mac</p></li>
+                                    <li><a href="">MacBook Air</a></li>
+                                    <li><a href="">MacBook Pro</a></li>
+                                    <li><a href="">iMac</a></li>
+                                    <li><a href="">Mac Mini</a></li>
+                                </ul>
+                            </div> -->
                         </li>
                         <li class="header__navbar-item">
                             <a href="" class="header__navbar-ipad">
@@ -119,7 +122,7 @@ include('php/cart.php');
                     <video src="video/Ad_iPhone14pro.mp4" loop="" autoplay="" muted="" width="100%"></video>
                 </div>
                 <div class="container__content-ip14--btn">
-                    <button>
+                    <button class="hide__btn">
                         BUY
                     </button>
                 </div>
@@ -130,28 +133,28 @@ include('php/cart.php');
                     <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" alt="">
                 </div>
                 <div class="container__content-watch--btn">
-                    <button>
+                    <button class="hide__btn">
                         BUY
                     </button>
                 </div>
             </div>
-            <div class="container__content-last">
-                <div class="container__content-mac">
+            <div class="row container__content-last">
+                <div class="container__content-mac col col-half s-col-full">
                     <div class="container__content-mac--photo">
                         <img src="img/AdMac.png" alt="">
                     </div>
                     <div class="container__content-mac--btn">
-                        <button>
+                        <button class="hide__btn">
                             BUY
                         </button>
                     </div>
                 </div>
-                <div class="container__content-ipad">
+                <div class="container__content-ipad col col-half s-col-full">
                     <div class="container__content-ipad--photo">
                         <img src="img/AdIpad.png" alt="">
                     </div>
                     <div class="container__content-ipad--btn">
-                        <button>
+                        <button class="hide__btn">
                             BUY
                         </button>
                     </div>
@@ -267,6 +270,23 @@ include('php/cart.php');
                         <button type="submit" name="signin">Sign In</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal information -->
+    <div id="modal__in4" class="modal__in4">
+        <div class="modal__body__in4">
+            <div class="auth-form__in4">
+                <i onclick="exitModal()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
+                <form method="post">
+                    <h1 >Information</h1>
+                    <p>Full Name: </p>
+                    <p>Phone Number: </p>
+                    <p>Email: </p>
+                    <p>Password: </p>
+                   
+                    <button type="submit" name="Logout">Log out</button>
+                </form>
             </div>
         </div>
     </div>
