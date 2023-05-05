@@ -1,0 +1,32 @@
+/* tablet vs mobile */
+@media only screen and (max-width:1420px){
+    .hide__btn {
+        display: none !important;
+    }
+}
+@media only screen and (max-width:1023px){
+    .hide__btn {
+        display: none !important;
+    }
+}
+
+
+
+/* tablet */
+@media only screen and (min-width:740px) and (max-width:1023px){
+    .hide__btn {
+        display: none !important;
+    }
+ 
+}
+
+/* mobile */
+@media only screen and (max-width:740px){
+    .hide__btn {
+        display: none !important;
+    }
+    .s-col-full{
+        width: 100% !important;
+    }
+  
+}
