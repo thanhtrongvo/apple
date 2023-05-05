@@ -17,15 +17,15 @@ include('php/cart.php');
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/base.css"> 
     <link rel="stylesheet" href="css/home_products.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" type="image/png" href="img/logo.png">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="plugins/jquery/jquery.js"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
     <script src="js/ajax.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
     <script src="js/validate.js"></script>
 
 </head>
@@ -250,9 +250,10 @@ include('php/cart.php');
                 <input type="checkbox" id="chk" aria-hidden="true">
                 <i onclick="exitModal()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
                 <div class="auth-form__signup">
-                    <form method="post" id="signup">
+                    <form method="post" id="signup" onsubmit="">
                         <label for="chk" aria-hidden="true">Join Us</label>
                         <input type="text" name="name" placeholder="Full Name" >
+                        <span class="error fail-alert" ></span>
                         <input type="text" name="phone" placeholder="Phone Number" >
                         <input type="email" name="email" placeholder="Email" >
                         <input type="password" name="pswd" placeholder="Password" >

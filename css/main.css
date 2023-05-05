@@ -543,4 +543,17 @@
 /* End Toast Css */
 
 
+/* Css error form */
+
+lable.error.fail-alert {
+    border: 1px solid red;
+    background-color: #fff0f0;
+    color: red;
+}
+
+
+
+/* End Css error form */
+
+
 
