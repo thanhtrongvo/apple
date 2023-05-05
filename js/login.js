@@ -8,3 +8,8 @@ function exitModal(){
     var a = document.getElementById("modal");
     a.style.display = "none"
 }
+function validateSignUp(){
+    var name = doccument.forms['fullname']['name'].value;
+} 
+   
+

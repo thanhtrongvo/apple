@@ -249,18 +249,18 @@ include('php/cart.php');
                 <div class="auth-form__signup">
                     <form method="post">
                         <label for="chk" aria-hidden="true">Join Us</label>
-                        <input type="text" name="name" placeholder="Full Name" required>
-                        <input type="text" name="phone" placeholder="Phone Number" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="password" name="pswd" placeholder="Password" required>
+                        <input type="text" name="name" placeholder="Full Name" >
+                        <input type="text" name="phone" placeholder="Phone Number" >
+                        <input type="email" name="email" placeholder="Email" >
+                        <input type="password" name="pswd" placeholder="Password" >
                         <button type="submit" name="signup">Sign up</button>
                     </form>
                 </div>
                 <div class="auth-form__login">
                     <form method="post">
                         <label for="chk" aria-hidden="true">Sign In</label>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="password" name="pswd" placeholder="Password" required>
+                        <input type="email" name="email" placeholder="Email" >
+                        <input type="password" name="pswd" placeholder="Password" >
                         <button type="submit" name="signin">Sign In</button>
                     </form>
                 </div>
