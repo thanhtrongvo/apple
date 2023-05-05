@@ -1,9 +1,27 @@
 $().ready(function() {
         $("#signup").validate({
-            errorClass: "error error-alert",
-            validClass: "success success-alert",
+            errorClass: "invalid invalid-alert",
+            validClass: "valid valid-alert",
             errorElement: "div",
+            focusCleanup: true,
             onclick: false,
+            submitHandler: function(form) {
+                form.submit();
+            },
+
+            invalidHandler: function(event, validator) {
+                var errors = validator.numberOfInvalids();
+                if (errors) {
+                    var message = errors == 1
+                        ? 'You missed 1 field. It has been highlighted'
+                        : 'You missed ' + errors + ' fields. They have been highlighted';
+                    $("div.error span").html(message);
+                    $("div.error").show();
+                } else {
+                    $("div.error").hide();
+                }
+            },
+
             rules: {
                 name: {
                     required: true,
