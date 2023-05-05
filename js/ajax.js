@@ -17,3 +17,17 @@ $(document).ready(function() {
     });
   });
 });
+$(document).ready(function() {
+  $('.cart_item').on('submit', function(e) {
+    var id = $(this).find('input[name="remove_id"]').val();
+    $.ajax({
+      url: 'php/cart.php',
+      method: 'POST',
+      data: {remove_id: id},
+      success: function(id) {
+        $('#cart').html(id);
+        alert('Product has been delete from cart');
+      }
+    });
+  });
+});

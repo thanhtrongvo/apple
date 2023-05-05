@@ -2,8 +2,8 @@
 include('database/connection.php');
 include('php/signup.php');
 include('php/signin.php');
-include('php/product.php');
-include('php/cart.php');
+ include("php/cart.php");
+ include('php/product.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,7 +95,7 @@ include('php/cart.php');
                         ';
                         } else {
                             echo '<li class="header__navbar-item">
-                            <a href="admin/logout.php" class="header__navbar-logout">
+                            <a onclick="showInfo()" class="header__navbar-logout">
                             ' . $_SESSION['name'] . '
                             </a>
                         </li>';
@@ -114,7 +114,6 @@ include('php/cart.php');
                     </ul>
                 </nav>
             </div>
-            
         </header>
         <div class="container">
             <div class="container__content">
@@ -277,15 +276,14 @@ include('php/cart.php');
     <div id="modal__in4" class="modal__in4">
         <div class="modal__body__in4">
             <div class="auth-form__in4">
-                <i onclick="exitModal()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
+                <i onclick="exitModalInfo()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
                 <form method="post">
                     <h1 >Information</h1>
                     <p>Full Name: </p>
                     <p>Phone Number: </p>
                     <p>Email: </p>
                     <p>Password: </p>
-                   
-                    <button type="submit" name="Logout">Log out</button>
+                    <button onclick="logout()" name="Logout">Log out</button>
                 </form>
             </div>
         </div>
