@@ -25,6 +25,9 @@ include('php/cart.php');
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script src="js/ajax.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script src="js/validate.js"></script>
+
 </head>
 
 <body>
@@ -247,7 +250,7 @@ include('php/cart.php');
                 <input type="checkbox" id="chk" aria-hidden="true">
                 <i onclick="exitModal()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
                 <div class="auth-form__signup">
-                    <form method="post">
+                    <form method="post" id="signup">
                         <label for="chk" aria-hidden="true">Join Us</label>
                         <input type="text" name="name" placeholder="Full Name" >
                         <input type="text" name="phone" placeholder="Phone Number" >
