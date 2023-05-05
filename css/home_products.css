@@ -14,6 +14,7 @@
 /* <li> trong homeproduct có class="sanPham" , khai báo trong classes.js */
 .home__product--info {
     display: inline-block;
+    position:relative;
     width: 265px;
     text-align: center;
     border: 1px solid #eee;
@@ -29,7 +30,7 @@ a {
 .home__product--info a {
     display: inline-block;
     position: relative;
-    height: 310px;
+    height: 350px;
 }
 
 .home__product--info a .price {
@@ -95,7 +96,7 @@ a {
 .tooltip {
     position: absolute;
     display: inline-block;
-    bottom: 0px;
+    bottom: 5px;
     right: 5px;
 }
 
