@@ -1,18 +1,5 @@
 <?php 
     include('../database/connection.php');
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM category WHERE id = $id";
-        $result = mysqli_query($conn, $sql);
-        $data = mysqli_fetch_assoc($result);
-        $name = $data['name'];
-        $status = $data['status'];
-    }
-    // To validate unique in database form, we can use the following code:
-// First, we need to check if the form has been submittedXPxPg6fy4IWvTNh0E263
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -66,9 +53,6 @@
                     $sql = "SELECT * FROM Category WHERE id = ".$_GET['id']."";
                     $result = mysqli_query($conn, $sql);
                     $data = mysqli_fetch_row($result);
-
-                    
-
                 if(isset($_POST['submit'])){
                     $name = $_POST['name'];
                     $status = $_POST['status'];
