@@ -1,9 +1,8 @@
 $().ready(function() {
         $("#signup").validate({
-            errorClass: "error fail-alert",
-            validClass: "valid success-alert",
-            onfocusout: false,
-            onkeyup: false,
+            errorClass: "error error-alert",
+            validClass: "success success-alert",
+            errorElement: "div",
             onclick: false,
             rules: {
                 name: {
@@ -11,7 +10,7 @@ $().ready(function() {
                     minlength: 5,
                     maxlength: 20
                 },
-                password: {
+                pswd: {
                     required: true,
                     minlength: 5,
                     maxlength: 20

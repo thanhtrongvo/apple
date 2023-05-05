@@ -253,7 +253,6 @@ include('php/cart.php');
                     <form method="post" id="signup" onsubmit="">
                         <label for="chk" aria-hidden="true">Join Us</label>
                         <input type="text" name="name" placeholder="Full Name" >
-                        <span class="error fail-alert" ></span>
                         <input type="text" name="phone" placeholder="Phone Number" >
                         <input type="email" name="email" placeholder="Email" >
                         <input type="password" name="pswd" placeholder="Password" >

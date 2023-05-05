@@ -545,7 +545,7 @@
 
 /* Css error form */
 
-lable.error.fail-alert {
+div.error.error-alert {
     border: 1px solid red;
     background-color: #fff0f0;
     color: red;
