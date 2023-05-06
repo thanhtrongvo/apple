@@ -619,7 +619,7 @@
 	outline: none;
 	border-radius: 5px;
 }
-.auth-form__in4 button{
+.auth-form__in4 button {
 	background-color: #b1b1b1;
     color: #000000;
     text-shadow: 2px 2px 5px whitesmoke;
@@ -806,6 +806,7 @@
 
 div.invalid.invalid-alert {
   color: red;
+  font-size: 2rem;
 }
 
 /* End Css error form */

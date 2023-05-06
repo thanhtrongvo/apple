@@ -21,6 +21,9 @@
                 $_SESSION['name'] = $row['fullname'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['phone'] = $row['phone_number'];
+                $_SESSION['address'] = $row['address'];
+                $_SESSION['pswd'] = $row['password'];
                 header('location:index.php');
             }
         }

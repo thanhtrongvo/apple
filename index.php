@@ -4,6 +4,7 @@ include('php/signup.php');
 include('php/signin.php');
  include("php/cart.php");
  include('php/product.php');
+    include('php/logout.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -278,12 +279,24 @@ include('php/signin.php');
             <div class="auth-form__in4">
                 <i onclick="exitModalInfo()" class='fa-solid fa-xmark auth-form__btn--cancel'></i>
                 <form method="post">
-                    <h1 >Information</h1>
-                    <p>Full Name: </p>
-                    <p>Phone Number: </p>
-                    <p>Email: </p>
-                    <p>Password: </p>
-                    <button onclick="logout()" name="Logout">Log out</button>
+                <h1> Information: </h1>
+
+                    <?php
+                        if(isset($_SESSION['name'])) {
+                            echo " <p>Full Name: ".$_SESSION['name']."</p>";
+                        }
+                        if(isset($_SESSION['phone'])) {
+                            echo " <p >Phone: ".$_SESSION['phone']."</p>";
+                        }
+                        if(isset($_SESSION['email'])) {
+                            echo " <p >Email: ".$_SESSION['email']."</p>";
+                        }
+                        if(isset($_SESSION['pswd'])) {
+                            echo " <p >Password: ".$_SESSION['pswd']."</p>";
+                        }
+
+                    ?>
+                    <button type="button" onclick="location.href='admin/logout.php';" name="Logout">Log out</button>
                 </form>
             </div>
         </div>

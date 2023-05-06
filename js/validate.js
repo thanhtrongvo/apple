@@ -71,3 +71,32 @@ $().ready(function() {
     
     
     })
+
+$(document).ready(function() {
+    $("#signin").validate({ 
+        errorClass: "invalid invalid-alert",
+        validClass: "valid valid-alert",
+        errorElement: "div",
+        focusCleanup: true,
+        onclick: false,
+        submitHandler: function(form) {
+            form.submit();
+        },
+        rule: {
+            email: {
+                required: true,
+                email: true
+            },
+            pswd: {
+                required: true,
+                minlength: 5,
+                maxlength: 20
+            }
+            
+
+        },
+        
+    });
+
+});
+
