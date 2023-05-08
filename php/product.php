@@ -28,4 +28,36 @@ function product_home($id){
             </li>';
         }
 }
+
+function select_category() {
+    include('database/connection.php');
+    if(isset($_GET['category'])){
+        $cate = $_GET['category'];
+        $sql = "SELECT * FROM `product` WHERE category_id = '$cate'";
+        $result = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_array($result)){
+            echo
+            '<li class="home__product--info">
+            <a href="">
+                <img src="'.$row[4].'" />
+                <h3>'.$row[2].'</h3>
+                <span class="price">'.number_format("$row[3]",0,".",".").'<u>đ</u></span>
+            </a>
+            <form class="form_item" method="post">
+                <input type="hidden" name="name" value="'.$row["title"].'">
+                <input type="hidden" name="id" value="'.$row["id"].'">
+                <input type="hidden" name="price" value="'.$row["price"].'">
+                <input type="hidden" name="image" value="'.$row["thumbnail"].'">
+                <div class="tooltip">
+                    <button class="themvaogio" type="submit" name="add_to_cart" value="addToCart">
+                        <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                        +
+                    </button>
+                </div>
+            </form>
+            </li>';
+        }
+}
+}
+
 ?>

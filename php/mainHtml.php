@@ -1,17 +1,18 @@
-<?php  
-    function addHeader() {
-        echo '
+<?php
+function addHeader()
+{
+    echo '
                 <header class="header">
                     <div class="grid">
                         <nav class="header__navbar">
                             <ul class="header__navbar-list">
                                 <li class="header__navbar-item .header__navbar-item--strong ">
-                                    <a href="" class="header__navbar-logo">
+                                    <a href="index.php" class="header__navbar-logo">
                                         <i class="header__navbar-item-logo fa-brands fa-apple "></i>
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-mac">
+                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-mac">
                                         Mac
                                     </a>
                                     <!-- <div class="header__subnav">
@@ -25,22 +26,22 @@
                                     </div> -->
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-ipad">
+                                    <a href="index.php?category=18&namecate=ipad" class="header__navbar-ipad">
                                         Ipad
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-iphone">
+                                    <a href="index.php?category=23&namecate=iphone" class="header__navbar-iphone">
                                         Iphone
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-watch">
+                                    <a href="index.php?category=24&namecate=watch" class="header__navbar-watch">
                                         Watch
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-airpod">
+                                    <a href="index.php?category=20&namecate=airpod" class="header__navbar-airpod">
                                         Airpod
                                     </a>
                                 </li>
@@ -50,25 +51,25 @@
                                     </a>
                                 </li>
                                 ';
-                                if (!isset($_SESSION)) {
-                                    session_start();
-                                }
-                                if (!isset($_SESSION['name'])) {
-                                    echo '<li class="header__navbar-item">
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if (!isset($_SESSION['name'])) {
+        echo '<li class="header__navbar-item">
                                     <a onclick="showModal()" class="header__navbar-login">
                                         Join us
                                     </a>
                                 ';
-                                } else {
-                                    echo '<li class="header__navbar-item">
+    } else {
+        echo '<li class="header__navbar-item">
                                     <a onclick="showInfo()" class="header__navbar-logout">
                                     ' . $_SESSION['name'] . '
                                     </a>
                                 </li>';
-                                }
-                                echo '
+    }
+    echo '
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-cart">
+                                    <a href="cart.php" class="header__navbar-cart">
                                         Cart
                                     </a>
                                 </li>
@@ -81,10 +82,11 @@
                         </nav>
                     </div>
                 </header>';
-    }
+}
 
-    function addContainer() {
-        echo '<div class="container">
+function addContainer()
+{
+    echo '<div class="container">
         <div class="container__content">
             <div class="container__content-ip14--video">
                 <video src="video/Ad_iPhone14pro.mp4" loop="" autoplay="" muted="" width="100%"></video>
@@ -131,9 +133,25 @@
         </div>
     </div>
 ';
-    }
+}
 
-    function addProduct() {
+function addProduct()
+{
+    if (isset($_GET['category'])) {
+        echo ' <div class="product">
+            <div class="product__content">
+                <h1 class="product__content-heading" style="text-transform: uppercase;">all '; 
+                echo $_GET['namecate'];
+                echo '</h1>
+                <div class="product__content-iphone">
+                    <div class="home__product">
+                        <ul>';
+        select_category();
+        echo '</ul>
+                    </div>
+                </div>
+                </div>';
+    } else {
         echo '
         <div class="product">
             <div class="product__content">
@@ -141,16 +159,16 @@
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>';
-                             product_home("23");
-                        echo'</ul>
+        product_home("23");
+        echo '</ul>
                     </div>
                 </div>
                 <h1 class="product__content-heading">NEW WATCH</h1>
                 <div class="product__content-watch">
                     <div class="home__product">
                         <ul>';
-                            product_home("24");
-                      echo'  </ul>
+        product_home("24");
+        echo '  </ul>
                     </div>
                 </div>
 
@@ -158,8 +176,8 @@
                 <div class="product__content-ipad">
                     <div class="home__product">
                         <ul>';
-                             product_home("18");
-                         echo' </ul>
+        product_home("18");
+        echo ' </ul>
                     </div>
                 </div>
 
@@ -167,17 +185,19 @@
                 <div class="product__content-mac">
                     <div class="home__product">
                         <ul>';
-                            product_home("19");
-                        echo'</ul>
+        product_home("19");
+        echo '</ul>
                     </div>
                 </div>
 
             </div>
         </div>
-    </div>';
+    ';
     }
-    function addFooter() {
-        echo '<div id="footer">
+}
+function addFooter()
+{
+    echo '<div id="footer">
         <div class="footer__content">
             <div class="footer__content--link">
                 <ul>
@@ -218,10 +238,11 @@
             </div>
         </div>
     </div>';
-    }
+}
 
-    function addModal( ) {
-        echo ' <div id="modal" class="modal">
+function addModal()
+{
+    echo ' <div id="modal" class="modal">
         <div class="modal__body">
             <div class="auth-form">
                 <input type="checkbox" id="chk" aria-hidden="true">
@@ -247,38 +268,44 @@
             </div>
         </div>
     </div>';
-    }
+}
 
-    function addInfoModal() {
-        echo '<div id="modal__in4" class="modal__in4">
+function addInfoModal()
+{
+    echo '<div id="modal__in4" class="modal__in4">
         <div class="modal__body__in4">
             <div class="auth-form__in4">
                 <i onclick="exitModalInfo()" class="fa-solid fa-xmark auth-form__btn--cancel"></i>
                 <form method="post">
                 <h1> Information: </h1>';
 
-                   
-                        if(isset($_SESSION['name'])) {
-                            echo " <p>Full Name: ".$_SESSION['name']."</p>";
-                        }
-                        if(isset($_SESSION['phone'])) {
-                            echo " <p >Phone: ".$_SESSION['phone']."</p>";
-                        }
-                        if(isset($_SESSION['email'])) {
-                            echo " <p >Email: ".$_SESSION['email']."</p>";
-                        }
-                        if(isset($_SESSION['pswd'])) {
-                            echo " <p >Password: ".$_SESSION['pswd']."</p>";
-                        }
-                    echo '
+
+    if (isset($_SESSION['name'])) {
+        echo " <p>Full Name: " . $_SESSION['name'] . "</p>";
+    }
+    if (isset($_SESSION['phone'])) {
+        echo " <p >Phone: " . $_SESSION['phone'] . "</p>";
+    }
+    if (isset($_SESSION['email'])) {
+        echo " <p >Email: " . $_SESSION['email'] . "</p>";
+    }
+    if (isset($_SESSION['pswd'])) {
+        echo " <p >Password: " . $_SESSION['pswd'] . "</p>";
+    }
+    echo '
                     <button type="button" onclick="location.href=\'admin/logout.php\';" name="Logout">Log out</button>
                 </form>
             </div>
         </div>
     </div>';
-    }
+}
 
-
-
- 
-?>
+function addLoader()
+{
+    echo '<div class="loading-wrapper">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+            ';
+}

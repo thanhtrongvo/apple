@@ -29,7 +29,6 @@ include('php/mainHtml.php')
 
 <body>
     <div class="app">
-
         <?php addHeader();
         addContainer();
         addProduct();
@@ -37,13 +36,9 @@ include('php/mainHtml.php')
         addModal();
         addInfoModal();
         ?>
-    </div>
-    <div class="loading-wrapper">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
 
     </div>
+
 </body>
 <script src="js/login.js"> </script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
