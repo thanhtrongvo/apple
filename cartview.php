@@ -107,9 +107,10 @@ include('php/cart.php');
             
         </header>
 <body >
-    <div style="height: 450px">
+    <div style="margin: 100px 0 0 0;height: fit-content">
+    <h1>asdasda </h1>
         <?php
-            displayCart(); 
+            displayCart();
         ?>
     </div>
 </body>

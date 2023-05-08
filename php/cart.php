@@ -1,15 +1,11 @@
 <?php 
     if(!isset($_SESSION)) session_start();
     
-    if(!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = array([
-            'id' => array(['id']),
-            'name' => array(['name']),
-            'price' => array(['price']),
-            'quantity' => array(['quantity']),
-            'image' => array(['image']),
-        ]); 
-    }
+    // if(!isset($_SESSION['cart'])) {
+    //     $_SESSION['cart'] = array([
+    //         'id' => array(['id']),
+    //     ]); 
+    // }
     // Xử lý yêu cầu ajax và lưu sản phẩm vào session
     if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['image'])) {
     $id = $_POST['id'];
@@ -21,6 +17,7 @@
     } else {
         $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
     }
+    
     }
 
     if (isset($_POST['remove_id'])) {
@@ -35,28 +32,94 @@
         unset($_SESSION['cart']);
     }
     function displayCart() {
-        // Hiển thị giỏ hàng từ session
+        echo '<div class="col-lg-8">
+        <div class="main-heading">Shopping Cart</div>
+        <div class="table-cart">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>';
         if (!empty($_SESSION['cart'])) {
-            $total = 0;
-            echo "<br>";
-            echo "<br>";
-            echo "<br>";
-            echo "<br>";
+            $cartTotal = 0;
+            //vòng for in danh sách giỏ hảng
             foreach ($_SESSION['cart'] as $key => $value) {
-            echo "<form class='cart_item' method='POST'>";
-            echo $key;
-            echo "<span>".$value['name']."</span>";
-            echo "<span>".$value['price']."</span>";
-            echo "<span>".$value['quantity']."</span>";
-            echo "<input type='hidden' name='remove_id' value='".$key."'> </input>";
-            echo "<button type='submit' value='removeFromCart'> Xóa sản phẩm </button>";
-            echo "</form>";
-            $total += bcmul($value['price'],$value['quantity']);
+                if($key != 0){
+                $total = bcmul($value['price'],$value['quantity']);
+                echo '<tr>
+                    <td>
+                        <div class="display-flex align-center">
+                            <div class="img-product">
+                                <img src="'.$value['image'].'" alt="" class="mCS_img_loaded">
+                            </div>
+                            <div class="name-product">'.$value['name'].
+                            '</div>
+                            <div class="price">$'.number_format($value['price'],0,',').
+                            '</div>
+                        </div>
+                    </td>
+                    <td class="product-count">
+                        <form action="#" class="count-inlineflex">
+                            <div class="qtyminus">-</div>
+                            <input type="text" name="quantity" value="'.$value['quantity'].'" class="qty">
+                            <div class="qtyplus">+</div>
+                        </form>
+                    </td>
+                    <td>
+                        <div class="total">$'.number_format($total,0,',').
+                    '</div>
+                    </td>
+                    <td>
+                        <a href="#" title="">
+                            <img src="images/icons/delete.png" alt="" class="mCS_img_loaded">
+                        </a>
+                    </td>
+                </tr>';
+                $cartTotal += $total;
+                }
             }
-            echo "<div class='cart-total'>";
-            echo "<span>Total: ".$total."</span>";
-            echo "</div>";
         }
-        
+                echo '</tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="cart-totals">
+                <h3>Cart Totals</h3>
+                <form action="#" method="get" accept-charset="utf-8">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td class="subtotal">$2,589.00</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td class="free-shipping">Free Shipping</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td>Total</td>
+                                <td class="price-total">';
+                                if(empty($_SESSION['cart']))
+                                    echo '$0.00';
+                                else
+                                    echo '$'.number_format($cartTotal,2,'.',',');
+                                
+                                echo '</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="btn-cart-totals">
+                        <a href="#" class="update round-black-btn" title="">Update Cart</a>
+                        <a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a>
+                    </div>
+                </form>
+            </div>
+        </div>';
     }
 ?>
