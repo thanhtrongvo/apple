@@ -17,7 +17,7 @@ include('php/mainHtml.php')
     <title>Apple Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/base.css"> 
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/reponsive.css">
     <link rel="stylesheet" href="css/home_products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,28 +29,29 @@ include('php/mainHtml.php')
 
 <body>
     <div class="app">
-       
-       <?php addHeader(); 
-            addContainer();
-            addProduct();
-            addFooter();
-            addModal();
-            addInfoModal();
-       ?>
 
-        
+        <?php addHeader();
+        addContainer();
+        addProduct();
+        addFooter();
+        addModal();
+        addInfoModal();
+        ?>
+    </div>
+    <div class="loading-wrapper">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
 
-    
-    <!-- modal information -->
-
+    </div>
 </body>
 <script src="js/login.js"> </script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="plugins/jquery/jquery.js"></script>
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-    <script src="js/ajax.js"></script>
-    <script src="js/validate.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/validate.js"></script>
 
 
 </html>
