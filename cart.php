@@ -279,7 +279,58 @@
     <div class="cart-wrap">
         <div class="container">
             <div class="row">
-                <?php displayCart(); ?>
+                <div class="col-lg-8">
+                    <div class="main-heading">Shopping Cart</div>
+                    <div class="table-cart">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php displayCart(); ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart-totals">
+                        <h3>Cart Totals</h3>
+                        <form action="#" method="get" accept-charset="utf-8">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td class="subtotal">$2,589.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td class="free-shipping">Free Shipping</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <td>Total</td>
+                                        <td class="price-total">
+                                            <?php 
+                                            if(empty($_SESSION['cart']['total']))
+                                                echo '$0.00';
+                                            else
+                                                echo '$'.number_format($_SESSION['cart']['total'],0,',');
+                                            ?>                                        
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="btn-cart-totals">
+                                <a href="#" class="update round-black-btn" title="">Update Cart</a>
+                                <a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
