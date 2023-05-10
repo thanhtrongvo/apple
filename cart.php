@@ -27,6 +27,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
 
@@ -291,7 +292,7 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="cartbody">
                                 <?php displayCart(); ?>
                             </tbody>
                         </table>
