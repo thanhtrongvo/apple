@@ -1,7 +1,9 @@
 <?php 
     
     
-    
+    function destroyCart(){
+        unset($_SESSION['cart']);
+    }
     function displayCart() {
         if (!empty($_SESSION['cart'])) {
             //vòng for in danh sách giỏ hảng
@@ -24,8 +26,8 @@
                     <td class="product-count">
                         <form  class="count-inlineflex" method="post">
                             <button type="submit" class="qtyminus" name="qtynimus">-</button>
-                            <input type="text" name="quantity" value="'.$value['quantity'].'" class="qty">
                             <input type="hidden" name="id" value="'.$key.'">
+                            <input type="text" name="quantity" value="'.$value['quantity'].'" class="qty">
                             <button type="submit" class="qtyplus" name="qtyplus">+</button>
                         </form>
                     </td>

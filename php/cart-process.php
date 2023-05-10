@@ -30,7 +30,7 @@
         removeFromCart($id);
     }
     
-    if (isset($_GET['pty_minus'])){
+    if (isset($_GET['qty_minus'])){
         $id = $_GET['id'];
         $_SESSION['cart']['total'] -= $_SESSION['cart'][$id]['price'];
         if(--$_SESSION['cart'][$id]['quantity'] == 0)
@@ -42,11 +42,18 @@
         $_SESSION['cart']['total'] += $_SESSION['cart'][$id]['price'];
         
     }
+    if (isset($_GET['qty_input'])){
+        $id = $_GET['id'];
+        $quantity = $_GET['qty_input'];
+        $mul = $quantity - $_SESSION['cart'][$id]['quantity'];
+         $_SESSION['cart']['total'] += bcmul($_SESSION['cart'][$id]['price'],$mul);
+        $_SESSION['cart'][$id]['quantity'] = $quantity;
+        
+        
+    }
 
     function removeFromCart($id)  {
         unset($_SESSION['cart'][$id]);
     }
-    function destroyCart(){
-        unset($_SESSION['cart']);
-    }
+    
 ?>

@@ -35,7 +35,6 @@ $(document).ready(function() {
     var form = $(this).parent();
     var quantity = (form).find("input[name='quantity']").val();
     var id = (form).find("input[name='id']").val();
-    alert(quantity +id);
     $.ajax({
         url: 'php/cart-process.php',
         method: 'GET',
@@ -51,12 +50,28 @@ $(document).ready(function() {
     var form = $(this).parent();
     var quantity = (form).find("input[name='quantity']").val();
     var id = (form).find("input[name='id']").val();
-    alert(quantity +id);
     $.ajax({
         url: 'php/cart-process.php',
         method: 'GET',
-        data: {pty_minus: quantity, id: id},
+        data: {qty_minus: quantity, id: id},
         success: function() {
+        },
+    });
+  });
+});
+//input quantity
+$(document).ready(function() {
+  $('.qty').change(function(e) {
+    var form = $(this).parent();
+    var quantity = this.value;
+    var id = (form).find("input[name='id']").val();
+    alert(quantity + id);
+    $.ajax({
+        url: 'php/cart-process.php',
+        method: 'GET',
+        data: {qty_input: quantity, id: id},
+        success: function() {
+          location.reload();
         },
     });
   });

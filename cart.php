@@ -125,6 +125,7 @@
             color: #000;
             cursor: pointer;
             font-weight: 600;
+            border:none;
         }
 
         .product-count .qtyminus {
