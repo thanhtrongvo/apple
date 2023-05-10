@@ -45,11 +45,13 @@
     if (isset($_GET['qty_input'])){
         $id = $_GET['id'];
         $quantity = $_GET['qty_input'];
-        $mul = $quantity - $_SESSION['cart'][$id]['quantity'];
-         $_SESSION['cart']['total'] += bcmul($_SESSION['cart'][$id]['price'],$mul);
-        $_SESSION['cart'][$id]['quantity'] = $quantity;
-        
-        
+        if($quantity != 0){
+            $mul = $quantity - $_SESSION['cart'][$id]['quantity'];
+            $_SESSION['cart']['total'] += bcmul($_SESSION['cart'][$id]['price'],$mul);
+            $_SESSION['cart'][$id]['quantity'] = $quantity;
+        } else {
+            removeFromCart($id);
+        }
     }
 
     function removeFromCart($id)  {

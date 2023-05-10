@@ -33,13 +33,13 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.qtyplus').click(function(e) {
     var form = $(this).parent();
-    var quantity = (form).find("input[name='quantity']").val();
     var id = (form).find("input[name='id']").val();
     $.ajax({
         url: 'php/cart-process.php',
         method: 'GET',
-        data: {qty_plus: quantity, id: id},
+        data: {qty_plus: 1, id: id},
         success: function() {
+          location.reload();
         },
     });
   });
@@ -50,22 +50,26 @@ $(document).ready(function() {
     var form = $(this).parent();
     var quantity = (form).find("input[name='quantity']").val();
     var id = (form).find("input[name='id']").val();
+    if(quantity-1 == 0){
+      alert("Xoa san pham khoi gio hang");
+    }
     $.ajax({
         url: 'php/cart-process.php',
         method: 'GET',
         data: {qty_minus: quantity, id: id},
         success: function() {
+          location.reload();
         },
     });
   });
 });
 //input quantity
 $(document).ready(function() {
-  $('.qty').change(function(e) {
+  $('.qty').on('keyup',function(e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
     var form = $(this).parent();
     var quantity = this.value;
     var id = (form).find("input[name='id']").val();
-    alert(quantity + id);
     $.ajax({
         url: 'php/cart-process.php',
         method: 'GET',
@@ -74,5 +78,6 @@ $(document).ready(function() {
           location.reload();
         },
     });
+  }
   });
 });

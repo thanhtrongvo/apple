@@ -24,12 +24,12 @@
                         </div>
                     </td>
                     <td class="product-count">
-                        <form  class="count-inlineflex" method="post">
-                            <button type="submit" class="qtyminus" name="qtynimus">-</button>
+                        <div  class="count-inlineflex" >
+                            <button type="button" class="qtyminus" name="qtynimus">-</button>
                             <input type="hidden" name="id" value="'.$key.'">
                             <input type="text" name="quantity" value="'.$value['quantity'].'" class="qty">
-                            <button type="submit" class="qtyplus" name="qtyplus">+</button>
-                        </form>
+                            <button type="button" class="qtyplus" name="qtyplus">+</button>
+                        </div>
                     </td>
                     <td>
                         <div class="total">$'.number_format($total,0,',').
