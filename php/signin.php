@@ -4,8 +4,8 @@
     session_start();
 
     if(isset($_POST['signin'])) {
-        $email = $_POST['email'];
-        $pswd = $_POST['pswd'];
+        $email = $_POST['email1'];
+        $pswd = $_POST['pswd1'];
         $sql = "SELECT * FROM `User` WHERE email = '$email' AND password = '$pswd'"; 
         $result = mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)) {

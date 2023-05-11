@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
     $decription = $_POST['decription'];
     $option = $_POST['option'];
     $status = $_POST['status'];
+    $cate = $_POST['category_id'];
     $nameErr = $emailErr = $passwordErr = $phoneErr = $statusErr = $roleErr =$imageErr= "";
     $target_dir = "../img/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -15,7 +16,7 @@ if (isset($_POST['submit'])) {
     if ($check !== false) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             $finalpath = str_replace("../", "", $target_file);
-            $sql = "INSERT INTO Product (title,price,thumbnail,decription,option,status) VALUES ('$title','$price','$finalpath','$decription','$option','$status')";
+            $sql = "INSERT INTO Product (category_id,title,price,thumbnail,decription,option,status) VALUES ('$cate','$title','$price','$finalpath','$decription','$option','$status')";
             if (mysqli_query($conn, $sql)) {
                 echo "<script>alert('Add product successfully')</script>";
                 header('location:all_product.php');
@@ -112,8 +113,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="row col-md-12 col-sm-12 x_content">
                         <lable style="font-weight:700;" for="desc"> Decription </lable>
-                        <textarea name="decription" id="decription" class="resizable form-control">
-                        </textarea>
+                        <textarea name="decription" id="decription" class="resizable form-control"></textarea>
 
                     </div>
                     <label for="">Status</label>

@@ -83,11 +83,11 @@ $(document).ready(function() {
             form.submit();
         },
         rule: {
-            email: {
+            email1: {
                 required: true,
                 email: true
             },
-            pswd: {
+            pswd1: {
                 required: true,
                 minlength: 5,
                 maxlength: 20

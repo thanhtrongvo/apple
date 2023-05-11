@@ -9,17 +9,19 @@ if (isset($_POST['submit'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $role = $_POST['role'];
-  $sql = "UPDATE user SET fullname='$name', email='$email', password='$password', role='$role' WHERE id=$id";
+  $status = $_POST['status'];
+  $sql = "UPDATE user SET fullname='$name', email='$email', password='$password', role_id='$role', status='$status' WHERE id=".$_GET['id']."";
   $result = mysqli_query($conn, $sql);
-  if ($result) {
-    echo "<script>alert('User Updated Successfully')</script>";
-    echo "<script>window.location.href='all_user.php'</script>";
-  }
-  else {
-    echo "<script>alert('User Update Failed')</script>";
-    echo "<script>window.location.href='all_user.php'</script>";
-  }
+  if(!$result) {
+    die("Query failed: ".mysqli_error($conn));
+
 }
+else {
+    echo "<script> alert('Update success') </script>";
+    echo "<script> window.location.href='all_user.php' </script>";
+}
+}
+
 
 
 
@@ -104,7 +106,7 @@ if (isset($_POST['submit'])) {
                         <div class="col">
                             <label for="">Password</label>
                             *
-                            <input name="password" type="text" class="form-control" placeholder="">
+                            <input name="password" type="text" class="form-control" placeholder="" value="<?php echo $data['4']; ?>">
                             <?php
                             if (isset($passwordErr)) {
                                 echo "<span class='text-danger'> $passwordErr </span>";
@@ -114,7 +116,7 @@ if (isset($_POST['submit'])) {
                         <div class="col">
                             <label for="">Role</label>
                             *
-                            <input name="role" type="text" class="form-control" placeholder="">
+                            <input value="<?php echo $data['5']; ?>" name="role" type="text" class="form-control" placeholder="">
                             <small id="emailHelp" class="form-text text-muted">* 1 is admin - 2 is customer</small>
                             <?php
                             if (isset($roleErr)) {
@@ -129,7 +131,7 @@ if (isset($_POST['submit'])) {
                         <div class="form-group">
                                 <label for="">Phone</label>
                                 *
-                                <input name="phone_number" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                                <input value="<?php echo $data['3']; ?>" name="phone_number" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
                                 <?php
                                 if (isset($phoneErr)) {
                                     echo "<span class='text-danger'> $phoneErr </span>";

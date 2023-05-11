@@ -104,7 +104,7 @@ include_once('../database/connection.php');
                   if ($row['role_id'] == 1) {
                     echo "<td>Admin</td>";
                   } else {
-                    echo "<td>User</td>";
+                    echo "<td>Customer</td>";
                   }
                   echo "<td>" . $row['phone_number'] . "</td>";
                   if ($row['status'] == 0) {
