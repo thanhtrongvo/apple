@@ -58,14 +58,16 @@
 }
 
 .right h2 {
+    font-size: 30px;
     margin-left: 15px;
 }
 
 .price {
     margin-left: 15px;
+    margin-top: 25px;
     display: block;
-    height: 50px;
-    font-size: 30px;
+    height: 10px;
+    font-size: 25px;
     font-weight: bold;
     color: red;
 }
@@ -77,137 +79,241 @@
 }
 
 .themgio button {
-    margin: 15px auto;
-    -webkit-transition-duration: 0.2s;
-    -o-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    display: inline-block;
     width: 100%;
-    height: 50px;
-    background-color: blue;
-    color: white;
-    font-size: 25px;
-    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 24px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #9900CC;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px darkmagenta;
 }
 
 .themgio button:hover {
-    background-color: cornflowerblue;
-    margin: 5px auto 25px;
+    background-color: #be02ed
 }
 
-.uudai {
+.themgio button:active {
+    background-color: #be02ed;
+    box-shadow: 0 5px darkmagenta;
+    transform: translateY(4px);
+}
+
+.color {
     display: flex;
-    flex-direction: column;
-    margin: 15px auto;
+    flex-direction: row;
+    border: 5px solid lightgreen;
+    margin-left: 15px;
     width: 95%;
-    border: 2px solid lightgreen;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
-.tieude {
-    background-color: lightgreen;
+.color h1 {
+    margin-left: 15px;
+}
+
+.option {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    border: 5px solid gray;
+    margin-left: 15px;
+    width: 95%;
+    border-radius: 20px;
+}
+
+.option h1 {
+    margin-left: 15px;
+}
+
+.color_circlecheck {
+    display: block;
+    position: relative;
+    width: 12%;
+    margin: 0 auto;
+}
+
+.option_circlecheck {
+    display: block;
+    position: relative;
+    width: 12%;
+    margin: 0 auto;
+}
+
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+}
+
+label {
+    display: block;
+    position: relative;
+    font-size: 15px;
     font-weight: bold;
+    line-height: 25px;
+    padding: 1px 1px 1px 30px;
+    margin: 8px auto;
+    z-index: 9;
+    cursor: pointer;
 }
 
-.uudai span {
-    margin-bottom: 15px;
+.color_outer-circle {
+    display: block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    top: 10px;
+    left: 0px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+
+    &:before {
+        display: block;
+        position: absolute;
+        content: '';
+        border-radius: 100%;
+        height: 1px;
+        width: 1px;
+        margin: auto;
+        transition: background 0.25s linear;
+        -webkit-transition: background 0.25s linear;
+    }
+}
+
+.option_outer-circle {
+    display: block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    top: 10px;
+    left: 0px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+
+    &:before {
+        display: block;
+        position: absolute;
+        content: '';
+        border-radius: 100%;
+        height: 1px;
+        width: 1px;
+        margin: auto;
+        transition: background 0.25s linear;
+        -webkit-transition: background 0.25s linear;
+    }
+}
+
+input[type=radio] {
+    &.circle-1~.color_outer-circle {
+        border-color: lighten(#009999, 10%);
+    }
+
+    &.circle-2~.color_outer-circle {
+        border-color: lighten(#FF6600, 20%);
+    }
+
+    &.circle-3~.color_outer-circle {
+        border-color: lighten(#9900CC, 20%);
+    }
+}
+
+input[type=radio] {
+    &.circle-4~.option_outer-circle {
+        border-color: lighten(black, 10%);
+    }
+
+    &.circle-5~.option_outer-circle {
+        border-color: lighten(black, 20%);
+    }
+
+    &.circle-6~.option_outer-circle {
+        border-color: lighten(black, 20%);
+    }
+}
+
+input[type=radio].circle-1:checked~.color_outer-circle {
+    border: 10px solid #009999;
+}
+
+input[type=radio].circle-1:checked~.color_outer-circle::before {
+    background: #009999;
+}
+
+input[type=radio].circle-2:checked~.color_outer-circle {
+    border: 10px solid #FF6600;
+}
+
+input[type=radio].circle-2:checked~.color_outer-circle::before {
+    background: #FF6600;
+}
+
+input[type=radio].circle-3:checked~.color_outer-circle {
+    border: 10px solid #9900CC;
+}
+
+input[type=radio].circle-3:checked~.color_outer-circle::before {
+    background: #9900CC;
+}
+
+input[type=radio].circle-4:checked~.option_outer-circle {
+    border: 10px solid black;
+}
+
+input[type=radio].circle-4:checked~.option_outer-circle::before {
+    background: black;
+}
+
+input[type=radio].circle-5:checked~.option_outer-circle {
+    border: 10px solid black;
+}
+
+input[type=radio].circle-5:checked~.option_outer-circle::before {
+    background: black;
+}
+
+input[type=radio].circle-6:checked~.option_outer-circle {
+    border: 10px solid black;
+}
+
+input[type=radio].circle-6:checked~.option_outer-circle::before {
+    background: black;
 }
 
 .promo {
+    margin-top: 5px;
     float: left;
     overflow: hidden;
     position: relative;
     /*định vị trí phụ thuộc vào thành phần bao ngoài*/
     display: block;
-    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.promo h3 {
+    color: red;
+    margin-left: 15px;
+    font-size: 20px;
 }
 
 .promo span {
     display: block;
-    width: 95%;
-    margin: 15px auto;
-    word-wrap: break-word;
-}
-
-.other {
-    background-color: white;
-    width: 90%;
-    position: relative;
-    margin: auto;
-    border-spacing: 20px;
-    color: #222;
-    display: flex;
-    flex-direction: column;
-    margin: 15px auto;
-    border-radius: 10px;
-}
-
-.other h3 {
-    font-weight: bold;
-    color: red;
-    margin-left: 15px;
-}
-
-.bottom {
-    width: 90%;
-    position: relative;
-    margin: auto;
-    border-spacing: 20px;
-    color: #222;
-    display: flex;
-    margin: 15px auto;
-    border-radius: 10px;
-}
-
-.end_promo {
-    float: left;
-    overflow: hidden;
-    position: relative;
-    /*định vị trí phụ thuộc vào thành phần bao ngoài*/
-    display: block;
-    width: 55%;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.end_promo span {
-    display: block;
     width: 90%;
     margin: 15px auto;
     word-wrap: break-word;
-}
-
-.detail {
-    float: left;
-    overflow: hidden;
-    position: relative;
-    /*định vị trí phụ thuộc vào thành phần bao ngoài*/
-    display: flex;
-    width: 50%;
-    margin-left: 20px;
-    background-color: white;
-    border-radius: 10px;
-    flex-direction: column;
-}
-
-.detail h3 {
-    font-weight: bold;
-    color: red;
-    margin-left: 15px;
-}
-
-.ds_linh_kien {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    margin-left: 35px;
-}
-
-.ten_linh_kien {
-    display: block;
-    height: 25px;
-    font-weight: bold;
+    font-size: 13px;
 }
 
 @media only screen and (max-width: 768px) {
