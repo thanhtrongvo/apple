@@ -34,6 +34,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
+        
         .cart-wrap {
             padding: 40px 0;
             font-family: 'Open Sans', sans-serif;
@@ -45,7 +46,7 @@
         }
 
         .table-cart table {
-            width: 100%;
+            width: 150%;
         }
 
         .table-cart thead {
@@ -66,22 +67,28 @@
         }
 
         .table-cart tr td:nth-child(1) {
-            width: 52%;
+            width: 15%;
         }
 
         .table-cart tr td:nth-child(2) {
-            width: 26%;
+            width: 22%;
         }
 
         .table-cart tr td:nth-child(3) {
-            width: 13.333%;
+            width: 14%;
         }
 
         .table-cart tr td:nth-child(4) {
-            width: 8.667%;
-            text-align: right;
+            width: 19%;
         }
 
+        .table-cart tr td:nth-child(5) {
+            width: 20%;
+        }
+
+        .table-cart tr td:nth-child(6) {
+            width: 20%;
+        }
         .table-cart tr td .img-product {
             width: 72px;
             float: left;
@@ -99,7 +106,7 @@
             color: #484848;
             padding-top: 8px;
             line-height: 24px;
-            width: 50%;
+            width: 100%;
         }
 
         .table-cart tr td .price {
@@ -142,15 +149,15 @@
         }
 
         .product-count .qty {
-            width: 60px;
+            width: 160px;
+            height:100px;
             text-align: center;
-            border: none;
+            border: solid 2px black;
+            border-radius: 10px;
         }
 
         .count-inlineflex {
             display: inline-flex;
-            border: solid 2px #ccc;
-            border-radius: 20px;
         }
 
         .total {
@@ -231,7 +238,6 @@
             width: 50%;
             padding: 3px 0;
             vertical-align: middle;
-            backg
         }
 
         .cart-totals table tr td:last-child {
@@ -282,65 +288,73 @@
     </header>
     <div class="cart-wrap">
         <div class="container">
-            <div class="row">
+            <div class="row" >
                 <div class="col-lg-8">
-                    <div class="main-heading">Shopping Cart</div>
+                    <div class="main-heading">Orders</div>
                     <div class="table-cart">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Date</th>
+                                    <th>Note</th>
                                     <th>Total</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody id="cartbody">
-                                <?php displayCart(); ?>
+                                <?php 
+                                $usrid = $_SESSION['id'];
+                                $result = mysqli_query($conn,"SELECT * FROM `orders` WHERE user_id = '$usrid';");
+                                $rs = mysqli_fetch_all($result,MYSQLI_ASSOC);
+                                foreach ($rs as $row) {
+                                    //vòng for in danh sách giỏ hảng
+                                        echo '<tr>
+                                            <td>
+                                                <div class="display-flex align-center">
+                                                    <div class="img-product">
+                                                        <img src="img/logo.png" alt="" class="mCS_img_loaded">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="display-flex align-center">
+                                                    <div class="name-product">'.$row['fullname'].
+                                                    '</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="display-flex align-center">
+                                                    <div class="name-product">'.$row['phone_number'].
+                                                    '</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="display-flex align-center">
+                                                <div class="name-product">'.$row['order_date'].
+                                                    '</div>
+                                                </div>
+                                            </td>
+                                            <td class="product-count">
+                                                <div  class="count-inlineflex" >
+                                                    <input type="text" name="quantity" value="'.$row['note'].'" class="qty">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="total">$'.number_format($row['total_money'],0,',').
+                                            '</div>
+                                            </td>
+                                            <td>
+                                                <a href="#" title="">
+                                                    <img src="images/icons/delete.png" alt="" class="mCS_img_loaded">
+                                                </a>
+                                            </td>
+                                        </tr>';
+                                } ?>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="cart-totals">
-                        <h3>Cart Totals</h3>
-                        <form action="#" method="get" accept-charset="utf-8">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>Shipping</td>
-                                        <td class="free-shipping">Free Shipping</td>
-                                    </tr>
-                                    <tr class="total-row">
-                                        <td>Total</td>
-                                        <td class="price-total">
-                                            <?php 
-                                            if(empty($_SESSION['cart']['total']))
-                                                echo '$0.00';
-                                            else
-                                                echo '$'.number_format($_SESSION['cart']['total'],0,',');
-                                            ?>                                        
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="btn-cart-totals">
-                                <a href="" class="update round-black-btn" title="">Update Cart</a>
-                                <button  class="checkout round-black-btn" title="" onclick="showck()">Proceed to Checkout</button>
-                            </div>
-                            <script> 
-
-function showck(){
-    var a = document.getElementById("modal_checkout");
-    a.style.display = "block";
-    a.style.transformOrigin = "top 70%";
-    a.style.animation = "Grow ease-in .3s";
-}
-function exitck(){
-    document.getElementById("modal_checkout").style.display = "none";
-}
-</script>
-                        </form>
                     </div>
                 </div>
             </div>

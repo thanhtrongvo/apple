@@ -1,6 +1,5 @@
 <?php 
-    
-    
+    include('database\connection.php');
     function destroyCart(){
         unset($_SESSION['cart']);
     }
@@ -45,5 +44,7 @@
             }
         }
     }
-    
+    function displayOrders() {
+        
+    }
 ?>

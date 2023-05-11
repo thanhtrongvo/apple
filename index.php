@@ -1,5 +1,5 @@
 <?php
-include('database/connection.php');
+require_once('database/connection.php');
 include('php/signup.php');
 include('php/signin.php');
 include("php/cart.php");
