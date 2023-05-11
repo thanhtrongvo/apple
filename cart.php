@@ -27,7 +27,8 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/ajax.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/login.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
 
@@ -230,6 +231,7 @@
             width: 50%;
             padding: 3px 0;
             vertical-align: middle;
+            backg
         }
 
         .cart-totals table tr td:last-child {
@@ -306,10 +308,6 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td>Subtotal</td>
-                                        <td class="subtotal">$2,589.00</td>
-                                    </tr>
-                                    <tr>
                                         <td>Shipping</td>
                                         <td class="free-shipping">Free Shipping</td>
                                     </tr>
@@ -327,12 +325,27 @@
                                 </tbody>
                             </table>
                             <div class="btn-cart-totals">
-                                <a href="#" class="update round-black-btn" title="">Update Cart</a>
-                                <a href="#" class="checkout round-black-btn" title="">Proceed to Checkout</a>
+                                <a href="" class="update round-black-btn" title="">Update Cart</a>
+                                <button  class="checkout round-black-btn" title="" onclick="showInfo()">Proceed to Checkout</button>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal__in4" class="modal__in4" >
+        <div class="modal__body__in4">
+            <div class="auth-form__in4">
+                <i onclick="exitModalInfo()" class="fa-solid fa-xmark auth-form__btn--cancel"></i>
+                <form method="GET" action="php/cart-process.php">
+                <h1> Checkout </h1>
+                    <label > Địa chỉ: </label>
+                    <input type="text" name="addr" > </input>
+                    <label > Ghi chú: </label>
+                    <input type="text" name="note" > </input>
+                    <button type="submit" name="order">Order</button>
+                </form>
             </div>
         </div>
     </div>

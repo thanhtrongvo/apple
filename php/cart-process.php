@@ -1,4 +1,5 @@
 <?php
+include('../database/connection.php');
     if(!isset($_SESSION)) session_start();
     
     // if(!isset($_SESSION['cart'])) {
@@ -54,8 +55,38 @@
         }
     }
 
+    if(isset($_GET['order'])){
+        $add = $_GET['addr'];
+        $note = $_GET['note'];
+        $usrid = $_SESSION['id'];
+        $usrname = $_SESSION['name'];
+        $phone = $_SESSION['phone'];
+        $email = $_SESSION['email'];
+        $total = $_SESSION['cart']['total'];
+        $sql = "INSERT INTO orders (id, user_id, fullname, email, phone_number, address, note, order_date, status, total_money)
+                VALUES (NULL, '$usrid', '$usrname', '$email', '$phone', '$add', '$note', now(), NULL, '$total');";
+        if(mysqli_query($conn, $sql)){
+            $result = mysqli_query($conn,"SELECT id FROM `orders` ORDER BY `id` DESC;");
+            $rs = mysqli_fetch_array($result);
+            $orderid = $rs[0];
+            foreach ($_SESSION['cart'] as $key => $value) {
+                //loai trừ trường hợp 0 và total
+                if($key != 0 && $key != 'total'){
+                    $price = $value['price'];
+                    $num = $value['quantity'];
+                    $total_money = bcmul($price,$num);
+                    $sql = "INSERT INTO order_details (id, order_id, product_id, price, num, total_money) VALUES (NULL, '$orderid', '$key', '$price', '$num', '$total_money');";
+                    mysqli_query($conn,$sql);
+                }
+            }
+            destroyCart();
+            header('location: https://localhost/apple/index.php');
+        }
+    }
+    function destroyCart(){
+        unset($_SESSION['cart']);
+    }
     function removeFromCart($id)  {
         unset($_SESSION['cart'][$id]);
     }
-    
 ?>

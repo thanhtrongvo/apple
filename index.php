@@ -45,7 +45,7 @@ include('php/mainHtml.php')
 <script src="plugins/jquery/jquery.js"></script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script src="js/ajax.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/validate.js"></script>
 
 
