@@ -97,7 +97,7 @@ include('php/mainHtml.php')
         .container__detail--product-photo{
         }
         .container__detail--product-dec{
-            padding: 10%;
+            padding: 7%;
         }
     </style>
 </head>
@@ -123,13 +123,22 @@ include('php/mainHtml.php')
                 <h5 style="color:#337ab7">vendido por <a href="#">Apple</a> · <small style="color:#337ab7">(5054 ventas)</small></h5>
 
                 <!-- Precios -->
+                
                 <h6 class="title-price"><small>Price</small></h6>
-                <h3 style="margin-top:0px;">U$S 1000</h3>
+                <h3 style="margin-top:0px;">USD 1000 $</h3>
 
                 <div class="section" style="padding-bottom:5px;">
                     <h6 class="title-attr"><small>Option</small></h6>
                     <div>
-                        <div class="attr2">256 GB</div>
+                        <p class="attr2">256 GB</p>
+                    </div>
+                </div>
+                <div class="decription" style="padding-bottom:5px;">
+                    <h6 class="title-attr"><small>Decription</small></h6>
+                    <div>
+                        <p class="attr2">Apple still uses the A15 Bionic chip, 
+                            but it has upgraded 1 GPU core, for a total of 5 cores and for superior graphics processing performance.
+                            Perhaps the performance of the iPhone 14 series will not be much different from the iPhone 13 series.</p>
                     </div>
                 </div>
                 <div class="section" style="padding-bottom:20px;">
