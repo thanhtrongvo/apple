@@ -13,7 +13,7 @@ function product_home($id){
     include('database/connection.php');
     $syn = "SELECT * FROM `product` WHERE category_id = '$id'";
     $result = mysqli_query($conn,$syn);
-        for($i=0; $i < 5; $i++ ){
+        for($i=0; $i <45; $i++ ){
             $row = mysqli_fetch_array($result);
             innerProduct($row['thumbnail'],$row['title'],$row['price'],$row['id']);
             
