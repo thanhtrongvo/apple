@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <span class="price">20.000.000<u>đ</u></span>
-                <span class="themgio"><button>ADD TO CART</button></span>
+                <span class="themgio"><button>+ ADD TO CART</button></span>
                 <div class="promo">
                     <h3>Giới thiệu</h3>
                     <span>iPhone 13 128GB - Đem đến những gì tuyệt vời nhất

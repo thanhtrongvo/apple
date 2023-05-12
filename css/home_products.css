@@ -8,6 +8,8 @@
     text-align: center;
     width: 100%;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /* <li> trong homeproduct có class="sanPham" , khai báo trong classes.js */
@@ -159,6 +161,8 @@ a {
 .themvaogio:active {
     box-shadow: none;
 }
+
+
 
 /* ===== End Them Vao Gio Hang ==== */
 /* ====== End Home Product ======= */
