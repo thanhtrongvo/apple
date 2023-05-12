@@ -8,19 +8,22 @@
     text-align: center;
     width: 100%;
     display: flex;
-    justify-content: center;
 }
 
 /* <li> trong homeproduct có class="sanPham" , khai báo trong classes.js */
 .home__product--info {
-    display: inline-block;
-    position:relative;
+    display: block;
+    position: relative;
+    margin-left: 55px;
+    margin-top: 10px;
     width: 265px;
     text-align: center;
     border: 1px solid #eee;
     -webkit-transition-duration: .3s;
     -o-transition-duration: .3s;
     transition-duration: .3s;
+    float: left;
+    border-radius: 10px;
 }
 
 a {
