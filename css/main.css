@@ -169,12 +169,6 @@
 .container__content-ip14--video{
     top: 44px;
 }
-
-.container__content-ip14--btn{
-    position: absolute;
-    top: 520px;
-    left: 250px;
-}
 .container__content-ip14--btn .hide__btn {
     background-color: #ecec00;
     color: black;
@@ -220,12 +214,12 @@
   cursor: pointer;
   margin-top: 40px;
 }
-.container__content-watch--btn {
+.container__content-watch--btn .hide__btn  {
   position: absolute;
-  top: 25%;
-  left: 660px;
+  top: 50px;
+  left: 0;
 }
-.container__content-watch--btn button {
+.container__content-watch--btn .hide__btn button {
   background-color: #cbc2bd;
   color: #000000;
   text-shadow: 2px 2px 5px whitesmoke;
