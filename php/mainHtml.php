@@ -46,7 +46,7 @@ function addHeader()
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="" class="header__navbar-support">
+                                    <a href="admin/logout.php" class="header__navbar-support">
                                         Support
                                     </a>
                                 </li>
