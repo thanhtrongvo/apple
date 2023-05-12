@@ -3,11 +3,11 @@ function product_all(){
     include('database/connection.php');
     $syn = "SELECT * FROM `product`";
     $result = mysqli_query($conn,$syn);
-        for($i=0; $i < 12; $i++ ){
-            $row = mysqli_fetch_array($result);
+        
+            while($row = mysqli_fetch_array($result))
             innerProduct($row['thumbnail'],$row['title'],$row['price'],$row['id']);
             
-        }
+        
 }
 function product_home($id){
     include('database/connection.php');

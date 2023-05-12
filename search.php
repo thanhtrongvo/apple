@@ -37,10 +37,11 @@ include('php/mainHtml.php')
             height:65vh;
             border:1px black solid;
         }
-        .product_content{
-            float:left;
-            width:50%;
-            height:70vh;
+        .product__content{
+            margin-left: 100px;
+            width:100%;
+            height:100vh;
+            overflow: scroll;
         }
         .product__content-heading{
             display:block;
@@ -65,7 +66,7 @@ include('php/mainHtml.php')
         <?php addHeader(); ?>
         <div class="product">
             <h1 class="product__content-heading">Product</h1>
-            <div class="product_leftmenu">
+            <!-- <div class="product_leftmenu">
             <ul class="list-group">
                 <li class="list-group-item" value="1">1.000.000đ - 10.000.000đ</li>
                 <li class="list-group-item" value="2">10.000.000đ - 20.000.000đ</li>
@@ -73,59 +74,70 @@ include('php/mainHtml.php')
                 <li class="list-group-item" value="4">30.000.000đ - 40.000.000đ</li>
                 <li class="list-group-item" value="5">40.000.000đ - 50.000.000đ</li>
                 </ul>
-            </div>
+            </div> -->
             <div class="product__content">
                 <?php
-                    if(ISSET($_POST['search'])){
-                        $keyword = $_POST['searchInput'];
-                        $query = mysqli_query($conn, "SELECT * FROM `product` WHERE `title` LIKE '%$keyword%' ORDER BY `title`") or die(mysqli_error());
-                        if(mysqli_num_rows($query) > 0)
-                            while($row = mysqli_fetch_array($query)){
+                         $keyword = $_POST['searchInput'];
+                         $query = mysqli_query($conn, "SELECT * FROM `product` WHERE `title` LIKE '%$keyword%' ORDER BY `title`") or die(mysqli_error());
+                        // $records_per_page = 8;
+                        // $total_records = mysqli_num_rows($query);
+                        // $total_pages = ceil($total_records / $records_per_page);
+                        // $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                        // $start = ($page - 1) * $records_per_page;
+                        // echo "$total_records $total_pages $page";
+                        // $query = mysqli_query($conn, "SELECT * FROM `product` WHERE `title` LIKE '%$keyword%' ORDER BY `title`  LIMIT $start, $records_per_page") or die(mysqli_error());
+                        if(mysqli_num_rows($query) > 0){
+                            while($row = mysqli_fetch_array($query))
                             innerProduct($row['thumbnail'],$row['title'],$row['price'],$row['id']);
-                            }
-                        else
+                        }
+                        else{
                             product_all();
-                    }
-
-              $records_per_page = 8;
-            //   $sql = "SELECT * FROM Product";
-            //   $result = mysqli_query($conn, $sql);
-            //   $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-              $total_records = mysqli_num_rows($result);
-              $total_pages = ceil($total_records / $records_per_page);
-              $page = isset($_GET['page']) ? $_GET['page'] : 1;
-              $start = ($page - 1) * $records_per_page;
-              $sql = "SELECT * FROM Product LIMIT $start, $records_per_page";
-              $result = mysqli_query($conn, $sql);
-              $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-              if (mysqli_num_rows($result) > 0) {
-                    foreach ($data as $row) {
-                      echo "<td>" . $row['id'] . "</td>";
-                      echo "<td>" . $row['title'] . "</td>";
-                      echo "<td>" . number_format($row['price'])  . "đ</td>";
-                      echo "<td> <img class='img-product' src='../".$row['thumbnail']. "'</td>";
-                      echo "<td>" . $row['option'] . "</td>";
-                      echo "<td><small>" . $row['decription'] . "</small></td>";
-                      if ($row['status'] == 0) {
-                        echo "<td><span class='badge badge-danger'>Private </span></td>";
-                      } elseif ($row['status'] == 1) {
-                        echo "<td><span class='badge badge-success'>Public </span>";
-                      }
-                      echo "<td class='text-right'>";
-                      echo "<a href='edit_product.php?id=" . $row['id'] . "' class='btn btn-sm btn-success'>
-                          <i class='fas fa-edit'></i>
-                      </a> ";
-                      echo "<a onclick='return confirm(\"Are you sure to delete this item?\");'  id='btn_destroy'  href='all_product.php?action=delete&id=" . $row['id'] . "' class='btn btn-sm btn-danger btn-destroy'>
-                          <i class='fas fa-trash'></i>
-                      </a>
-                  </td>
-    
-    
-                      </tr>";
-                    }
-              }
+                        }
+            
+                        // }
+                        //         //   $sql = "SELECT * FROM Product";
+                        // //   $result = mysqli_query($conn, $sql);
+                        // // //   $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                        // //   $total_pages = ceil($total_records / $records_per_page);
+                        // //   $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                        // //   $start = ($page - 1) * $records_per_page;
+                        // //   $sql = "SELECT * FROM Product LIMIT $start, $records_per_page";
+                        // //   $result = mysqli_query($conn, $sql);
+                        // //   $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                        // echo '<nav  aria-label="Page navigation example">
+                        // <ul class="pagination">' ;
+                        // if ($page > 1) {
+                        //     echo '<li class="page-item">
+                        //     <a class="page-link" href="search.php?page=' . $page - 1 .'"" aria-label="Previous">
+                        //         <span aria-hidden="true">&laquo;</span>
+                        //         <span class="sr-only">Previous</span>
+                        //     </a>
+                        //     </li>';
+                        // }
+                        // elseif($page == 1) {
+                        //     echo '<li class="page-item disabled">
+                        //     <a class="page-link" href="#" aria-label="Previous">
+                        //     <span aria-hidden="true">&laquo;</span>
+                        //     <span class="sr-only">Previous</span>
+                        //     </a>
+                        // </li>';
+                        // }
+                        //     for ($i = 1; $i <= $total_pages; $i++) {
+                        //     echo "<li class='page-item'><a class='page-link' href='search.php?page=" . $i . "'>" . $i . "</a></li>";
+                        //     }
+                        // echo' <li class="page-item">
+                        //     <a class="page-link" href="all_product.php?page=' . $page +  1 .'"" aria-label="Next">
+                        //         <span aria-hidden="true">&raquo;</span>
+                        //         <span class="sr-only">Next</span>
+                        //     </a>
+                        //     </li>
+                        // </ul>
+                        // </nav>';
+                        //product_all();
+            
                 ?>
-                
+                <div>
+                </div>
             </div>
         </div>
         <?php
