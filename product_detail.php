@@ -33,35 +33,7 @@ include('php/mainHtml.php')
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <style>
-        ul>li {
-            margin-right: 25px;
-            font-weight: lighter;
-            cursor: pointer
-        }
-
-        li.active {
-            border-bottom: 3px solid silver;
-        }
-
-        .item-photo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-right: 1px solid #f6f6f6;
-        }
-
-        .menu-items {
-            list-style-type: none;
-            font-size: 11px;
-            display: inline-flex;
-            margin-bottom: 0;
-            margin-top: 20px
-        }
-
-        .btn-success {
-            width: 100%;
-            border-radius: 0;
-        }
+        
 
         .section {
             width: 100%;
@@ -72,17 +44,6 @@ include('php/mainHtml.php')
             background: #f8f9f9
         }
 
-        .title-price {
-            margin-top: 30px;
-            margin-bottom: 0;
-            color: black
-        }
-
-        .title-attr {
-            margin-top: 0;
-            margin-bottom: 0;
-            color: black;
-        }
 
         .btn-minus {
             cursor: pointer;
@@ -124,57 +85,19 @@ include('php/mainHtml.php')
             text-align: center;
         }
 
-        .attr,
-        .attr2 {
-            cursor: pointer;
-            margin-right: 5px;
-            height: 20px;
-            font-size: 10px;
-            padding: 2px;
-            border: 1px solid gray;
-            border-radius: 2px;
+        .container__detail{
+            height: fit-content;
+            margin: 10%;
         }
 
-        .attr.active,
-        .attr2.active {
-            border: 1px solid orange;
+        .container__detail .Container__detail--product{
+            width: 100%;
+            float: left;
         }
-
-        @media (max-width: 426px) {
-            .container {
-                margin-top: 0px !important;
-            }
-
-            .container>.row {
-                padding: 0 !important;
-            }
-
-            .container>.row>.col-xs-12.col-sm-5 {
-                padding-right: 0;
-            }
-
-            .container>.row>.col-xs-12.col-sm-9>div>p {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-
-            .container>.row>.col-xs-12.col-sm-9>div>ul {
-                padding-left: 10px !important;
-
-            }
-
-            .section {
-                width: 104%;
-            }
-
-            .menu-items {
-                padding-left: 0;
-            }
+        .container__detail--product-photo{
         }
-
-        .hiden {
-            height: 100px;
-
+        .container__detail--product-dec{
+            padding: 10%;
         }
     </style>
 </head>
@@ -187,12 +110,15 @@ include('php/mainHtml.php')
         </div>
         <?php addHeader(); ?>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-4 item-photo">
+    <div class="container__detail">
+        <h1 class="container__detail--heading">
+            Product Detail
+        </h1>
+        <div class="container__detail--product">
+            <div class="container__detail--product-photo col col-half s-col-full">
                 <img style="max-width:100%;" src="img/iPhone-14-blue-1.jpg" />
             </div>
-            <div class="col-xs-6" style="border:0px solid gray">
+            <div class="container__detail--product-dec col col-half s-col-full" style="border:0px solid gray">
                 <h3>iPhone 13 256 GB Blue</h3>
                 <h5 style="color:#337ab7">vendido por <a href="#">Apple</a> · <small style="color:#337ab7">(5054 ventas)</small></h5>
 
@@ -216,18 +142,11 @@ include('php/mainHtml.php')
                 </div>
 
                 <div class="section" style="padding-bottom:20px;">
-                    <button style="background-color:#000;" class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart </button>
-                    <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Add to favorite</a></h6>
+                    <button style="background-color:#000;margin-left: -2px;" class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart </button>
                 </div>
             </div>
 
-            <div class="col-xs-9">
-                <ul class="menu-items">
-                    <li class="active">Detalle del producto</li>
-                    <li>Garantía</li>
-                    <li>Vendedor</li>
-                    <li>Envío</li>
-                </ul>
+            <div class="col">
                 <div style="width:100%;border-top:1px solid silver">
                     <p style="padding:15px;">
                         <small>
