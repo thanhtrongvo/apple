@@ -1,7 +1,4 @@
 /* Home Product */
-.product{
-    margin-top: 65px;;
-}
 .home__product {
     list-style-type: none;
     clear: both;
@@ -19,15 +16,16 @@
 .home__product--info {
     display: block;
     position: relative;
-    margin-left: 55px;
-    margin-top: 10px;
+    margin-left: 4%;
+    margin-top: 15px;
     width: 265px;
+    height: 400px;
+    float: left;
     text-align: center;
     border: 1px solid #eee;
     -webkit-transition-duration: .3s;
     -o-transition-duration: .3s;
     transition-duration: .3s;
-    float: left;
     border-radius: 10px;
 }
 
@@ -67,12 +65,13 @@ a {
 
 /* Ten san pham */
 .home__product--info h3 {
-    display: block;
+    display: inline-block;
     text-align: center;
     color: #333;
-    line-height: 1.3em;
+    height: 50px;
     font-size: 16px;
     font-weight: normal;
+    vertical-align: top;
 }
 
 /* Hightlight ten san pham khi hover */
@@ -164,7 +163,6 @@ a {
 .themvaogio:active {
     box-shadow: none;
 }
-
 
 
 /* ===== End Them Vao Gio Hang ==== */
