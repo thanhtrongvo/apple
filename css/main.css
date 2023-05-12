@@ -648,6 +648,7 @@
   width: 100%;
   position: relative;
   bottom: 0;
+  clear:both;
 }
 .footer__content {
   display: flex;
