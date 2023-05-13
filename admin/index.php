@@ -20,11 +20,22 @@ if (!($_SESSION['role'])) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css"> 
-  <link rel="stylesheet" href="../plugins/chart.js/Chart.js">
-  <link rel="stylesheet" href="../plugins/chart.js/Chart.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <style>
+    .chart-container {
+      position: relative;
+      margin: auto;
+      height: 80vh;
+      width: 80vw;
+    }
 
-
+    .chart-order {
+      position: relative;
+      margin: auto;
+      height: 80vh;
+      width: 80vw;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -67,6 +78,11 @@ if (!($_SESSION['role'])) {
             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
           </p>
         </div>
+
+        <div class="chart-container">
+          <canvas id="chart-order"></canvas>
+
+        </div>
       </section>
       <!-- /.content -->
     </div>
@@ -93,6 +109,83 @@ if (!($_SESSION['role'])) {
   <script src="../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      showChartOrder();
+    });
+
+    function showChartOrder() {
+      $.post("data/order.php", function(data) {
+        var lable = [];
+        var result = [];
+        for (var i in data) {
+          lable.push(data[i].order_date);
+          result.push(data[i].total_money);
+        }
+        var pie = $("#chart-order");
+        var chartdata = new Chart(pie, {
+          type: 'pie',
+          data: {
+            labels: lable,
+            datasets: [{
+              label: 'Money of Order',
+              borderColor: ["rgba(217, 83, 79,1)", "rgba(240, 173, 78, 1)", "rgba(92, 184, 92, 1)"],
+              backgroundColor: ["rgba(217, 83, 79,0.2)", "rgba(240, 173, 78, 0.2)", "rgba(92, 184, 92, 0.2)"],
+            }],
+          },
+          option: {
+            title: {
+              display: true,
+              text: 'Chart Order'
+            }
+          }
+        });
+      })
+    }
+    // $(document).ready(function() {
+    //   $.ajax({
+    //     url: 'chart.php',
+    //     method: 'GET',
+    //     success: function(data) {
+    //       console.log(data);
+    //       var month = [];
+    //       var order = [];
+
+    //       for (var i in data) {
+    //         month.push(data[i].month);
+    //         order.push(data[i].order);
+    //       }
+
+    //       var chartdata = {
+    //         labels: month,
+    //         datasets: [{
+    //           label: 'Number of Order',
+    //           backgroundColor: '#49e2ff',
+    //           borderColor: '#46d5f1',
+    //           hoverBackgroundColor: '#CCCCCC',
+    //           hoverBorderColor: '#666666',
+    //           data: order
+    //         }]
+    //       };
+
+    //       var ctx = $("#chart-order");
+
+    //       var barGraph = new Chart(ctx, {
+    //         type: 'bar',
+    //         data: chartdata
+    //       });
+    //     },
+    //     error: function(data) {
+    //       console.log(data);
+    //     }
+    //   });
+    // });
+  </script>
+  <script src="../plugins/chart.js/Chart.js"></script>
+  <script src="../plugins/jquery/jquery.js"></script>
+
+
 </body>
 
 </html>

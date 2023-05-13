@@ -6,7 +6,7 @@ include_once('../database/connection.php');
 <html lang="en">
   
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,10 +16,9 @@ include_once('../database/connection.php');
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
   <style> 
     .img-product {
       width: 35px;
@@ -58,7 +57,7 @@ include_once('../database/connection.php');
 
       <!-- Main content -->
       <section class="content">
-      <form method="get"  > 
+      <!-- <form method="get"  > 
         <div class="form-group">
           <label for="search">Search by Name</label>
           <input name="search" type="text" class="form-control" id="search"  placeholder="">
@@ -67,8 +66,8 @@ include_once('../database/connection.php');
         <div class="form-group" >
         <button name="submit" type="submit" class="btn btn-primary">Search</button>   
       </div>
-      </form>
-        <table class="table">
+      </form> -->
+        <table id="table-product">
           <thead>
             <tr >
               <th>Id</th>
@@ -84,15 +83,16 @@ include_once('../database/connection.php');
           <tbody>
             <tr>
               <?php
-              $records_per_page = 4;
+              // $records_per_page = 4;
+              // $sql = "SELECT * FROM Product";
+              // $result = mysqli_query($conn, $sql);
+              // $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+              // $total_records = mysqli_num_rows($result);
+              // $total_pages = ceil($total_records / $records_per_page);
+              // $page = isset($_GET['page']) ? $_GET['page'] : 1;
+              // $start = ($page - 1) * $records_per_page;
+              // $sql = "SELECT * FROM Product LIMIT $start, $records_per_page";
               $sql = "SELECT * FROM Product";
-              $result = mysqli_query($conn, $sql);
-              $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-              $total_records = mysqli_num_rows($result);
-              $total_pages = ceil($total_records / $records_per_page);
-              $page = isset($_GET['page']) ? $_GET['page'] : 1;
-              $start = ($page - 1) * $records_per_page;
-              $sql = "SELECT * FROM Product LIMIT $start, $records_per_page";
               $result = mysqli_query($conn, $sql);
               $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
               if (mysqli_num_rows($result) > 0) {
@@ -133,38 +133,7 @@ include_once('../database/connection.php');
               ?>
             </tr>
           </tbody>
-        </table>
-        <?php 
-            echo '<nav  aria-label="Page navigation example">
-            <ul class="pagination">' ;
-            if ($page > 1) {
-              echo '<li class="page-item">
-                <a class="page-link" href="all_product.php?page=' . $page - 1 .'"" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>';
-            }
-            elseif($page == 1) {
-              echo '<li class="page-item disabled">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>';
-            }
-              for ($i = 1; $i <= $total_pages; $i++) {
-                echo "<li class='page-item'><a class='page-link' href='all_product.php?page=" . $i . "'>" . $i . "</a></li>";
-              }
-             echo' <li class="page-item">
-                <a class="page-link" href="all_product.php?page=' . $page +  1 .'"" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>';
-        ?>
+        </table> 
       </section>
       <!-- /.content -->
     </div>
@@ -182,6 +151,8 @@ include_once('../database/connection.php');
   </div>
   <!-- ./wrapper -->
 
+   <!-- ./wrapper -->
+
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -193,10 +164,17 @@ include_once('../database/connection.php');
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+  <script src="../plugins/datatables/jquery.dataTables.js"></script>
+  <script src="../plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
   <script>
-
+    $(document).ready(function() {
+        $("#table-product").DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
+    })
 
 
   </script>
