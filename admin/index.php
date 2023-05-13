@@ -20,7 +20,11 @@ if (!($_SESSION['role'])) {
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css"> 
+  <link rel="stylesheet" href="../plugins/chart.js/Chart.js">
+  <link rel="stylesheet" href="../plugins/chart.js/Chart.css">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini">

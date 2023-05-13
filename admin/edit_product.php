@@ -1,7 +1,8 @@
 <?php
 include('../database/connection.php');
 include('../php/checkfile.php');
-if (isset($_POST['submit'])) {
+
+if(isset($_POST['submit'])) {
     $title = $_POST['title'];
     $price = $_POST['price'];
     $decription = $_POST['decription'];
@@ -17,19 +18,46 @@ if (isset($_POST['submit'])) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             $finalpath = str_replace("../", "", $target_file);
             $sql = "INSERT INTO Product (category_id,title,price,thumbnail,decription,option,status) VALUES ('$cate','$title','$price','$finalpath','$decription','$option','$status')";
-            if (mysqli_query($conn, $sql)) {
-                echo "<script>alert('Add product successfully')</script>";
-                header('location:all_product.php');
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('Product Added Successfully')</script>";
+                echo "<script>window.location.href='all_product.php'</script>";
             }
-        } else {
-            echo "Sorry, there was an error uploading your file.";
         }
-    } else {
-        $imageErr = "File is not an image.";
+    }
+    else {
+        echo "<script>alert('File is not an image.')</script>";
     }
 }
+// if (isset($_POST['submit'])) {
+//     $title = $_POST['title'];
+//     $price = $_POST['price'];
+//     $decription = $_POST['decription'];
+//     $option = $_POST['option'];
+//     $status = $_POST['status'];
+//     $cate = $_POST['category_id'];
+//     $nameErr = $emailErr = $passwordErr = $phoneErr = $statusErr = $roleErr =$imageErr= "";
+//     $target_dir = "../img/";
+//     $target_file = $target_dir . basename($_FILES["image"]["name"]);
+//     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+//     $check = getimagesize($_FILES["image"]["tmp_name"]);
+//     if ($check !== false) {
+//         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+//             $finalpath = str_replace("../", "", $target_file);
+//             $sql = "INSERT INTO Product (category_id,title,price,thumbnail,decription,option,status) VALUES ('$cate','$title','$price','$finalpath','$decription','$option','$status')";
+//             if (mysqli_query($conn, $sql)) {
+//                 echo "<script>alert('Add product successfully')</script>";
+//                 header('location:all_product.php');
+//             } else {
+//                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+//             }
+//         } else {
+//             echo "Sorry, there was an error uploading your file.";
+//         }
+//     } else {
+//         $imageErr = "File is not an image.";
+//     }
+// }
 
 ?>
 
@@ -69,12 +97,12 @@ if (isset($_POST['submit'])) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Add Product</h1>
+                            <h1>Edit Product</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active"> Add Product </li>
+                                <li class="breadcrumb-item active"> Edit Product </li>
                             </ol>
                         </div>
                     </div>
