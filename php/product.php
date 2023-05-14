@@ -39,6 +39,29 @@ function innerProduct($img, $title, $price, $id){
                     </button>
                 </div>
             </form>
+            </li>
+            ';
+}
+function toStringProduct($img, $title, $price, $id){
+    return 
+            '<li class="home__product--info">
+            <a href="">
+                <img src="'.$img.'" />
+                <h3>'.$title.'</h3>
+                <span class="price">'.number_format("$price",0,".",".").'<u>đ</u></span>
+            </a>
+            <form class="form_item" method="post">
+                <input type="hidden" name="name" value="'.$title.'">
+                <input type="hidden" name="id" value="'.$id.'">
+                <input type="hidden" name="price" value="'.$price.'">
+                <input type="hidden" name="image" value="'.$img.'">
+                <div class="tooltip">
+                    <button class="themvaogio" type="submit" name="add_to_cart" value="addToCart">
+                        <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                        +
+                    </button>
+                </div>
+            </form>
             </li>';
 }
 function select_category() {

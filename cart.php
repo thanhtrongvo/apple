@@ -271,6 +271,7 @@
             height: 50px;
         }
     </style>
+    
 </head>
 
 <body>
@@ -308,7 +309,7 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td>Shipping</td>
+                                        <td>	&#60;</td>
                                         <td class="free-shipping">Free Shipping</td>
                                     </tr>
                                     <tr class="total-row">
