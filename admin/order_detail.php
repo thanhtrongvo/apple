@@ -1,5 +1,12 @@
 <?php
+    function nameProduct($id) {
+        include('../database/connection.php');
+        $sql = "SELECT title FROM product WHERE id = '.$id.'";
+        $result = mysqli_query($conn, $sql);
+        $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $data;
 
+    }
 
 
 
@@ -21,18 +28,17 @@
                                     $sql = "SELECT * FROM order_details WHERE order_id = '.$id.'";
                                     $result = mysqli_query($conn, $sql);
                                     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                                    $namepro = $data['product_id'];
-                                    $sqlsub ="SELECT * FROM product WHERE id = '.$namepro.'";
-                                    $rs = mysqli_query($conn, $sqlsub);
-                                    $data1 = mysqli_fetch_all($rs);
-                                    
                                     foreach ($data as $row) {
                                         echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td>" . $data1['title'] . "</td>"; 
-                                        echo "</td>";
+                                        echo "<td>" . $row['id'] . "</td>";  
+                                        $sql1 = "SELECT * FROM product WHERE id = '".$row['product_id']."'";
+                                        $result1 = mysqli_query($conn, $sql1);
+                                        $data1 = mysqli_fetch_all($result1, MYSQLI_ASSOC);
+                                        foreach ($data1 as $row1) {
+                                            echo "<td>" . $row1['title'] . "</td>";  
+                                        }
                                         echo "<td>" . $row['num']  . "</td>";
-                                        echo "<td>" . $row['total_money'] . "</td>";
+                                        echo "<td>" . number_format($row['total_money']) . "đ</td>";
                                         echo "</tr>";
                                     }
                                    ?>
