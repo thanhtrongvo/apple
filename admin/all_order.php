@@ -100,8 +100,8 @@ include_once('../database/connection.php');
                                     echo "<td>" . $row['order_date'] . "</td>";
                                     echo "<td>" . $row['note'] . "</td>";
                                     echo "<td class='text-right'>";
-                                    echo "<a data-target='#modal-order' href='all_order.php?order=".$row['id']."'  class='btn btn-sm btn-success btn-destroy'>
-                         <span style='color:#fff;'> Xem Chi Tiết </span>
+                                    echo "<a  id='".$row['id']. "'  class='show-detail btn btn-sm btn-success '>
+                         <span style='color:#fff;'> Show Detail </span>
                       </a>
                   </td>
     
@@ -135,63 +135,21 @@ include_once('../database/connection.php');
         </footer>
 
         <!-- Modal order detail -->
-        <div class="modal fade" id="modal-order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <?php 
-                // $sql = "SELECT * FROM order_detail";
-                // $result = mysqli_query($conn, $sql);
-                // $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                // $sqlsub = "SELECT * FROM order_detail WHERE order_id = ";
-                            
-            
-            
-            ?>
+        <div class="modal fade"  id="modal-order" >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header float-right">
-                        <h5>User details</h5>
+                        <h5>Order details</h5>
                         <div class="text-right">
                             <i data-dismiss="modal" aria-label="Close" class="fa fa-close"></i>
                         </div>
                     </div>
-                    <div class="modal-body">
-                        <div>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Order</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Samso</td>
-                                        <td>Natto</td>
-                                        <td>@samso</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Tinor</td>
-                                        <td>Horton</td>
-                                        <td>@tinor_har</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Mythor</td>
-                                        <td>Bully</td>
-                                        <td>@myth_tobo</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
+                    <div class="modal-body" id="order-body">
+                    <?php @include("order_detail.php");?>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -211,14 +169,11 @@ include_once('../database/connection.php');
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../plugins/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.4/js/dataTables.fixedColumns.min.js"></script>
+    
 
     <script>
         $(document).ready(function() {
@@ -227,6 +182,42 @@ include_once('../database/connection.php');
                 "autoWidth": false,
             });
         });
+        // $(document).ready(function(){
+        //     $(document).on('click','.show-detail',function(){
+        //         var ids = $(this).attr('id');
+        //         $.ajax({
+        //             url: "order_detail.php",
+        //             type: "post",
+        //             data: {
+        //                 ids:ids
+        //             },
+        //             success: function(data) {
+        //                 $('#modal-body').html(data);
+        //                 $('#modal-order').modal('show');
+        //             }
+        //         });
+        //     });
+        // })
+        $("#close-modal").click(function(){
+            $('#modal-order').modal('hide');
+        });
+        $(document).ready(function(){
+			$(document).on('click','.show-detail',function(){
+				var ids =$(this).attr('id');
+				$.ajax({
+                    url: "order_detail.php",
+					type:"post",
+                    data: {
+                        ids:ids
+                    },
+					success: function(data) {
+                        $('#order-body').html(data);
+                        $('#modal-order').modal('show');
+                    }
+				});
+			});
+		});
+
     </script>
 </body>
 
