@@ -40,13 +40,13 @@ include('php/mainHtml.php')
     </div>
 
 </body>
-<script src="js/login.js"> </script>
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/login.js"> </script>    
 <script src="plugins/jquery/jquery.js"></script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/validate.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 
 </html>
