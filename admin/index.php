@@ -96,24 +96,18 @@ if (!($_SESSION['role'])) {
       ?>
     </footer>
 
-    <!-- Control Sidebar -->
 
-    <!-- /.control-sidebar -->
   </div>
-  <!-- ./wrapper -->
-
-  <!-- jQuery -->
-  <script src="../plugins/canvasjs-3.7.5/canvasjs.min.js"></script>
-  <script src="../plugins/canvasjs-3.7.5/jquery.canvasjs.min.js"></script>
-
-  <script src="../plugins/chart.js/Chart.js"></script>
+  
   <script src="../plugins/jquery/jquery.js"></script>
   <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
+  <script src="../plugins/canvasjs-3.7.5/canvasjs.min.js"></script>
+  <script src="../plugins/canvasjs-3.7.5/jquery.canvasjs.min.js"></script>
+  <script src="../plugins/chart.js/Chart.js"></script>
+
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
+
   <script src="../dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
 
   <script>

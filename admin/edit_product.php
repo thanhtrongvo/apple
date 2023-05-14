@@ -1,32 +1,38 @@
 <?php
 include('../database/connection.php');
 include('../php/checkfile.php');
+    $sql = "SELECT * FROM Product WHERE id = " . $_GET['id'] . "";
+    $result = mysqli_query($conn, $sql);
+    $data = mysqli_fetch_row($result);
 
-if(isset($_POST['submit'])) {
+
+
+if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $price = $_POST['price'];
     $decription = $_POST['decription'];
     $option = $_POST['option'];
     $status = $_POST['status'];
     $cate = $_POST['category_id'];
-    $nameErr = $emailErr = $passwordErr = $phoneErr = $statusErr = $roleErr =$imageErr= "";
     $target_dir = "../img/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check !== false) {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $finalpath = str_replace("../", "", $target_file);
-            $sql = "INSERT INTO Product (category_id,title,price,thumbnail,decription,option,status) VALUES ('$cate','$title','$price','$finalpath','$decription','$option','$status')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                echo "<script>alert('Product Added Successfully')</script>";
-                echo "<script>window.location.href='all_product.php'</script>";
-            }
-        }
+    if(empty($_FILES["image"]["name"]))
+    {
+        $finalpath = $data[4];
     }
-    else {
-        echo "<script>alert('File is not an image.')</script>";
+    else
+    {
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                $finalpath = str_replace("../", "", $target_file);
+            }
+    } 
+    $sql = "UPDATE Product SET category_id = '$cate',title = '$title',price = '$price',thumbnail = '$finalpath',decription = '$decription',option = '$option',status = '$status' WHERE id = " . $_GET['id'] . "";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo "<script>alert('Product Update Successfully')</script>";
+        echo "<script>window.location.href='all_product.php'</script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
 // if (isset($_POST['submit'])) {
@@ -114,11 +120,11 @@ if(isset($_POST['submit'])) {
                         <div class="row">
                             <div class="col">
                                 <label for="title">Name</label>
-                                <input name="title" type="text" class="form-control" placeholder="">
+                                <input value="<?php echo $data['2'] ?>" name="title" type="text" class="form-control" placeholder="">
                             </div>
                             <div class="col">
                                 <label for="">Price</label>
-                                <input name="price" type="text" class="form-control" placeholder="">
+                                <input value="<?php echo $data['3'] ?>" name="price" type="text" class="form-control" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -130,23 +136,51 @@ if(isset($_POST['submit'])) {
                                 $sql = "SELECT * FROM category";
                                 $result = mysqli_query($conn, $sql);
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                                    echo "<option value='" . $row['id'] . "' ";
+                                    if ($row['id'] == $data['1']) {
+                                        echo "selected";
+                                    }
+                                    else {
+                                        echo "";
+                                    }
+                                    echo  ">" . $row['name'] . " </option>";
                                 }
                                 ?>
                             </select>
                         </div>
                         <div class="col">
+                                <label for="">Option</label>
+                                <input value="<?php echo $data['8'] ?>" name="option" type="text" class="form-control" placeholder="">
+                            </div>
+                        <div class="col">
                             <input name="image" type="file">
+                            <img style="width:75px;" src="../<?php echo $data['4'] ?>" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
                         </div>
+                        
                     </div>
                     <div class="row col-md-12 col-sm-12 x_content">
                         <lable style="font-weight:700;" for="desc"> Decription </lable>
-                        <textarea name="decription" id="decription" class="resizable form-control"></textarea>
-
+                        <textarea name="decription" id="decription" class="resizable form-control"><?php echo $data['5'] ?></textarea>
+                        
                     </div>
                     <label for="">Status</label>
-                    <div class="form-check">
+                    <?php
+                            if ($data[9] == 1) {
+                                echo ' <div class="form-check">
                         <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
+                        <label class="form-check-label" for="status">
+                            Public
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status" value="0" >
+                        <label class="form-check-label" for="status">
+                            Private
+                        </label>
+                    </div>';
+                            } elseif ($data[9] == 0) {
+                                echo ' <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status" value="1">
                         <label class="form-check-label" for="status">
                             Public
                         </label>
@@ -156,7 +190,10 @@ if(isset($_POST['submit'])) {
                         <label class="form-check-label" for="status">
                             Private
                         </label>
-                    </div>
+                    </div>';
+                            }
+
+                            ?>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
                 </form>

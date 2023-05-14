@@ -4,22 +4,20 @@ $sql = 'SELECT * FROM user WHERE id = ' . $_GET['id'];
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_row($result);
 if (isset($_POST['submit'])) {
-  $id = $_POST['id'];
-  $name = $_POST['fullname'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $role = $_POST['role'];
-  $status = $_POST['status'];
-  $sql = "UPDATE user SET fullname='$name', email='$email', password='$password', role_id='$role', status='$status' WHERE id=".$_GET['id']."";
-  $result = mysqli_query($conn, $sql);
-  if(!$result) {
-    die("Query failed: ".mysqli_error($conn));
-
-}
-else {
-    echo "<script> alert('Update success') </script>";
-    echo "<script> window.location.href='all_user.php' </script>";
-}
+    $id = $_POST['id'];
+    $name = $_POST['fullname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+    $status = $_POST['status'];
+    $sql = "UPDATE user SET fullname='$name', email='$email', password='$password', role_id='$role', status='$status' WHERE id=" . $_GET['id'] . "";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    } else {
+        echo "<script> alert('Update success') </script>";
+        echo "<script> window.location.href='all_user.php' </script>";
+    }
 }
 
 
@@ -128,7 +126,7 @@ else {
                     </div>
                     <div class="row">
                         <div class="col">
-                        <div class="form-group">
+                            <div class="form-group">
                                 <label for="">Phone</label>
                                 *
                                 <input value="<?php echo $data['3']; ?>" name="phone_number" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
@@ -140,19 +138,37 @@ else {
                             </div>
                         </div>
                         <div class="col">
-                        <label for="">Status</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
-                                <label class="form-check-label" for="status">
-                                    Public
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" id="status" value="0" checked>
-                                <label class="form-check-label" for="status">
-                                    Private
-                                </label>
-                            </div>
+                            <label for="">Status</label>
+                            <?php
+                            if ($data[9] == 1) {
+                                echo ' <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status" value="1" checked>
+                        <label class="form-check-label" for="status">
+                            Public
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status" value="0" >
+                        <label class="form-check-label" for="status">
+                            Private
+                        </label>
+                    </div>';
+                            } elseif ($data[9] == 0) {
+                                echo ' <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status" value="1">
+                        <label class="form-check-label" for="status">
+                            Public
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status" value="0" checked>
+                        <label class="form-check-label" for="status">
+                            Private
+                        </label>
+                    </div>';
+                            }
+
+                            ?>
                         </div>
 
                     </div>
