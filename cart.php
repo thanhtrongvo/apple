@@ -25,10 +25,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" type="image/png" href="img/logo.png">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/login.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
 
@@ -231,7 +227,7 @@
             width: 50%;
             padding: 3px 0;
             vertical-align: middle;
-            backg
+
         }
 
         .cart-totals table tr td:last-child {
@@ -309,7 +305,7 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td>	&#60;</td>
+                                        <td>	 </td>
                                         <td class="free-shipping">Free Shipping</td>
                                     </tr>
                                     <tr class="total-row">
@@ -366,9 +362,13 @@ function exitck(){
     addInfoModal();
     addFooter(); ?>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="plugins/jquery/jquery.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/login.js"> </script>    
 </body>
 
 </html>

@@ -1,5 +1,7 @@
 <?php
 include('../database/connection.php');
+session_start();
+ob_start();
     if(!isset($_SESSION)) session_start();
     
     // if(!isset($_SESSION['cart'])) {
@@ -8,20 +10,26 @@ include('../database/connection.php');
     //     ]); 
     // }
     // Xử lý yêu cầu ajax và lưu sản phẩm vào session
-    if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['image'])) {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $image = $_POST['image'];
-        if(isset($_SESSION['cart']['total'])){
-            $_SESSION['cart']['total'] += $price;
-        } else{
-            $_SESSION['cart']['total'] = $price;
-        }
-        if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id]['quantity']++;
-        } else {
-            $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
+    if(!isset($_SESSION['name'])) {
+        echo "<script> alert('Please login to continue!') </script>";
+        header('location:../index.php');
+    }
+    else {
+        if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['image'])) {
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $image = $_POST['image'];
+            if(isset($_SESSION['cart']['total'])){
+                $_SESSION['cart']['total'] += $price;
+            } else{
+                $_SESSION['cart']['total'] = $price;
+            }
+            if (isset($_SESSION['cart'][$id])) {
+                $_SESSION['cart'][$id]['quantity']++;
+            } else {
+                $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
+            }
         }
     }
 
@@ -55,6 +63,7 @@ include('../database/connection.php');
         }
     }
 
+    
     if(isset($_GET['order'])){
         $add = $_GET['addr'];
         $note = $_GET['note'];
@@ -83,9 +92,14 @@ include('../database/connection.php');
             header('location: https://localhost/apple/index.php');
         }
     }
+
+
+
+    //Xu li yeu cau xoa gio hang
     function destroyCart(){
         unset($_SESSION['cart']);
     }
+    //Xu li yeu cau xoa 1 sp
     function removeFromCart($id)  {
         unset($_SESSION['cart'][$id]);
     }
