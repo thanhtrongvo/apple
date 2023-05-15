@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
         if (!$result) {
             die("Query failed: " . mysqli_error($conn));
         } else {
-            echo "<script> alert('Add success') </script>";
+            echo "<script>alert('Add success')</script>";
             echo "<script> window.location.href='all_category.php' </script>";
         }
     }
@@ -55,6 +55,8 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -137,6 +139,7 @@ if (isset($_POST['submit'])) {
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->

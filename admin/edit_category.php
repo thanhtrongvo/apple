@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -63,7 +64,7 @@
 
                     }
                     else {
-                        echo "<script> alert('Update success') </script>";
+                        echo "<script> alert('Update category successfully!') </script>";
                         echo "<script> window.location.href='all_category.php' </script>";
                     }
                 }
@@ -133,11 +134,11 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
+    <script src="../plugins/toastr/toastr.min.js"></script>
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
