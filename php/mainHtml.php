@@ -1,3 +1,4 @@
+
 <?php
 function addHeader()
 {
@@ -112,9 +113,9 @@ function addContainer()
             </div>
         </div>
         <div class="container__content-last">
-            <div class="row place-list">
+            <div class="row container__content-last--list">
                 <div class="col col-half s-col-full">
-                    <img src="img/AdMac.png" alt="Mac" class="place-img">                    
+                    <img src="img/AdMac.png" alt="Mac" class="container__content-last--img">                    
                 </div>
                 <div class="container__content-mac--btn">
                     <button class="hide__btn">
@@ -122,7 +123,12 @@ function addContainer()
                     </button>
                 </div>
                 <div class="col col-half s-col-full">
-                    <img src="img/AdIpad.png" alt="Ipad" class="place-img">                    
+                    <img src="img/AdIpad.png" alt="Ipad" class="container__content-last--img">                    
+                </div>
+                <div class="container__content-ipad--btn">
+                    <button class="hide__btn">
+                        BUY
+                    </button>
                 </div>
                 <div class="clear"></div>
             </div>
