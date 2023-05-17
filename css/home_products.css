@@ -165,19 +165,20 @@ a {
 }
 
 .view_all {
-    background-color: #eee;
+    background-color: var(--white-color);
     margin: auto;
-    border: 2px solid #555;
     width: 150px;
-    border-radius: 10px;
 }
 
 .view_all:hover {
-    background-color: #ccc;
+    opacity: 0.7;;
 }
 
 .view_all a {
-    color: black;
+    font-size: 1.6rem;
+    font-weight: 200;
+    color: var(--text-color);
+    text-decoration: underline;
 }
 
 /* ===== End Them Vao Gio Hang ==== */
