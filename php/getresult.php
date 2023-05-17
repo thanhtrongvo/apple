@@ -8,28 +8,36 @@ $paginationlink = "php/getresult.php?page=";
 $pagination_setting = $_GET["pagination_setting"];
 $priceRange = $_GET["priceRange"];
 $searchInput = $_GET["searchInput"];
-
+$whereFlag = 0;
 //Search
 if($searchInput != ""){
 	$sql.=" WHERE title LIKE '%".$searchInput."%'";
+	$whereFlag = 1;
 }
 
 //Them khoang gia
+if($priceRange != 0){
+	if($whereFlag == 0){
+		$sql .= " WHERE";
+	}else{
+		$sql .= " AND";
+	}
+}
 switch ($priceRange){
 	case 1:
-		$sql.=" AND price < '500'";
+		$sql.=" price < '500'";
 		break;
 	case 2:
-		$sql.=" AND price BETWEEN '500' AND '1000'";
+		$sql.=" price BETWEEN '500' AND '1000'";
 		break;
 	case 3:
-		$sql.=" AND price BETWEEN '1000' AND '1500'";
+		$sql.=" price BETWEEN '1000' AND '1500'";
 		break;
 	case 4:
-		$sql.=" AND price BETWEEN '1500' AND '2000'";
+		$sql.=" price BETWEEN '1500' AND '2000'";
 		break;
 	case 5:
-		$sql.=" AND price > '2000'";
+		$sql.=" price > '2000'";
 		break;
 	default:
 		break;

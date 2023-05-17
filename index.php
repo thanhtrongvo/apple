@@ -9,7 +9,6 @@ include('php/mainHtml.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,9 +25,7 @@ include('php/mainHtml.php');
     <link rel="shortcut icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/fontawesome.css">
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.css">
-
 </head>
-
 <body>
     <div class="app">
         <?php addHeader();
