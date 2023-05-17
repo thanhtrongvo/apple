@@ -17,10 +17,10 @@ if (!($_SESSION['role'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap-grid.css">
+  <link rel="stylesheet" href="../plugins/morris.js-0.5.1/morris.css">
 
 
 
@@ -116,107 +116,134 @@ if (!($_SESSION['role'])) {
 
         </div>
         <div class="row">
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" id="navId">
-            <li class="nav-item">
-              <a href="#tab1Id" class="nav-link active">Active</a>
-            </li>
-            <li class="nav-item">
-              <a href="#tab5Id" class="nav-link">Another link</a>
-            </li>
-            <li class="nav-item">
-              <a href="#tab5Id" class="nav-link">Another link</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="chart-container">
+                <div class="select-date">
+                  <select> 
+                    <option value="1weed">One Weed</option>
+                    <option value="28day">28 Day</option>
+                    <option value="3month">3 Month</option>
+                    <option value="1year">1 Year</option>
+                  </select>
+                </div>
+                
+              </div>
 
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="chart-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Category</th>
+                      <th>Quantity</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td scope="row"></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
           </div>
 
-          <script>
-            $('#navId a').click(e => {
-              e.preventDefault();
-              $(this).tab('show');
-            });
-          </script>
         </div>
-        <div class="chart-container">
-          <canvas id="myChart"></canvas>
-        </div>
-      </section>
-      <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
-    <footer class="main-footer">
-      <?php
-      include('../admin/footer.php');
+  <footer class="main-footer">
+    <?php
+    include('../admin/footer.php');
 
-      ?>
-    </footer>
+    ?>
+  </footer>
 
 
   </div>
 
   <script src="../plugins/jquery/jquery.js"></script>
   <script src="../plugins/jquery/jquery.min.js"></script>
-  <script src="../plugins/canvasjs-3.7.5/canvasjs.min.js"></script>
-  <script src="../plugins/canvasjs-3.7.5/jquery.canvasjs.min.js"></script>
   <script src="../plugins/chart.js/Chart.js"></script>
-  <script src="../plugins/daterangepicker/daterangepicker.js"></script>
-  <script src="../plugins/moment/moment.min.js"></script>
-
+  <script src="../plugins/morris.js-0.5.1/morris.js"></script>
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <script src="../dist/js/adminlte.min.js"></script>
   <script src="../dist/js/demo.js"></script>
 
   <script>
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ["iPhone", "iPad", "Macbook", "iMac", "Apple Watch", "AirPods"],
-        datasets: [{
-          label: 'Total Product',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+  $(document).ready(function() {
+
+      var char = new Morris.Area({  
+        element: 'chart-container',
+        xkey: 'date',
+        ykeys: ['date', 'order', 'quantity', 'price'],
+        labels: ['Date','Order', 'Quantity', 'Price',],
+      
+
+      });
+
+
+  $('.select-date').change(function(){
+    statis();
+    var date = $(this).val();
+    if(date == '1weed'){
+      var text = 'One Weed';
+    } else if(date == '28day'){
+      var text = '28 Day';
+    } else if(date == '3month'){
+      var text = '3 Month';
+    } else if(date == '1year'){
+      var text = '1 Year';
+    }
+    $.ajax({
+      url: 'data/order.php',
+      type: 'post',
+      dataType:'json',
+      data: {date: date},
+      success: function(data){
+        char.setData(data);
       }
-    });
+    })
+  })
+  function statis() {
+    var text = "1 Year ";
+    $('.text-date').text(text);
+    $.ajax({
+      url: 'data/order.php',
+      type: 'post',
+      dataType:'json',
+      data: {date:date},
+      success: function(data){
+        char.setData(data);
+      }
+    })
+  }
+});
+
   </script>
 
 
