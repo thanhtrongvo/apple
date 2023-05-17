@@ -146,6 +146,16 @@ include('php/mainHtml.php')
                     <option class="list-group-item" value="4">1500$ - 2000$</option>
                     <option class="list-group-item" value="5">2000$ - 3000$</option>
                  </select>
+
+                 <select class="list-group" id="price-range">
+                    <option class="list-group-item" value="0">Pick</option>
+                    <option class="list-group-item" value="1">Ipad</option>
+                    <option class="list-group-item" value="2">Macbook</option>
+                    <option class="list-group-item" value="3">Airpod</option>
+                    <option class="list-group-item" value="4">Iphone</option>
+                    <option class="list-group-item" value="5">Watch</option>
+                 </select>
+
                  <div class="searchbar">
                     <?php 
                         if(isset($_POST['searchInput']))

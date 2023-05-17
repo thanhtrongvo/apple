@@ -1,5 +1,3 @@
-
-
 <?php
 function addHeader()
 {
@@ -14,29 +12,29 @@ function addHeader()
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-mac">
-                                        Mac
-                                    </a>
+                                    <form action="search.php" method="post" class="header__navbar-mac">
+                                    <button type="text" name="searchInput"value="Mac" >Mac</button>
+                                    </form>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=18&namecate=ipad" class="header__navbar-ipad">
-                                        Ipad
-                                    </a>
+                                    <form action="search.php" method="post" class="header__navbar-ipad">
+                                    <button type="submit" name="searchInput"value="Ipad" >IPad</button>
+                                    </form>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=23&namecate=iphone" class="header__navbar-iphone">
-                                        Iphone
-                                    </a>
+                                    <form action="search.php" method="post" class="header__navbar-iphone">
+                                    <button type="submit" name="searchInput"value="IPhone" >IPhone</button>
+                                    </form>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=24&namecate=watch" class="header__navbar-watch">
-                                        Watch
-                                    </a>
+                                    <form action="search.php" method="post" class="header__navbar-watch">
+                                    <button type="submit" name="searchInput"value="Watch" >Watch</button>
+                                    </form>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=20&namecate=airpod" class="header__navbar-airpod">
-                                        Airpod
-                                    </a>
+                                    <form action="search.php" method="post" class="header__navbar-airpot">
+                                    <button type="submit" name="searchInput"value="Airpots" >Airpots</button>
+                                    </form>
                                 </li>
                                 <li class="header__navbar-item">
                                     <a href="admin/logout.php" class="header__navbar-support">
@@ -87,9 +85,11 @@ function addContainer()
                 <video src="video/Ad_iphone14pro.mp4" loop="" autoplay="" muted="" width="100%"></video>
             </div>
             <div class="container__content-ip14--btn">
-                <button class="hide__btn">
-                    BUY
-                </button>
+                <a href="product_detail.php?id=2">
+                    <button class="hide__btn">
+                        BUY
+                    </button>
+                </a>
             </div>
         </div>
 
@@ -98,9 +98,11 @@ function addContainer()
                 <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" alt="">
             </div>
             <div class="container__content-watch--btn">
-                <button class="hide__btn">
-                    BUY
-                </button>
+                <a href="product_detail.php?id=29">
+                    <button class="hide__btn">
+                        BUY
+                    </button>
+                </a>
             </div>
         </div>
         <div class="container__content-last">
@@ -109,17 +111,21 @@ function addContainer()
                     <img src="img/AdMac.png" alt="Mac" class="container__content-last--img">                    
                 </div>
                 <div class="container__content-mac--btn">
-                    <button class="hide__btn">
-                        BUY
-                    </button>
+                    <a href="product_detail.php?id=12">
+                        <button class="hide__btn">
+                            BUY
+                        </button>
+                    </a>
                 </div>
                 <div class="col col-half s-col-full">
                     <img src="img/AdIpad.png" alt="Ipad" class="container__content-last--img">                    
                 </div>
                 <div class="container__content-ipad--btn">
-                    <button class="hide__btn">
-                        BUY
-                    </button>
+                    <a href="product_detail.php?id=22">
+                        <button class="hide__btn">
+                            BUY
+                        </button>
+                    </a>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -133,9 +139,9 @@ function addProduct()
     if (isset($_GET['category'])) {
         echo ' <div class="product">
             <div class="product__content">
-                <h1 class="product__content-heading" style="text-transform: uppercase;">all '; 
-                echo $_GET['namecate'];
-                echo '</h1>
+                <h1 class="product__content-heading" style="text-transform: uppercase;">all ';
+        echo $_GET['namecate'];
+        echo '</h1>
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>';
