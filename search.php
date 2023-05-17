@@ -44,10 +44,9 @@ include('php/mainHtml.php')
         .product__content{
             position:relative;
             border:solid 1px black;
-            padding-left:8vw;
+            height:fit-content;
             float: left;
-            width: 80%;
-            height:110vh;
+            width: 85%;
             box-sizing: border-box;
         }
         .product__content-heading{
@@ -73,9 +72,9 @@ include('php/mainHtml.php')
         .first{
             border-left:#bccfd8 1px solid;}
         #pagination{
-            position:absolute;
-            bottom:5vh;
-            left:12vw;
+            position:relative;
+            margin-left:60px;
+            clear:both;
         }
         .dot {
             padding: 10px 15px;
@@ -101,6 +100,12 @@ include('php/mainHtml.php')
             border:#bccfd8  1px solid;
             color:#607d8b;
         }
+        .list-group{
+            font-size:12.5pt;
+        }
+        .home__product--info{
+            width: 21%;
+        }
     </style>
 
 </head>
@@ -111,7 +116,7 @@ include('php/mainHtml.php')
         <div class="product">
             <h1 class="product__content-heading">Product</h1>
             <div class="product_leftmenu">
-            <select class="list-group" id="price-range-search">
+            <select class="list-group" id="price-range">
                 <option class="list-group-item" value="0">Pick</option>
                 <option class="list-group-item" value="1">1.000.000đ - 10.000.000đ</option>
                 <option class="list-group-item" value="2">10.000.000đ - 20.000.000đ</option>
@@ -123,7 +128,7 @@ include('php/mainHtml.php')
             <div class="product__content">
                 <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>
                 <div class="page-content">
-                    <div style="border-bottom: #F0F0F0 1px solid;margin-bottom: 15px;">
+                    <div style="border-bottom: #F0F0F0 1px solid;margin-bottom: 15px; display:none">
                     Pagination Setting:<br> <select name="pagination-setting" onChange="changePagination(this.value);" class="pagination-setting" id="pagination-setting">
                     <option value="all-links">Display All Page Link</option>
                     <option value="prev-next">Display Prev Next Only</option>
@@ -156,7 +161,7 @@ function getresult(url) {
 	$.ajax({
 		url: url,
 		type: "GET",
-		data:  {rowcount:$("#rowcount").val(),"pagination_setting":$("#pagination-setting").val(),"priceRange":$("#price-range-search").val()},
+		data:  {rowcount:$("#rowcount").val(),"pagination_setting":$("#pagination-setting").val(),"priceRange":$("#price-range").val()},
 		beforeSend: function(){$("#overlay").show();},
 		success: function(data){
             console.log(data);
