@@ -82,12 +82,25 @@ $(document).ready(function() {
         submitHandler: function(form) {
             form.submit();
         },
+        invalidHandler: function(event, validator) {
+            var errors = validator.numberOfInvalids();
+            if (errors) {
+                var message = errors == 1
+                    ? 'You missed 1 field. It has been highlighted'
+                    : 'You missed ' + errors + ' fields. They have been highlighted';
+                $("div.error span").html(message);
+                $("div.error").show();
+            } else {
+                $("div.error").hide();
+            }
+        },
+
         rule: {
-            email1: {
+            email: {
                 required: true,
                 email: true
             },
-            pswd1: {
+            pswd: {
                 required: true,
                 minlength: 5,
                 maxlength: 20
@@ -95,6 +108,17 @@ $(document).ready(function() {
             
 
         },
+        messages: {
+            email: {
+                required: "Please enter your email address",
+                email: "Please enter a valid email address"
+            },
+            pswd: {
+                required: "Please provide a password",
+                minlength: "Your password must be at least 5 characters long",
+                maxlength: "Your password must be at most 20 characters long"
+            }
+        }
         
     });
 

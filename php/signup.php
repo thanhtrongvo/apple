@@ -9,6 +9,7 @@ if (isset($_POST['signup'])) {
     $sql = "INSERT INTO `User` (fullname,phone_number, email, password) VALUES ('$name','$phone','$email','$pswd')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
+      
       header('location:index.php');
       echo " <script> alert('Sign up success!') </script>";
       exit;

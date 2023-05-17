@@ -140,12 +140,22 @@ if(isset($_GET['id'])) {
                 <h6 class="title-price"><small>Price</small></h6>
                 <h3 style="margin-top:0px;"><?php echo $price ?>$</h3>
 
-                <div class="section" style="padding-bottom:5px;">
-                    <h6 class="title-attr"><small>Option</small></h6>
-                    <div>
-                        <p class="attr2"><?php echo $option ?></p>
-                    </div>
-                </div>
+                <?php 
+                    if($option == ""){
+                        echo "";
+                    }
+                    else {
+                        echo ' <div class="section" style="padding-bottom:5px;">
+                        <h6 class="title-attr"><small>Option</small></h6>
+                        <div>
+                            <p class="attr2">';
+                             echo $option ;
+                             echo '</p>
+                        </div>
+                    </div>';
+                    }
+
+                ?>
                 <div class="decription" style="padding-bottom:5px;">
                     <h6 class="title-attr"><small>Description</small></h6>
                     <div>
