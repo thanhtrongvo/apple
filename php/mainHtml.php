@@ -1,4 +1,3 @@
-
 <?php
 function addHeader()
 {
@@ -76,10 +75,10 @@ function addHeader()
                                 </li>
                                 <li class="header__navbar-item ">
                                     <form method="POST" action="search.php">
-                                    <input type="text" name="searchInput" placeholder="Tìm kiếm..."></input>
-                                    <button type="submit" name="search" >
-                                        <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
-                                    </button>
+                                    <div class="search-box">
+                                        <input type="text" name="searchInput" placeholder="Tìm kiếm..."></input>
+                                        <span></span>
+                                    </div>
                                     </form>
                                 </li>
                             </ul>
@@ -142,9 +141,9 @@ function addProduct()
     if (isset($_GET['category'])) {
         echo ' <div class="product">
             <div class="product__content">
-                <h1 class="product__content-heading" style="text-transform: uppercase;">all '; 
-                echo $_GET['namecate'];
-                echo '</h1>
+                <h1 class="product__content-heading" style="text-transform: uppercase;">all ';
+        echo $_GET['namecate'];
+        echo '</h1>
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>';
@@ -311,5 +310,3 @@ function addLoader()
     </div>
             ';
 }
-
-
