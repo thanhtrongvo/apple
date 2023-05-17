@@ -23,7 +23,7 @@
 .header__navbar-item {
   margin: 0 26px;
   position: relative;
-  min-height: 32px;
+  min-height: 30px;
   cursor: pointer;
 }
 
@@ -31,12 +31,12 @@
   border: none;
   background: none;
   z-index: 1;
-  width: 20px;
+  width: 30px;
   height: 20px;
   transition: all 0.25s ease-in 0.25s;
   color: transparent;
-  font-size: 0.75rem;
-  line-height: 20px;
+  font-size: 1.2rem;
+  line-height: 10px;
 }
 
 .search-box input[type=text]:hover {
