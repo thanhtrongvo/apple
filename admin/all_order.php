@@ -96,7 +96,7 @@ include_once('../database/connection.php');
                                     echo "<td>" . $row['fullname'] . "</td>";
                                     echo "<td>" . $row['email']  . "</td>";
                                     echo "<td>" . $row['phone_number'] . "</td>";
-                                    echo "<td>" . $row['Address'] . "</td>";
+                                    echo "<td>" . $row['address'] . "</td>";
                                     echo "<td>" . $row['order_date'] . "</td>";
                                     echo "<td>" . $row['note'] . "</td>";
                                     echo "<td class='text-right'>";

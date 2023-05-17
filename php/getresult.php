@@ -3,15 +3,46 @@ require_once('../database/connection.php');
 require_once("pagination.class.php");
 include('product.php');
 $perPage = new PerPage();
-$sql = "SELECT * from product ";
+$sql = "SELECT * from product";
 $paginationlink = "php/getresult.php?page=";	
 $pagination_setting = $_GET["pagination_setting"];
 $priceRange = $_GET["priceRange"];
 $searchInput = $_GET["searchInput"];
+
+//Search
 if($searchInput != ""){
-	$sql = "SELECT * from product WHERE title LIKE '%".$searchInput."%'";
+	$sql.=" WHERE title LIKE '%".$searchInput."%'";
 }
 
+//Them khoang gia
+switch ($priceRange){
+	case 1:
+		$sql.=" AND price < '500'";
+		break;
+	case 2:
+		$sql.=" AND price BETWEEN '500' AND '1000'";
+		break;
+	case 3:
+		$sql.=" AND price BETWEEN '1000' AND '1500'";
+		break;
+	case 4:
+		$sql.=" AND price BETWEEN '1500' AND '2000'";
+		break;
+	case 5:
+		$sql.=" AND price > '2000'";
+		break;
+	default:
+		break;
+}
+function console_log($output, $with_script_tag = true){
+	$jscode = 'console.log('.json_encode($output,JSON_HEX_TAG).');';
+	if($with_script_tag){
+		$jscode = '<script>'.$jscode.'</script>';
+	}
+	echo $jscode;
+}
+console_log($searchInput);
+console_log($sql);
 $page = 1;
 if(!empty($_GET["page"])) {
 $page = $_GET["page"];

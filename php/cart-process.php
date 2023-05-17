@@ -17,8 +17,6 @@ ob_start();
         }
         echo $jscode;
     }
-    
-
     if(!isset($_SESSION['name'])) {
         //header('location:../index.php');
         echo "Please login to continue!";
@@ -90,7 +88,7 @@ ob_start();
             removeFromCart($id);
         }
     }
-    else{
+    
     if(isset($_GET['order'])){
         $add = $_GET['addr'];
         $note = $_GET['note'];
@@ -119,7 +117,7 @@ ob_start();
             header('location: https://localhost/apple/index.php');
         }
     }
-}
+
 
 
     //Xu li yeu cau xoa gio hang
