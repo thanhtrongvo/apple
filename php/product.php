@@ -20,11 +20,23 @@ function product_home($id)
 
     }
 }
+function product_home_all($id)
+{
+    include('database/connection.php');
+    $syn = "SELECT * FROM `product` WHERE category_id = '$id'";
+    $result = mysqli_query($conn, $syn);
+    $n = mysqli_num_rows($result);
+    for ($i = 0; $i < $n; $i++) {
+        $row = mysqli_fetch_array($result);
+        innerProduct($row['thumbnail'], $row['title'], $row['price'], $row['id']);
+
+    }
+}
 function innerProduct($img, $title, $price, $id)
 {
     echo
         '<li class="home__product--info">
-            <a href="product_detail.php?id='.$id.'">
+            <a href="product_detail.php?id=' . $id . '">
                 <img src="' . $img . '" />
                 <h3>' . $title . '</h3>
                 <span class="price">' . number_format("$price", 0, ".", ".") . '<u>$</u></span>
@@ -72,7 +84,7 @@ function select_category()
     include('database/connection.php');
     if (isset($_GET['category'])) {
         $cate = $_GET['category'];
-        product_home($cate);
+        product_home_all($cate);
     }
 }
 

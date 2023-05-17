@@ -1,5 +1,3 @@
-
-
 <?php
 function addHeader()
 {
@@ -17,15 +15,6 @@ function addHeader()
                                     <form action="search.php" method="post" class="header__navbar-mac">
                                     <button type="submit" name="searchInput"value="Mac" >Mac</button>
                                     </form>
-                                    <!-- <div class="header__subnav">
-                                        <ul class="header__subnav-mac">
-                                            <li><p>Explore Mac</p></li>
-                                            <li><a href="">MacBook Air</a></li>
-                                            <li><a href="">MacBook Pro</a></li>
-                                            <li><a href="">iMac</a></li>
-                                            <li><a href="">Mac Mini</a></li>
-                                        </ul>
-                                    </div> -->
                                 </li>
                                 <li class="header__navbar-item">
                                     <form action="search.php" method="post" class="header__navbar-ipad">
@@ -97,7 +86,7 @@ function addContainer()
             </div>
             <div class="container__content-ip14--btn">
                 <button class="hide__btn">
-                    BUY
+                    <a href="product_detail.php?id=2">BUY</a>
                 </button>
             </div>
         </div>
@@ -108,7 +97,7 @@ function addContainer()
             </div>
             <div class="container__content-watch--btn">
                 <button class="hide__btn">
-                    BUY
+                <a href="product_detail.php?id=29">BUY</a>
                 </button>
             </div>
         </div>
@@ -119,7 +108,7 @@ function addContainer()
                 </div>
                 <div class="container__content-mac--btn">
                     <button class="hide__btn">
-                        BUY
+                        <a href="product_detail.php?id=12">BUY</a>
                     </button>
                 </div>
                 <div class="col col-half s-col-full">
@@ -127,7 +116,7 @@ function addContainer()
                 </div>
                 <div class="container__content-ipad--btn">
                     <button class="hide__btn">
-                        BUY
+                        <a href="product_detail.php?id=22">BUY</a>
                     </button>
                 </div>
                 <div class="clear"></div>
@@ -142,9 +131,9 @@ function addProduct()
     if (isset($_GET['category'])) {
         echo ' <div class="product">
             <div class="product__content">
-                <h1 class="product__content-heading" style="text-transform: uppercase;">all '; 
-                echo $_GET['namecate'];
-                echo '</h1>
+                <h1 class="product__content-heading" style="text-transform: uppercase;">all ';
+        echo $_GET['namecate'];
+        echo '</h1>
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>';
@@ -165,7 +154,7 @@ function addProduct()
         echo '</ul>
                         <div class="view_all">
                             <a href="index.php?category=23&namecate=iphone">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
@@ -178,7 +167,7 @@ function addProduct()
         echo '  </ul>
                         <div class="view_all">
                             <a href="index.php?category=24&namecate=watch">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
@@ -192,7 +181,7 @@ function addProduct()
         echo ' </ul>
                         <div class="view_all">
                             <a href="index.php?category=18&namecate=ipad">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
@@ -206,7 +195,7 @@ function addProduct()
         echo '</ul>
                         <div class="view_all">
                             <a href="index.php?category=19&namecate=macbook">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
