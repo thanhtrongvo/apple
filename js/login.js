@@ -13,7 +13,7 @@ function validateSignUp(){
 }
 function exitModalInfo(){
     var a = document.getElementById("modal__in4");
-    a.style.display = "none"
+    a.style.display = "none";
 }
 function showInfo(){
     var a = document.getElementById("modal__in4");
@@ -21,14 +21,7 @@ function showInfo(){
     a.style.transformOrigin = "top 70%";
     a.style.animation = "Grow ease-in .3s";
 }
-function exitModalInfo(){
-    var a = document.getElementById("exitModalck");
-    a.style.display = "none"
-}
+
 function logout(){
     location.replace("admin/logout.php");
-}
-   
-function showck(){
-    alert("mtfk im here");
 }

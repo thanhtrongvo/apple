@@ -10,26 +10,33 @@ ob_start();
     //     ]); 
     // }
     // Xử lý yêu cầu ajax và lưu sản phẩm vào session
-    if(!isset($_SESSION['name'])) {
-        echo "<script> alert('Please login to continue!') </script>";
-        header('location:../index.php');
+    function console_log($output, $with_script_tag = true){
+        $jscode = 'console.log('.json_encode($output,JSON_HEX_TAG).');';
+        if($with_script_tag){
+            $jscode = '<script>'.$jscode.'</script>';
+        }
+        echo $jscode;
     }
-    else {
-        if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['image'])) {
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $price = $_POST['price'];
-            $image = $_POST['image'];
-            if(isset($_SESSION['cart']['total'])){
-                $_SESSION['cart']['total'] += $price;
-            } else{
-                $_SESSION['cart']['total'] = $price;
-            }
-            if (isset($_SESSION['cart'][$id])) {
-                $_SESSION['cart'][$id]['quantity']++;
-            } else {
-                $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
-            }
+    
+
+    if(!isset($_SESSION['name'])) {
+        //header('location:../index.php');
+        echo "Please login to continue!";
+    }
+    if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['price']) && isset($_POST['image'])) {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $image = $_POST['image'];
+        if(isset($_SESSION['cart']['total'])){
+            $_SESSION['cart']['total'] += $price;
+        } else{
+            $_SESSION['cart']['total'] = $price;
+        }
+        if (isset($_SESSION['cart'][$id])) {
+            $_SESSION['cart'][$id]['quantity']++;
+        } else {
+            $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
         }
     }
 
@@ -62,8 +69,7 @@ ob_start();
             removeFromCart($id);
         }
     }
-
-    
+    else{
     if(isset($_GET['order'])){
         $add = $_GET['addr'];
         $note = $_GET['note'];
@@ -92,7 +98,7 @@ ob_start();
             header('location: https://localhost/apple/index.php');
         }
     }
-
+}
 
 
     //Xu li yeu cau xoa gio hang

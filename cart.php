@@ -273,7 +273,6 @@
 <body>
     <header>
         <div class="hiden">
-
         </div>
         <?php addHeader(); ?>
     </header>
@@ -301,7 +300,7 @@
                 <div class="col-lg-4">
                     <div class="cart-totals">
                         <h3>Cart Totals</h3>
-                        <form action="#" method="get" accept-charset="utf-8">
+                        <!-- <form action="#" method="get" accept-charset="utf-8"> -->
                             <table>
                                 <tbody>
                                     <tr>
@@ -323,27 +322,15 @@
                             </table>
                             <div class="btn-cart-totals">
                                 <a href="" class="update round-black-btn" title="">Update Cart</a>
-                                <button  class="checkout round-black-btn" title="" onclick="showck()">Proceed to Checkout</button>
+                                <button type="button"class="checkout round-black-btn" name="checkout" onclick="ckout();">Proceed to Checkout</button>
                             </div>
-                            <script> 
-
-function showck(){
-    var a = document.getElementById("modal_checkout");
-    a.style.display = "block";
-    a.style.transformOrigin = "top 70%";
-    a.style.animation = "Grow ease-in .3s";
-}
-function exitck(){
-    document.getElementById("modal_checkout").style.display = "none";
-}
-</script>
-                        </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="modal_checkout" class="modal__in4" >
+    <div id="modal_checkout" class="modal__in4">
         <div class="modal__body__in4">
             <div class="auth-form__in4">
                 <i onclick="exitck()" class="fa-solid fa-xmark auth-form__btn--cancel"></i>
@@ -360,8 +347,12 @@ function exitck(){
     </div>
     <?php 
     addInfoModal();
+    addModal();
     addFooter(); ?>
+    
+ <script> 
 
+</script>
 <script src="plugins/jquery/jquery.js"></script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>

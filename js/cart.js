@@ -6,7 +6,7 @@ $(document).ready(function() {
     var name = $(this).find('input[name="name"]').val();
     var price = $(this).find('input[name="price"]').val();
     var image = $(this).find('input[name="image"]').val();
-    $.ajax({
+    $.ajax({  
       url: 'php/cart-process.php',
       method: 'POST',
       data: {id: id, name: name, price: price, image: image},
@@ -82,6 +82,27 @@ $(document).ready(function() {
   });
 });
 
-function checkout(){
+//Kiểm tra đăng nhập để check out
+function ckout(){   
+  $.ajax({
+    url: 'php/cart-process.php',
+    method: 'POST',
+    data: {},
+    success: function(data){
+      if(data == "")
+          showck();
+      else
+          alert(data);
+    }
+  });
   
+}
+function showck(){
+  var a = document.getElementById("modal_checkout");
+  a.style.display = "block";
+  a.style.transformOrigin = "top 70%";
+  a.style.animation = "Grow ease-in .3s";
+}
+function exitck(){
+  document.getElementById("modal_checkout").style.display = "none";
 }
