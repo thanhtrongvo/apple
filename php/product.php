@@ -37,7 +37,7 @@ function innerProduct($img, $title, $price, $id)
                 <input type="hidden" name="image" value="' . $img . '">
                 <div class="tooltip">
                     <button class="themvaogio" type="submit" name="add_to_cart" value="addToCart">
-                        <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                        <span class="tooltiptext" style="font-size: 15px;">add to cart</span>
                         +
                     </button>
                 </div>
@@ -61,7 +61,7 @@ function toStringProduct($img, $title, $price, $id)
                 <input type="hidden" name="image" value="' . $img . '">
                 <div class="tooltip">
                     <button class="themvaogio" type="submit" name="add_to_cart" value="addToCart">
-                        <span class="tooltiptext" style="font-size: 15px;">Thêm vào giỏ</span>
+                        <span class="tooltiptext" style="font-size: 15px;">add to cart</span>
                         +
                     </button>
                 </div>

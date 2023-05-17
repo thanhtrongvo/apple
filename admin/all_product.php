@@ -99,7 +99,7 @@ include_once('../database/connection.php');
                     foreach ($data as $row) {
                       echo "<td>" . $row['id'] . "</td>";
                       echo "<td>" . $row['title'] . "</td>";
-                      echo "<td>" . number_format($row['price'])  . "đ</td>";
+                      echo "<td>" . number_format($row['price'])  . "$</td>";
                       echo "<td> <img class='img-product' src='../".$row['thumbnail']. "'</td>";
                       echo "<td>" . $row['option'] . "</td>";
                       echo "<td><small>" . $row['decription'] . "</small></td>";
