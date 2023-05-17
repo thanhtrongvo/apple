@@ -32,7 +32,6 @@ include('php/mainHtml.php')
             height: 100vh;
         }
         .product_leftmenu{
-            padding-top:20vh;
             align:center;
             width:15%;
             float:left;
@@ -102,6 +101,9 @@ include('php/mainHtml.php')
         }
         .list-group{
             font-size:12.5pt;
+            width: 100%;
+            height: 30px;
+            margin-top:20px ;
         }
         .home__product--info{
             width: 21%;
@@ -110,6 +112,17 @@ include('php/mainHtml.php')
             display:none;
         }
         .searchbar{
+
+        }
+        .searchbar input{
+            width: 100%;
+        }
+        .searchbar button{
+            width: 100%;
+            background-color: #868686;
+        }
+        .searchbar button:hover{
+            opacity: 0.7;
         }
     </style>
 
@@ -119,23 +132,22 @@ include('php/mainHtml.php')
     <div class="app">
         <?php addHeader(); ?>
         <div class="product">
-            <h1 class="product__content-heading">Product</h1>
+            <h1 class="product__content-heading">Result</h1>
             <div class="product_leftmenu">
+                <div class="searchbar">
+                   <input type="text" id="searchInput" placeholder="Search..."></input>
+                   <button  name="search" onclick="search()">
+                       <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
+                   </button>
+               </div>
                 <select class="list-group" id="price-range">
-                    <option class="list-group-item" value="0">Pick</option>
-                    <option class="list-group-item" value="1">1.000.000đ - 10.000.000đ</option>
-                    <option class="list-group-item" value="2">10.000.000đ - 20.000.000đ</option>
-                    <option class="list-group-item" value="3">20.000.000đ - 30.000.000đ</option>
-                    <option class="list-group-item" value="4">30.000.000đ - 40.000.000đ</option>
-                    <option class="list-group-item" value="5">40.000.000đ - 50.000.000đ</option>
+                    <option class="list-group-item" value="0">Filter by price</option>
+                    <option class="list-group-item" value="1">100$ - 500$</option>
+                    <option class="list-group-item" value="2">500$ - 1.000$</option>
+                    <option class="list-group-item" value="3">1.000$ - 1.500$</option>
+                    <option class="list-group-item" value="4">1.500$ - 2.000$</option>
+                    <option class="list-group-item" value="5">2.000$ - 5.000$</option>
                  </select>
-                 <div class="searchbar">
-                    <input type="text" id="searchInput" placeholder="Tìm kiếm..."></input>
-                    <button  name="search" onclick="search()">
-                        <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
-                    </button>
-                    
-                </div>
             </div>
             <div class="product__content">
                 <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>

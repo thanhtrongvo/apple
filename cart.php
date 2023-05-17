@@ -341,9 +341,9 @@
                 <i onclick="exitck()" class="fa-solid fa-xmark auth-form__btn--cancel"></i>
                 <form method="GET" action="php/cart-process.php">
                 <h1> Checkout </h1>
-                    <label > Địa chỉ: </label>
+                    <label > Delivery address: </label>
                     <input type="text" name="addr" > </input>
-                    <label > Ghi chú: </label>
+                    <label > Note: </label>
                     <input type="text" name="note" > </input>
                     <button type="submit" name="order">Order</button>
                 </form>
