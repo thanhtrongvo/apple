@@ -143,9 +143,9 @@ function addProduct()
     if (isset($_GET['category'])) {
         echo ' <div class="product">
             <div class="product__content">
-                <h1 class="product__content-heading" style="text-transform: uppercase;">all '; 
-                echo $_GET['namecate'];
-                echo '</h1>
+                <h1 class="product__content-heading" style="text-transform: uppercase;">all ';
+        echo $_GET['namecate'];
+        echo '</h1>
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>';
@@ -165,6 +165,11 @@ function addProduct()
         product_home("23");
         echo '</ul>
                     </div>
+                    <div class="view_all">
+                    <button>
+                        VIEW ALL
+                    </button>
+                    </div>
                 </div>
                 <h1 class="product__content-heading">NEW WATCH</h1>
                 <div class="product__content-watch">
@@ -172,6 +177,11 @@ function addProduct()
                         <ul>';
         product_home("24");
         echo '  </ul>
+                    </div>
+                    <div class="view_all">
+                    <button>
+                        VIEW ALL
+                    </button>
                     </div>
                 </div>
 
@@ -182,6 +192,11 @@ function addProduct()
         product_home("18");
         echo ' </ul>
                     </div>
+                    <div class="view_all">
+                    <button>
+                        VIEW ALL
+                    </button>
+                    </div>
                 </div>
 
                 <h1 class="product__content-heading">NEW MAC</h1>
@@ -190,6 +205,11 @@ function addProduct()
                         <ul>';
         product_home("19");
         echo '</ul>
+                    </div>
+                    <div class="view_all">
+                    <button>
+                        VIEW ALL
+                    </button>
                     </div>
                 </div>
 
@@ -261,7 +281,7 @@ function addModal()
                     </form>
                 </div>
                 <div class="auth-form__login">
-                    <form id="signin" method="post" onsubmit="">
+                    <form id="signin" method="post">
                         <label for="chk" aria-hidden="true">Sign In</label>
                         <input type="email" name="email1" placeholder="Email" >
                         <input type="password" name="pswd1" placeholder="Password" >
