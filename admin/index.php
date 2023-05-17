@@ -1,5 +1,5 @@
 <?php
-
+include('../database/connection.php');
 ob_start();
 session_start();
 if (!($_SESSION['role'])) {
@@ -19,6 +19,11 @@ if (!($_SESSION['role'])) {
   <link rel="stylesheet" href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap-grid.css">
+
+
+
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../plugins/canvasjs-3.7.5/canvasjs.angular.component.ts">
@@ -70,8 +75,6 @@ if (!($_SESSION['role'])) {
 
       <!-- Main content -->
       <section class="content">
-
-
         <div class="jumbotron">
           <h1 class="display-4">Welcom to Dashboard! </h1>
           <p class="lead">This web is application for manage all product Apple</p>
@@ -80,7 +83,71 @@ if (!($_SESSION['role'])) {
             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
           </p>
         </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title text-center ">Product</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
 
+          </div>
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Orders</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">User</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" id="navId">
+            <li class="nav-item">
+              <a href="#tab1Id" class="nav-link active">Active</a>
+            </li>
+            <li class="nav-item">
+              <a href="#tab5Id" class="nav-link">Another link</a>
+            </li>
+            <li class="nav-item">
+              <a href="#tab5Id" class="nav-link">Another link</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+          </div>
+
+          <script>
+            $('#navId a').click(e => {
+              e.preventDefault();
+              $(this).tab('show');
+            });
+          </script>
+        </div>
         <div class="chart-container">
           <canvas id="myChart"></canvas>
         </div>
@@ -98,7 +165,7 @@ if (!($_SESSION['role'])) {
 
 
   </div>
-  
+
   <script src="../plugins/jquery/jquery.js"></script>
   <script src="../plugins/jquery/jquery.min.js"></script>
   <script src="../plugins/canvasjs-3.7.5/canvasjs.min.js"></script>
@@ -112,45 +179,44 @@ if (!($_SESSION['role'])) {
   <script src="../dist/js/adminlte.min.js"></script>
   <script src="../dist/js/demo.js"></script>
 
-  <script>  
-  var ctx  =  document.getElementById("myChart").getContext("2d");
-  var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ["iPhone", "iPad", "Macbook", "iMac", "Apple Watch", "AirPods"],
-      datasets: [{
-        label: 'Total Product',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)', 
-          'rgba(255, 206, 86, 0.2)', 
-          'rgba(75, 192, 192, 0.2)', 
-          'rgba(153, 102, 255, 0.2)', 
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)', 
-          'rgba(54, 162, 235, 1)', 
-          'rgba(255, 206, 86, 1)', 
-          'rgba(75, 192, 192, 1)', 
-          'rgba(153, 102, 255, 1)', 
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true
+  <script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["iPhone", "iPad", "Macbook", "iMac", "Apple Watch", "AirPods"],
+        datasets: [{
+          label: 'Total Product',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-
+    });
   </script>
 
 

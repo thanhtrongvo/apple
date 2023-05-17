@@ -159,7 +159,7 @@ if(isset($_GET['id'])) {
                 <div class="decription" style="padding-bottom:5px;">
                     <h6 class="title-attr"><small>Description</small></h6>
                     <div>
-                        <p class="attr2"><?php echo  $decription?> </p>
+                        <p class="attr2"><?php echo $decription?> </p>
                     </div>
                 </div>
                 <div class="section" style="padding-bottom:20px;">
