@@ -238,6 +238,7 @@ function addFooter()
                     <li><a href="">Khôi Nguyên</a> </li>
                 </ul>
             </div>
+            
         </div>
     </div>';
 }
