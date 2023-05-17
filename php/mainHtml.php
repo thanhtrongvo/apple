@@ -1,5 +1,3 @@
-
-
 <?php
 function addHeader()
 {
@@ -88,7 +86,7 @@ function addContainer()
             </div>
             <div class="container__content-ip14--btn">
                 <button class="hide__btn">
-                    BUY
+                    <a href="product_detail.php?id=2">BUY</a>
                 </button>
             </div>
         </div>
@@ -99,7 +97,7 @@ function addContainer()
             </div>
             <div class="container__content-watch--btn">
                 <button class="hide__btn">
-                    BUY
+                <a href="product_detail.php?id=29">BUY</a>
                 </button>
             </div>
         </div>
@@ -110,7 +108,7 @@ function addContainer()
                 </div>
                 <div class="container__content-mac--btn">
                     <button class="hide__btn">
-                        BUY
+                        <a href="product_detail.php?id=12">BUY</a>
                     </button>
                 </div>
                 <div class="col col-half s-col-full">
@@ -118,7 +116,7 @@ function addContainer()
                 </div>
                 <div class="container__content-ipad--btn">
                     <button class="hide__btn">
-                        BUY
+                        <a href="product_detail.php?id=22">BUY</a>
                     </button>
                 </div>
                 <div class="clear"></div>
@@ -133,9 +131,9 @@ function addProduct()
     if (isset($_GET['category'])) {
         echo ' <div class="product">
             <div class="product__content">
-                <h1 class="product__content-heading" style="text-transform: uppercase;">all '; 
-                echo $_GET['namecate'];
-                echo '</h1>
+                <h1 class="product__content-heading" style="text-transform: uppercase;">all ';
+        echo $_GET['namecate'];
+        echo '</h1>
                 <div class="product__content-iphone">
                     <div class="home__product">
                         <ul>';
