@@ -163,6 +163,11 @@ function addProduct()
                         <ul>';
         product_home("23");
         echo '</ul>
+                        <div class="view_all">
+                            <a href="index.php?category=23&namecate=iphone">
+                                VIEW ALL
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <h1 class="product__content-heading">NEW WATCH</h1>
@@ -171,6 +176,11 @@ function addProduct()
                         <ul>';
         product_home("24");
         echo '  </ul>
+                        <div class="view_all">
+                            <a href="index.php?category=24&namecate=watch">
+                                VIEW ALL
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -180,6 +190,11 @@ function addProduct()
                         <ul>';
         product_home("18");
         echo ' </ul>
+                        <div class="view_all">
+                            <a href="index.php?category=18&namecate=ipad">
+                                VIEW ALL
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -189,6 +204,11 @@ function addProduct()
                         <ul>';
         product_home("19");
         echo '</ul>
+                        <div class="view_all">
+                            <a href="index.php?category=19&namecate=macbook">
+                                VIEW ALL
+                            </a>
+                        </div>
                     </div>
                 </div>
 

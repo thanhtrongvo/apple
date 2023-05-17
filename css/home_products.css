@@ -164,6 +164,21 @@ a {
     box-shadow: none;
 }
 
+.view_all {
+    background-color: #eee;
+    margin: auto;
+    border: 2px solid #555;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.view_all:hover {
+    background-color: #ccc;
+}
+
+.view_all a {
+    color: black;
+}
 
 /* ===== End Them Vao Gio Hang ==== */
 /* ====== End Home Product ======= */
