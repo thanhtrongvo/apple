@@ -22,6 +22,11 @@ function product_home($id)
 }
 function product_home_all($id)
 {
+    echo
+        "<script>
+        window.location.hash = '#product__content-heading';
+        </script>
+        ";
     include('database/connection.php');
     $syn = "SELECT * FROM `product` WHERE category_id = '$id'";
     $result = mysqli_query($conn, $syn);

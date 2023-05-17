@@ -139,7 +139,7 @@ function addProduct()
     if (isset($_GET['category'])) {
         echo ' <div class="product">
             <div class="product__content">
-                <h1 class="product__content-heading" style="text-transform: uppercase;">all ';
+                <h1 class="product__content-heading" id="product__content-heading" style="text-transform: uppercase;">all ';
         echo $_GET['namecate'];
         echo '</h1>
                 <div class="product__content-iphone">
