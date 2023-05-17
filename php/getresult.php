@@ -3,10 +3,14 @@ require_once('../database/connection.php');
 require_once("pagination.class.php");
 include('product.php');
 $perPage = new PerPage();
-$sql = "SELECT * from product";
+$sql = "SELECT * from product ";
 $paginationlink = "php/getresult.php?page=";	
 $pagination_setting = $_GET["pagination_setting"];
 $priceRange = $_GET["priceRange"];
+$searchInput = $_GET["searchInput"];
+if($searchInput != ""){
+	$sql = "SELECT * from product WHERE title LIKE '%".$searchInput."%'";
+}
 
 $page = 1;
 if(!empty($_GET["page"])) {
@@ -23,10 +27,13 @@ if($start < 0) $start = 0;
 
 $query =  $sql . " limit " . $start . "," . $perPage->perpage; 
 $result = mysqli_query($conn,$query);
-while($row=mysqli_fetch_assoc($result)) {
-	$product[] = $row;
-}
 
+if($row=mysqli_fetch_assoc($result)){
+	$product[] = $row;
+while($row=mysqli_fetch_assoc($result)){
+	$product[] = $row;
+
+}
 if($pagination_setting == "prev-next") {
 	$perpageresult = $perPage->getPrevNext($_GET["rowcount"], $paginationlink,$pagination_setting);	
 } else {
@@ -40,5 +47,6 @@ if(!empty($perpageresult)) {
 $output .= '<div id="pagination">' . $perpageresult . '</div>';
 }
 print $output;
-
+}
+else print "false";
 ?>

@@ -5,7 +5,7 @@ include('php/signin.php');
 include("php/cart.php");
 include('php/product.php');
 include('php/logout.php');
-include('php/mainHtml.php')
+include('php/mainHtml.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -28,15 +28,36 @@ ob_start();
         $name = $_POST['name'];
         $price = $_POST['price'];
         $image = $_POST['image'];
+        echo $id;
+        echo $name;
+        echo $price;
+        echo $image;
+        if(isset($_POST['quantity'])){
+            $quantity = $_POST['quantity'];
+        }
+        echo $quantity;
         if(isset($_SESSION['cart']['total'])){
-            $_SESSION['cart']['total'] += $price;
+            $price = (float)$price;
+            if($quantity > 0)
+                $_SESSION['cart']['total'] += bcmul($price,$quantity);
+            else
+                $_SESSION['cart']['total'] += $price;
         } else{
-            $_SESSION['cart']['total'] = $price;
+            if($quantity > 0)
+                $_SESSION['cart']['total'] = bcmul((float)$price,$quantity);
+            else
+                $_SESSION['cart']['total'] = $price;
         }
         if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id]['quantity']++;
+            if($quantity > 0)
+                $_SESSION['cart'][$id]['quantity'] += $quantity;
+            else
+                $_SESSION['cart'][$id]['quantity']++;
         } else {
-            $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
+            if($quantity > 0)
+                $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => $quantity);
+            else
+                $_SESSION['cart'][$id] = array('name' => $name, 'price' => $price, 'image' => $image, 'quantity' => 1);
         }
     }
 

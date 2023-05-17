@@ -106,6 +106,11 @@ include('php/mainHtml.php')
         .home__product--info{
             width: 21%;
         }
+        .header__navbar-item form{
+            display:none;
+        }
+        .searchbar{
+        }
     </style>
 
 </head>
@@ -116,14 +121,21 @@ include('php/mainHtml.php')
         <div class="product">
             <h1 class="product__content-heading">Product</h1>
             <div class="product_leftmenu">
-            <select class="list-group" id="price-range">
-                <option class="list-group-item" value="0">Pick</option>
-                <option class="list-group-item" value="1">1.000.000đ - 10.000.000đ</option>
-                <option class="list-group-item" value="2">10.000.000đ - 20.000.000đ</option>
-                <option class="list-group-item" value="3">20.000.000đ - 30.000.000đ</option>
-                <option class="list-group-item" value="4">30.000.000đ - 40.000.000đ</option>
-                <option class="list-group-item" value="5">40.000.000đ - 50.000.000đ</option>
-    </select>
+                <select class="list-group" id="price-range">
+                    <option class="list-group-item" value="0">Pick</option>
+                    <option class="list-group-item" value="1">1.000.000đ - 10.000.000đ</option>
+                    <option class="list-group-item" value="2">10.000.000đ - 20.000.000đ</option>
+                    <option class="list-group-item" value="3">20.000.000đ - 30.000.000đ</option>
+                    <option class="list-group-item" value="4">30.000.000đ - 40.000.000đ</option>
+                    <option class="list-group-item" value="5">40.000.000đ - 50.000.000đ</option>
+                 </select>
+                 <div class="searchbar">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm..."></input>
+                    <button  name="search" onclick="search()">
+                        <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
+                    </button>
+                    
+                </div>
             </div>
             <div class="product__content">
                 <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>
@@ -161,13 +173,16 @@ function getresult(url) {
 	$.ajax({
 		url: url,
 		type: "GET",
-		data:  {rowcount:$("#rowcount").val(),"pagination_setting":$("#pagination-setting").val(),"priceRange":$("#price-range").val()},
+		data:  {rowcount:$("#rowcount").val(),"pagination_setting":$("#pagination-setting").val(),"priceRange":$("#price-range").val(),"searchInput":$('#searchInput').val()},
 		beforeSend: function(){$("#overlay").show();},
 		success: function(data){
-            console.log(data);
-            $("#pagination-result").html(data);
-            setInterval(function() {
+            if(data != "false"){
+                $("#pagination-result").html(data);
+                setInterval(function() {
                 $("#overlay").hide(); },500);
+            } else {
+                $("#pagination-result").html("Khong co du lieu");
+            }
 		},
 		error: function() 
 		{} 	        
@@ -175,6 +190,11 @@ function getresult(url) {
 }
 function changePagination(option) {
 	if(option!= "") {
+		getresult("php/getresult.php");
+	}
+}
+function search(){
+    if($('#searchInput').val() != "") {
 		getresult("php/getresult.php");
 	}
 }

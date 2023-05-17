@@ -162,20 +162,27 @@ if(isset($_GET['id'])) {
                         <p class="attr2"><?php echo $decription?> </p>
                     </div>
                 </div>
+                <form class="form_add" method="post">
                 <div class="section" style="padding-bottom:20px;">
                     <h6 class="title-attr"><small>Quantity</small></h6>
                     <div>
                         <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
-                        <input value="1" />
+                        <input name="quantity" value="1" />
                         <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
                     </div>
                 </div>
-
+                <?php 
+                echo 
+                '<input type="hidden" name="name" value="'.$title.'">
+                <input type="hidden" name="id" value="'.$id.'">
+                <input type="hidden" name="price" value="'.$price.'">
+                <input type="hidden" name="image" value="'.$thumbnail.'">'
+                ?>
                 <div class="section" style="padding-bottom:20px;">
-                    <button style="background-color:#000;margin-left: -2px;" class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart </button>
+                    <button style="background-color:#000;margin-left: -2px;" class="btn btn-success"  type="submit" name="add_to_cart" value="addToCart"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart </button>
                 </div>
+                </form>
             </div>
-
             <div class="col">
                 <div style="width:100%;border-top:1px solid silver">
                     <p style="padding:15px;">
@@ -246,8 +253,29 @@ if(isset($_GET['id'])) {
                     $(".section > div > input").val("1");
                 }
             })
-        })
+        });
+        
+        //Add to cart
+        $(document).ready(function() {
+        $('.form_add').on('submit', function(e) {
+            e.preventDefault();
+            var id = $(this).find('input[name="id"]').val();
+            var name = $(this).find('input[name="name"]').val();
+            var price = $(this).find('input[name="price"]').val();
+            var image = $(this).find('input[name="image"]').val();
+            var quantity = $(this).find('input[name="quantity"]').val();
+            $.ajax({  
+            url: 'php/cart-process.php',
+            method: 'POST',
+            data: {id: id, name: name, price: price, image: image, quantity: quantity},
+            success: function(){
+                alert('Product has been added to cart');
+            }
+            });
+        });
+        });
     </script>
 </body>
+<script src="js/cart.js"></script> 
 
 </html>
