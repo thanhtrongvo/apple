@@ -33,7 +33,7 @@ function addHeader()
                                 </li>
                                 <li class="header__navbar-item">
                                     <form action="search.php" method="post" class="header__navbar-airpot">
-                                    <button type="submit" name="searchInput"value="Airpots" >Airpots</button>
+                                    <button type="submit" name="searchInput"value="Airpots" >Airpods</button>
                                     </form>
                                 </li>
                                 <li class="header__navbar-item">
