@@ -22,6 +22,7 @@ if (!($_SESSION['role'])) {
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../plugins/canvasjs-3.7.5/canvasjs.angular.component.ts">
+  <script src="../plugins/daterangepicker/daterangepicker.css"></script>
   <style>
     .chart-container {
       position: relative;
@@ -81,8 +82,7 @@ if (!($_SESSION['role'])) {
         </div>
 
         <div class="chart-container">
-          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-
+          <canvas id="myChart"></canvas>
         </div>
       </section>
       <!-- /.content -->
@@ -104,141 +104,53 @@ if (!($_SESSION['role'])) {
   <script src="../plugins/canvasjs-3.7.5/canvasjs.min.js"></script>
   <script src="../plugins/canvasjs-3.7.5/jquery.canvasjs.min.js"></script>
   <script src="../plugins/chart.js/Chart.js"></script>
+  <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="../plugins/moment/moment.min.js"></script>
 
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script src="../dist/js/adminlte.min.js"></script>
   <script src="../dist/js/demo.js"></script>
 
-  <script>
-    $(document).ready(function() {
-      showChartOrder();
-    });
-
-    function showChartOrder() {
-      $.post("data/order.php", function(data) {
-        var lable = [];
-        var result = [];
-        for (var i in data) {
-          lable.push(data[i].order_date);
-          result.push(data[i].total_money);
+  <script>  
+  var ctx  =  document.getElementById("myChart").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["iPhone", "iPad", "Macbook", "iMac", "Apple Watch", "AirPods"],
+      datasets: [{
+        label: 'Total Product',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)', 
+          'rgba(255, 206, 86, 0.2)', 
+          'rgba(75, 192, 192, 0.2)', 
+          'rgba(153, 102, 255, 0.2)', 
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)', 
+          'rgba(54, 162, 235, 1)', 
+          'rgba(255, 206, 86, 1)', 
+          'rgba(75, 192, 192, 1)', 
+          'rgba(153, 102, 255, 1)', 
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
         }
-        var pie = $("#chart-order");
-        var chartdata = new Chart(pie, {
-          type: 'pie',
-          data: {
-            labels: lable,
-            datasets: [{
-              label: 'Money of Order',
-              borderColor: ["rgba(217, 83, 79,1)", "rgba(240, 173, 78, 1)", "rgba(92, 184, 92, 1)"],
-              backgroundColor: ["rgba(217, 83, 79,0.2)", "rgba(240, 173, 78, 0.2)", "rgba(92, 184, 92, 0.2)"],
-            }],
-          },
-          option: {
-            title: {
-              display: true,
-              text: 'Chart Order'
-            }
-          }
-        });
-      })
+      }
     }
-    // $(document).ready(function() {
-    //   $.ajax({
-    //     url: 'chart.php',
-    //     method: 'GET',
-    //     success: function(data) {
-    //       console.log(data);
-    //       var month = [];
-    //       var order = [];
+  });
 
-    //       for (var i in data) {
-    //         month.push(data[i].month);
-    //         order.push(data[i].order);
-    //       }
-
-    //       var chartdata = {
-    //         labels: month,
-    //         datasets: [{
-    //           label: 'Number of Order',
-    //           backgroundColor: '#49e2ff',
-    //           borderColor: '#46d5f1',
-    //           hoverBackgroundColor: '#CCCCCC',
-    //           hoverBorderColor: '#666666',
-    //           data: order
-    //         }]
-    //       };
-
-    //       var ctx = $("#chart-order");
-
-    //       var barGraph = new Chart(ctx, {
-    //         type: 'bar',
-    //         data: chartdata
-    //       });
-    //     },
-    //     error: function(data) {
-    //       console.log(data);
-    //     }
-    //   });
-    // });
-  </script>
-  <script>
-    window.onload = function() {
-
-      var options = {
-        title: {
-          text: "Desktop OS Market Share in 2017"
-        },
-        subtitles: [{
-          text: "As of November, 2017"
-        }],
-        animationEnabled: true,
-        data: [{
-          type: "pie",
-          startAngle: 40,
-          toolTipContent: "<b>{label}</b>: {y}%",
-          showInLegend: "true",
-          legendText: "{label}",
-          indexLabelFontSize: 16,
-          indexLabel: "{label} - {y}%",
-          dataPoints: [{
-              y: 48.36,
-              label: "Windows 7"
-            },
-            {
-              y: 26.85,
-              label: "Windows 10"
-            },
-            {
-              y: 1.49,
-              label: "Windows 8"
-            },
-            {
-              y: 6.98,
-              label: "Windows XP"
-            },
-            {
-              y: 6.53,
-              label: "Windows 8.1"
-            },
-            {
-              y: 2.45,
-              label: "Linux"
-            },
-            {
-              y: 3.32,
-              label: "Mac OS X 10.12"
-            },
-            {
-              y: 4.03,
-              label: "Others"
-            }
-          ]
-        }]
-      };
-      $("#chartContainer").CanvasJSChart(options);
-
-    }
   </script>
 
 

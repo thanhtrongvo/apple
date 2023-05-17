@@ -6,7 +6,20 @@ include('php/signin.php');
 include("php/cart.php");
 include('php/product.php');
 include('php/logout.php');
-include('php/mainHtml.php')
+include('php/mainHtml.php');
+
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM product WHERE id = $id";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result);
+    $title = $row['title'];
+    $price = $row['price'];
+    $thumbnail = $row['thumbnail'];
+    $decription = $row['decription'];
+    $option = $row['option'];
+    $category_id = $row['category_id'];
+}
 
 
 ?>
@@ -116,29 +129,27 @@ include('php/mainHtml.php')
         </h1>
         <div class="container__detail--product">
             <div class="container__detail--product-photo col col-half s-col-full">
-                <img style="max-width:100%;" src="img/iPhone-14-blue-1.jpg" />
+                <img style="max-width:100%;" src="<?php echo $thumbnail ?>" />
             </div>
             <div class="container__detail--product-dec col col-half s-col-full" style="border:0px solid gray">
-                <h3>iPhone 13 256 GB Blue</h3>
-                <h5 style="color:#337ab7">vendido por <a href="#">Apple</a> · <small style="color:#337ab7">(5054 ventas)</small></h5>
+                <h3><?php echo $title ?></h3>
+                <h5 style="color:#337ab7">sale by <a href="apple.com">Apple</a> · <small style="color:#337ab7">(5054 ventas)</small></h5>
 
                 <!-- Precios -->
                 
                 <h6 class="title-price"><small>Price</small></h6>
-                <h3 style="margin-top:0px;">USD 1000 $</h3>
+                <h3 style="margin-top:0px;"><?php echo $price ?>$</h3>
 
                 <div class="section" style="padding-bottom:5px;">
                     <h6 class="title-attr"><small>Option</small></h6>
                     <div>
-                        <p class="attr2">256 GB</p>
+                        <p class="attr2"><?php echo $option ?></p>
                     </div>
                 </div>
                 <div class="decription" style="padding-bottom:5px;">
-                    <h6 class="title-attr"><small>Decription</small></h6>
+                    <h6 class="title-attr"><small>Description</small></h6>
                     <div>
-                        <p class="attr2">Apple still uses the A15 Bionic chip, 
-                            but it has upgraded 1 GPU core, for a total of 5 cores and for superior graphics processing performance.
-                            Perhaps the performance of the iPhone 14 series will not be much different from the iPhone 13 series.</p>
+                        <p class="attr2"><?php echo  $decription?> </p>
                     </div>
                 </div>
                 <div class="section" style="padding-bottom:20px;">

@@ -22,7 +22,7 @@ function product_home($id){
 function innerProduct($img, $title, $price, $id){
     echo
             '<li class="home__product--info">
-            <a href="">
+            <a href="product_detail.php?id='.$id.'">
                 <img src="'.$img.'" />
                 <h3>'.$title.'</h3>
                 <span class="price">'.number_format("$price",0,".",".").'<u>đ</u></span>
