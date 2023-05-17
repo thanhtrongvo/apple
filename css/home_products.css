@@ -102,7 +102,7 @@ a {
 
 .tooltip {
     position: absolute;
-    display: inline-block;
+    display: block;
     bottom: 5px;
     right: 5px;
 }
