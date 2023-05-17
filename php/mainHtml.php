@@ -17,15 +17,6 @@ function addHeader()
                                     <a href="index.php?category=19&namecate=macbook" class="header__navbar-mac">
                                         Mac
                                     </a>
-                                    <!-- <div class="header__subnav">
-                                        <ul class="header__subnav-mac">
-                                            <li><p>Explore Mac</p></li>
-                                            <li><a href="">MacBook Air</a></li>
-                                            <li><a href="">MacBook Pro</a></li>
-                                            <li><a href="">iMac</a></li>
-                                            <li><a href="">Mac Mini</a></li>
-                                        </ul>
-                                    </div> -->
                                 </li>
                                 <li class="header__navbar-item">
                                     <a href="index.php?category=18&namecate=ipad" class="header__navbar-ipad">
@@ -165,7 +156,7 @@ function addProduct()
         echo '</ul>
                         <div class="view_all">
                             <a href="index.php?category=23&namecate=iphone">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
@@ -178,7 +169,7 @@ function addProduct()
         echo '  </ul>
                         <div class="view_all">
                             <a href="index.php?category=24&namecate=watch">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
@@ -192,7 +183,7 @@ function addProduct()
         echo ' </ul>
                         <div class="view_all">
                             <a href="index.php?category=18&namecate=ipad">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
@@ -206,7 +197,7 @@ function addProduct()
         echo '</ul>
                         <div class="view_all">
                             <a href="index.php?category=19&namecate=macbook">
-                                VIEW ALL
+                                View all
                             </a>
                         </div>
                     </div>
