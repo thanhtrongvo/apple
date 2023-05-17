@@ -8,20 +8,41 @@ if (isset($_POST['submit'])) {
     $option = $_POST['option'];
     $status = $_POST['status'];
     $cate = $_POST['category_id'];
-    $nameErr = $emailErr = $passwordErr = $phoneErr = $statusErr = $roleErr =$imageErr= "";
+    $nameErr = $priceErr = $emailErr = $optionErr = $statusErr = $decriptionErr =$imageErr= "";
+    // Validate form data
+    if (empty($title)) {
+        $nameErr = "Name is required";
+    }
+    if (empty($status)) {
+        $statusErr = "Status is required";
+    }
+    if (empty($option)) {
+        $optionErr = "Option is required";
+    }
+    
+    if (is_numeric($title)) {
+        $nameErr = "Name is invalid";
+    }
+    if (!is_numeric($price) == false) {
+        $emailErr = "Price is invalid";
+    }
+
     $target_dir = "../img/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if ($check !== false) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $finalpath = str_replace("../", "", $target_file);
-            $sql = "INSERT INTO Product (category_id,title,price,thumbnail,decription,option,status) VALUES ('$cate','$title','$price','$finalpath','$decription','$option','$status')";
-            if (mysqli_query($conn, $sql)) {
-                echo "<script>alert('Add product successfully')</script>";
-                header('location:all_product.php');
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            if(empty($nameErr) && empty($priceErr) && empty($optionErr) && empty($imageErr)){ //
+                $finalpath = str_replace("../", "", $target_file);
+                $sql = "INSERT INTO Product (category_id,title,price,thumbnail,decription,option,status) VALUES ('$cate','$title','$price','$finalpath','$decription','$option','$status')";
+                if (mysqli_query($conn, $sql)) {
+                    echo "<script>alert('Add product successfully')</script>";
+                    header('location:all_product.php');
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+            
             }
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -87,10 +108,20 @@ if (isset($_POST['submit'])) {
                             <div class="col">
                                 <label for="title">Name</label>
                                 <input name="title" type="text" class="form-control" placeholder="">
+                                <?php
+                                if (isset($nameErr)) {
+                                    echo "<span class='text-danger'> $nameErr </span>";
+                                }
+                                ?>
                             </div>
                             <div class="col">
                                 <label for="">Price</label>
                                 <input name="price" type="text" class="form-control" placeholder="">
+                                <?php
+                                if (isset($priceErr)) {
+                                    echo "<span class='text-danger'> $priceErr </span>";
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -108,7 +139,21 @@ if (isset($_POST['submit'])) {
                             </select>
                         </div>
                         <div class="col">
+                                <label for="">Option</label>
+                                <input value="" name="option" type="text" class="form-control" placeholder="">
+                                <?php
+                                if (isset($optionErr)) {
+                                    echo "<span class='text-danger'> $optionErr </span>";
+                                }
+                                ?>
+                            </div>
+                        <div class="col">
                             <input name="image" type="file">
+                            <?php
+                                if (isset($imageErr)) {
+                                    echo "<span class='text-danger'> $imageErr </span>";
+                                }
+                                ?>
                         </div>
                     </div>
                     <div class="row col-md-12 col-sm-12 x_content">

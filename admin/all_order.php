@@ -71,7 +71,7 @@ include_once('../database/connection.php');
                             <th>Phone Number</th>
                             <th>Address</th>
                             <th>Order Date</th>
-                            <th>Note</th>
+                            <th>Status</th>
                             <th class='text-right'>Action</th>
                         </tr>
                     </thead>
@@ -98,7 +98,13 @@ include_once('../database/connection.php');
                                     echo "<td>" . $row['phone_number'] . "</td>";
                                     echo "<td>" . $row['address'] . "</td>";
                                     echo "<td>" . $row['order_date'] . "</td>";
-                                    echo "<td>" . $row['note'] . "</td>";
+                                    if ($row['status'] == 0) {
+                                        echo "<td><a href='all_order.php?action=process&id=" . $row['id'] . "'";
+                                        
+                                        echo " onclick='return confirm(\"Are you sure process order?\");' class='badge badge-danger'>Unprocessed </a></td>";
+                                      } elseif ($row['status'] == 1) {
+                                        echo "<td><span class='badge badge-success'>Processing </span>";
+                                      }
                                     echo "<td class='text-right'>";
                                     echo "<a  id='".$row['id']. "'  class='show-detail btn btn-sm btn-success '>
                          <span style='color:#fff;'> Show Detail </span>
@@ -116,6 +122,15 @@ include_once('../database/connection.php');
                                 if ($result) {
                                     echo "<script>alert('Product Deleted Successfully')</script>";
                                     echo "<script>window.location.href='all_product.php'</script>";
+                                }
+                            }
+                            if(isset($_GET['action'])== 'process') {
+                                $id = $_GET['id'];
+                                $sql = "UPDATE orders SET status = 1 WHERE id = " . $id . "";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result) {
+                                    echo "<script>alert('Order Processed Successfully')</script>";
+                                    echo "<script>window.location.href='all_order.php'</script>";
                                 }
                             }
                             ?>
