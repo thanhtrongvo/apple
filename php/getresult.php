@@ -87,5 +87,5 @@ $output .= '<div id="pagination">' . $perpageresult . '</div>';
 }
 print $output;
 }
-else print "false";
+else print "No result";
 ?>

@@ -138,25 +138,7 @@ include('php/mainHtml.php')
         <div class="product">
             <h1 class="product__content-heading">Result</h1>
             <div class="product_leftmenu">
-                <select class="list-group" id="price-range">
-                    <option class="list-group-item" value="0">Pick</option>
-                    <option class="list-group-item" value="1">&#60;500$</option>
-                    <option class="list-group-item" value="2">500$ - 1000$</option>
-                    <option class="list-group-item" value="3">1000$ - 1500$</option>
-                    <option class="list-group-item" value="4">1500$ - 2000$</option>
-                    <option class="list-group-item" value="5">2000$ - 3000$</option>
-                 </select>
-
-                 <select class="list-group" id="price-range">
-                    <option class="list-group-item" value="0">Pick</option>
-                    <option class="list-group-item" value="1">Ipad</option>
-                    <option class="list-group-item" value="2">Macbook</option>
-                    <option class="list-group-item" value="3">Airpod</option>
-                    <option class="list-group-item" value="4">Iphone</option>
-                    <option class="list-group-item" value="5">Watch</option>
-                 </select>
-
-                 <div class="searchbar">
+                <div class="searchbar">
                     <?php 
                         if(isset($_POST['searchInput']))
                             echo '<input type="text" id="searchInput" placeholder="Tìm kiếm..." value="'.$searchInput.'"></input>';
@@ -168,6 +150,23 @@ include('php/mainHtml.php')
                     </button>
                     
                 </div>
+                <select class="list-group" id="price-range">
+                    <option class="list-group-item" value="0">Filter by price</option>
+                    <option class="list-group-item" value="1">&#60;500$</option>
+                    <option class="list-group-item" value="2">500$ - 1000$</option>
+                    <option class="list-group-item" value="3">1000$ - 1500$</option>
+                    <option class="list-group-item" value="4">1500$ - 2000$</option>
+                    <option class="list-group-item" value="5">2000$ - 3000$</option>
+                 </select>
+
+                 <select class="list-group" id="price-range">
+                    <option class="list-group-item" value="0">Filter by product</option>
+                    <option class="list-group-item" value="1">Ipad</option>
+                    <option class="list-group-item" value="2">Macbook</option>
+                    <option class="list-group-item" value="3">Airpod</option>
+                    <option class="list-group-item" value="4">Iphone</option>
+                    <option class="list-group-item" value="5">Watch</option>
+                 </select>
             </div>
             <div class="product__content">
                 <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>
@@ -213,7 +212,7 @@ function getresult(url) {
                 setInterval(function() {
                 $("#overlay").hide(); },500);
             } else {
-                $("#pagination-result").html("Khong co du lieu");
+                $("#pagination-result").html("No data");
             }
 		},
 		error: function() 
