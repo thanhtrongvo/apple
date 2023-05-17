@@ -28,16 +28,16 @@ include('php/mainHtml.php')
     <style>
         .product{
             margin-top:5vh;
-            height: 100vh;
+            height: 120vh;
         }
         .product_leftmenu{
-            align:center;
             width:15%;
             float:left;
-            height:65vh;
+            height:100%;
             border:1px black solid;
             box-sizing: border-box;
             font-size:15pt;
+            background-color: #868686;
         }
         .product__content{
             position:relative;
@@ -103,6 +103,8 @@ include('php/mainHtml.php')
             width: 100%;
             height: 30px;
             margin-top:20px ;
+            margin-bottom:20px ;
+
         }
         .home__product--info{
             width: 20%;
@@ -114,11 +116,15 @@ include('php/mainHtml.php')
 
         }
         .searchbar input{
+            background-color: white;
             width: 100%;
+            margin-top: 20px;
         }
         .searchbar button{
+            margin-top: 10px;
+
             width: 100%;
-            background-color: #868686;
+            background-color: white;
         }
         .searchbar button:hover{
             opacity: 0.7;
