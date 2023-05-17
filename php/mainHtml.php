@@ -1,4 +1,5 @@
 
+
 <?php
 function addHeader()
 {
@@ -312,5 +313,3 @@ function addLoader()
     </div>
             ';
 }
-
-
