@@ -77,10 +77,9 @@ function addHeader()
                                 </li>
                                 <li class="header__navbar-item ">
                                     <form method="POST" action="search.php">
-                                    <input type="text" name="searchInput" placeholder="Tìm kiếm..."></input>
-                                    <button type="submit" name="search" >
-                                        <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
-                                    </button>
+                                    <div class="search-box">
+                                        <input type="text" name="searchInput"></input>
+                                        <span></span>
                                     </form>
                                 </li>
                             </ul>

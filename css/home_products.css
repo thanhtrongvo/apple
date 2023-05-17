@@ -16,7 +16,7 @@
 .home__product--info {
     display: block;
     position: relative;
-    margin-left: 4%;
+    margin-left: 5%;
     margin-top: 15px;
     width: 265px;
     height: 400px;
@@ -41,7 +41,7 @@ a {
 
 .home__product--info a .price {
     display: block;
-    font-size: 15px;
+    font-size: 20px;
     text-align: center;
     color: #222;
 }
