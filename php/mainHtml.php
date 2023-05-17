@@ -13,7 +13,7 @@ function addHeader()
                                 </li>
                                 <li class="header__navbar-item">
                                     <form action="search.php" method="post" class="header__navbar-mac">
-                                    <button type="submit" name="searchInput"value="Mac" >Mac</button>
+                                    <button type="text" name="searchInput"value="Mac" >Mac</button>
                                     </form>
                                 </li>
                                 <li class="header__navbar-item">
