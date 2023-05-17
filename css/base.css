@@ -136,9 +136,10 @@ html{
 }
 .col{
     float: left;
-    padding-left: 16px;
-    padding-right: 0px;
 }
 .col-half{
     width: 50%;
+}
+.clear{
+    clear: both;
 }

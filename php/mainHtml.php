@@ -111,28 +111,21 @@ function addContainer()
                 </button>
             </div>
         </div>
-        <div class="row container__content-last">
-            <div class="container__content-mac col col-half s-col-full">
-                <div class="container__content-mac--photo">
-                    <img src="img/AdMac.png" alt="">
+        <div class="container__content-last">
+            <div class="row place-list">
+                <div class="col col-half s-col-full">
+                    <img src="img/AdMac.png" alt="Mac" class="place-img">                    
                 </div>
                 <div class="container__content-mac--btn">
                     <button class="hide__btn">
                         BUY
                     </button>
                 </div>
-            </div>
-            <div class="container__content-ipad col col-half s-col-full">
-                <div class="container__content-ipad--photo">
-                    <img src="img/AdIpad.png" alt="">
+                <div class="col col-half s-col-full">
+                    <img src="img/AdIpad.png" alt="Ipad" class="place-img">                    
                 </div>
-                <div class="container__content-ipad--btn">
-                    <button class="hide__btn">
-                        BUY
-                    </button>
-                </div>
+                <div class="clear"></div>
             </div>
-
         </div>
     </div>
 ';
