@@ -133,7 +133,7 @@ if(isset($_GET['id'])) {
             </div>
             <div class="container__detail--product-dec col col-half s-col-full" style="border:0px solid gray">
                 <h3><?php echo $title ?></h3>
-                <h5 style="color:#337ab7">sale by <a href="apple.com">Apple</a> · <small style="color:#337ab7">(5054 ventas)</small></h5>
+                <h5 style="color:#337ab7">sale by <a href="index.php">Apple</a> · <small style="color:#337ab7">(5054 ventas)</small></h5>
 
                 <!-- Precios -->
                 

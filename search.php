@@ -9,7 +9,6 @@ include('php/mainHtml.php')
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -106,9 +105,9 @@ include('php/mainHtml.php')
             margin-top:20px ;
         }
         .home__product--info{
-            width: 21%;
+            width: 20%;
         }
-        .header__navbar-item form{
+        .header__navbar-item:last-child {
             display:none;
         }
         .searchbar{
@@ -126,28 +125,39 @@ include('php/mainHtml.php')
         }
     </style>
 
-</head>
+</head> 
 
 <body>
+    <?php 
+        if(isset($_POST['searchInput'])){
+            $searchInput = $_POST['searchInput'];
+        }
+    ?>
     <div class="app">
         <?php addHeader(); ?>
         <div class="product">
             <h1 class="product__content-heading">Result</h1>
             <div class="product_leftmenu">
-                <div class="searchbar">
-                   <input type="text" id="searchInput" placeholder="Search..."></input>
-                   <button  name="search" onclick="search()">
-                       <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
-                   </button>
-               </div>
                 <select class="list-group" id="price-range">
-                    <option class="list-group-item" value="0">Filter by price</option>
-                    <option class="list-group-item" value="1">100$ - 500$</option>
-                    <option class="list-group-item" value="2">500$ - 1.000$</option>
-                    <option class="list-group-item" value="3">1.000$ - 1.500$</option>
-                    <option class="list-group-item" value="4">1.500$ - 2.000$</option>
-                    <option class="list-group-item" value="5">2.000$ - 5.000$</option>
+                    <option class="list-group-item" value="0">Pick</option>
+                    <option class="list-group-item" value="1">&#60;500$</option>
+                    <option class="list-group-item" value="2">500$ - 1000$</option>
+                    <option class="list-group-item" value="3">1000$ - 1500$</option>
+                    <option class="list-group-item" value="4">1500$ - 2000$</option>
+                    <option class="list-group-item" value="5">2000$ - 3000$</option>
                  </select>
+                 <div class="searchbar">
+                    <?php 
+                        if(isset($_POST['searchInput']))
+                            echo '<input type="text" id="searchInput" placeholder="Tìm kiếm..." value="'.$searchInput.'"></input>';
+                        else
+                            echo '<input type="text" id="searchInput" placeholder="Tìm kiếm..."></input>';
+                    ?>
+                    <button  name="search" onclick="getresult()">
+                        <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
+                    </button>
+                    
+                </div>
             </div>
             <div class="product__content">
                 <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>
