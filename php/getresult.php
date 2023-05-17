@@ -63,7 +63,7 @@ $_GET["rowcount"] = mysqli_num_rows($num);
 $start = ($page-1)*$perPage->perpage;
 if($start < 0) $start = 0;
 
-$query =  $sql . " limit " . $start . "," . $perPage->perpage; 
+$query =  $sql . " limit " . $start . "," . $perPage->perpage;
 $result = mysqli_query($conn,$sql);
 
 if($row=mysqli_fetch_assoc($result)){
