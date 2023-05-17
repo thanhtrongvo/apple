@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   $('.form_item').on('submit', function(e) {
     e.preventDefault();

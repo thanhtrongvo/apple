@@ -12,29 +12,29 @@ function addHeader()
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <form action="search.php" method="post" class="header__navbar-mac">
-                                    <button type="text" name="searchInput"value="Mac" >Mac</button>
-                                    </form>
+                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-mac">
+                                        Mac
+                                    </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <form action="search.php" method="post" class="header__navbar-ipad">
-                                    <button type="submit" name="searchInput"value="Ipad" >IPad</button>
-                                    </form>
+                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-ipad">
+                                        IPad
+                                    </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <form action="search.php" method="post" class="header__navbar-iphone">
-                                    <button type="submit" name="searchInput"value="IPhone" >IPhone</button>
-                                    </form>
+                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-iphone">
+                                        IPhone
+                                    </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <form action="search.php" method="post" class="header__navbar-watch">
-                                    <button type="submit" name="searchInput"value="Watch" >Watch</button>
-                                    </form>
+                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-watch">
+                                        Watch
+                                    </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <form action="search.php" method="post" class="header__navbar-airpot">
-                                    <button type="submit" name="searchInput"value="Airpots" >Airpods</button>
-                                    </form>
+                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-airpods">
+                                        Airpods
+                                    </a>
                                 </li>
                                 <li class="header__navbar-item">
                                     <a href="admin/logout.php" class="header__navbar-support">

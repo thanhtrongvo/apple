@@ -49,7 +49,6 @@ function console_log($output, $with_script_tag = true){
 	}
 	echo $jscode;
 }
-console_log($searchInput);
 console_log($sql);
 $page = 1;
 if(!empty($_GET["page"])) {
@@ -65,7 +64,7 @@ $start = ($page-1)*$perPage->perpage;
 if($start < 0) $start = 0;
 
 $query =  $sql . " limit " . $start . "," . $perPage->perpage; 
-$result = mysqli_query($conn,$query);
+$result = mysqli_query($conn,$sql);
 
 if($row=mysqli_fetch_assoc($result)){
 	$product[] = $row;

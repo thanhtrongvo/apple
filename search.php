@@ -22,8 +22,17 @@ include('php/mainHtml.php')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.css">
+    <script src="plugins/jquery/jquery.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="plugins/jquery/jquery.js"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/jquery-validation/jquery.validate.js"></script>
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <style>
         .product{
@@ -62,7 +71,7 @@ include('php/mainHtml.php')
             border-left:0px;
             cursor:pointer;
             color:#607d8b}
-        .disabled {
+        .disabled { 
             cursor:not-allowed;
             color: #bccfd8;}
         .current {
@@ -151,7 +160,7 @@ include('php/mainHtml.php')
                         else
                             echo '<input type="text" id="searchInput" placeholder="Tìm kiếm..."></input>';
                     ?>
-                    <button  name="search" onclick="getresult()">
+                    <button  name="search" onclick="search()">
                         <i class="header__navbar-item-logo--smaller header__navbar-item-logo fa-solid fa-magnifying-glass"></i>    
                     </button>
                     
@@ -165,7 +174,7 @@ include('php/mainHtml.php')
                     <option class="list-group-item" value="5">2000$ - 3000$</option>
                  </select>
 
-                 <select class="list-group" id="price-range">
+                 <select class="list-group" id="Cate">
                     <option class="list-group-item" value="0">Filter by product</option>
                     <option class="list-group-item" value="1">Ipad</option>
                     <option class="list-group-item" value="2">Macbook</option>
@@ -175,7 +184,6 @@ include('php/mainHtml.php')
                  </select>
             </div>
             <div class="product__content">
-                <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>
                 <div class="page-content">
                     <div style="border-bottom: #F0F0F0 1px solid;margin-bottom: 15px; display:none">
                     Pagination Setting:<br> <select name="pagination-setting" onChange="changePagination(this.value);" class="pagination-setting" id="pagination-setting">
@@ -184,8 +192,29 @@ include('php/mainHtml.php')
                     </select>
                     </div>
                     
-                    <div id="pagination-result">
-                    <input type="hidden" name="rowcount" id="rowcount" />
+                    <div class="home__product" >
+                        <div id="pagination-result">
+                        <li class="home__product--info">
+            <a href="product_detail.php?id='.$id.'">
+                <img src="' . $img . '" />
+                <h3>' . $title . '</h3>
+                <span class="price">' . number_format("$price", 0, ".", ".") . '<u>$</u></span>
+            </a>
+            <form class="form_item" >
+                <input type="hidden" name="name" value="' . $title . '">
+                <input type="hidden" name="id" value="' . $id . '">
+                <input type="hidden" name="price" value="' . $price . '">
+                <input type="hidden" name="image" value="' . $img . '">
+                <div class="tooltip">
+                    <button class="themvaogio" type="button" name="add_to_cart" value="addToCart">
+                        <span class="tooltiptext" style="font-size: 15px;">add to cart</span>
+                        +
+                    </button>
+                </div>
+            </form>
+            </li>
+                        <input type="hidden" name="rowcount" id="rowcount" />
+                        </div>
                     </div>
                 </div>
                 
@@ -197,15 +226,10 @@ include('php/mainHtml.php')
         addInfoModal();
         ?>
     </div>
+    <div id="overlay"><div><img src="video\loading.gif" width="64px" height="64px"/></div></div>
 </body>
-<script src="js/login.js"> </script>
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-<script src="plugins/jquery/jquery.js"></script>
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/validate.js"></script>
 <script>
+
 function getresult(url) {
 	$.ajax({
 		url: url,
@@ -222,7 +246,7 @@ function getresult(url) {
             }
 		},
 		error: function() 
-		{} 	        
+		{}
    });
 }
 function changePagination(option) {
@@ -231,12 +255,18 @@ function changePagination(option) {
 	}
 }
 function search(){
-    if($('#searchInput').val() != "") {
 		getresult("php/getresult.php");
-	}
 }
 getresult("php/getresult.php");
-
 </script>
+<script src="plugins/jquery/jquery.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery-validation/jquery.validate.js"></script>
+
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/login.js"> </script>    
+
 
 </html>
