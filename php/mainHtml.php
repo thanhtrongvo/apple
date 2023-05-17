@@ -85,9 +85,11 @@ function addContainer()
                 <video src="video/Ad_iphone14pro.mp4" loop="" autoplay="" muted="" width="100%"></video>
             </div>
             <div class="container__content-ip14--btn">
-                <button class="hide__btn">
-                    <a href="product_detail.php?id=2">BUY</a>
-                </button>
+                <a href="product_detail.php?id=2">
+                    <button class="hide__btn">
+                        BUY
+                    </button>
+                </a>
             </div>
         </div>
 
@@ -96,9 +98,11 @@ function addContainer()
                 <img src="img/Apple-Watch-Ultra-Feature-Image.jpg" alt="">
             </div>
             <div class="container__content-watch--btn">
-                <button class="hide__btn">
-                <a href="product_detail.php?id=29">BUY</a>
-                </button>
+                <a href="product_detail.php?id=29">
+                    <button class="hide__btn">
+                        BUY
+                    </button>
+                </a>
             </div>
         </div>
         <div class="container__content-last">
@@ -107,17 +111,21 @@ function addContainer()
                     <img src="img/AdMac.png" alt="Mac" class="container__content-last--img">                    
                 </div>
                 <div class="container__content-mac--btn">
-                    <button class="hide__btn">
-                        <a href="product_detail.php?id=12">BUY</a>
-                    </button>
+                    <a href="product_detail.php?id=12">
+                        <button class="hide__btn">
+                            BUY
+                        </button>
+                    </a>
                 </div>
                 <div class="col col-half s-col-full">
                     <img src="img/AdIpad.png" alt="Ipad" class="container__content-last--img">                    
                 </div>
                 <div class="container__content-ipad--btn">
-                    <button class="hide__btn">
-                        <a href="product_detail.php?id=22">BUY</a>
-                    </button>
+                    <a href="product_detail.php?id=22">
+                        <button class="hide__btn">
+                            BUY
+                        </button>
+                    </a>
                 </div>
                 <div class="clear"></div>
             </div>
