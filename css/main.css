@@ -149,7 +149,7 @@
 } */
 
 
-.header__navbar-item button {
+.header__navbar-item a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.779);
 }
