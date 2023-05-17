@@ -1,5 +1,5 @@
 
- <a href="" class="brand-link">
+ <a href="index.php" class="brand-link">
  <i class="fa-brands fa-apple fa-2xl"></i>
  <span> Apple </span>
 </a>

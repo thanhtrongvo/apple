@@ -321,7 +321,7 @@
                                 </tbody>
                             </table>
                             <div class="btn-cart-totals">
-                                <a href="" class="update round-black-btn" title="">Update Cart</a>
+                                <a href="" class="update round-black-btn" title="">Review Your Order</a>
                                 <button type="button"class="checkout round-black-btn" name="checkout" onclick="ckout();">Proceed to Checkout</button>
                             </div>
                         <!-- </form> -->

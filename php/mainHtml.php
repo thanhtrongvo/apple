@@ -263,8 +263,8 @@ function addModal()
                 <div class="auth-form__login">
                     <form id="signin" method="post" onsubmit="">
                         <label for="chk" aria-hidden="true">Sign In</label>
-                        <input type="email" name="email" placeholder="Email" >
-                        <input type="password" name="pswd" placeholder="Password" >
+                        <input type="email" name="email1" placeholder="Email" >
+                        <input type="password" name="pswd1" placeholder="Password" >
                         <button type="submit" name="signin">Sign In</button>
                     </form>
                 </div>

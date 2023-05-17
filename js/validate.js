@@ -96,11 +96,11 @@ $(document).ready(function() {
         },
 
         rule: {
-            email: {
+            email1: {
                 required: true,
                 email: true
             },
-            pswd: {
+            pswd1: {
                 required: true,
                 minlength: 5,
                 maxlength: 20
@@ -109,11 +109,11 @@ $(document).ready(function() {
 
         },
         messages: {
-            email: {
+            email1: {
                 required: "Please enter your email address",
                 email: "Please enter a valid email address"
             },
-            pswd: {
+            pswd1: {
                 required: "Please provide a password",
                 minlength: "Your password must be at least 5 characters long",
                 maxlength: "Your password must be at most 20 characters long"
