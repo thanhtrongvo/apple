@@ -305,3 +305,5 @@ function addLoader()
     </div>
             ';
 }
+
+
