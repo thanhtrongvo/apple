@@ -150,6 +150,7 @@ function addProduct()
                     </div>
                 </div>
                 </div>';
+            echo '<script>document.getElementsByClassName("container")[0].style.display = "none";</script>';
         
     } else {
         echo '
