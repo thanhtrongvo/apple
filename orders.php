@@ -38,6 +38,8 @@
         .cart-wrap {
             padding: 40px 0;
             font-family: 'Open Sans', sans-serif;
+            width: 100%;
+            height: fit-content;
         }
 
         .main-heading {
@@ -344,12 +346,12 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="display-flex align-center">
+                                                <div class="display-flex align-center" style="width:50%">
                                                 <div class="name-product">'.$status.
                                                     '</div>
                                                 </div>
                                             </td>
-                                            <td class="product-count">
+                                            <td class="product-count" style="padding-right: 5vw">
                                                 <div  class="count-inlineflex" >
                                                     <input type="text" name="quantity" value="'.$row['note'].'" class="qty">
                                                 </div>
