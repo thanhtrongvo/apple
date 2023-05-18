@@ -17,22 +17,22 @@ function addHeader()
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-ipad">
+                                    <a href="index.php?category=18&namecate=ipad" class="header__navbar-ipad">
                                         IPad
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-iphone">
+                                    <a href="index.php?category=23&namecate=iphone" class="header__navbar-iphone">
                                         IPhone
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-watch">
+                                    <a href="index.php?category=24&namecate=watch" class="header__navbar-watch">
                                         Watch
                                     </a>
                                 </li>
                                 <li class="header__navbar-item">
-                                    <a href="index.php?category=19&namecate=macbook" class="header__navbar-airpods">
+                                    <a href="index.php?category=20&namecate=airpods" class="header__navbar-airpods">
                                         Airpods
                                     </a>
                                 </li>
@@ -150,6 +150,7 @@ function addProduct()
                     </div>
                 </div>
                 </div>';
+        
     } else {
         echo '
         <div class="product">
