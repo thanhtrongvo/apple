@@ -176,11 +176,11 @@ include('php/mainHtml.php')
 
                  <select class="list-group" id="Cate">
                     <option class="list-group-item" value="0">Filter by product</option>
-                    <option class="list-group-item" value="1">Ipad</option>
-                    <option class="list-group-item" value="2">Macbook</option>
-                    <option class="list-group-item" value="3">Airpod</option>
-                    <option class="list-group-item" value="4">Iphone</option>
-                    <option class="list-group-item" value="5">Watch</option>
+                    <option class="list-group-item" value="18">Ipad</option>
+                    <option class="list-group-item" value="19">Macbook</option>
+                    <option class="list-group-item" value="20">Airpod</option>
+                    <option class="list-group-item" value="23">Iphone</option>
+                    <option class="list-group-item" value="24">Watch</option>
                  </select>
             </div>
             <div class="product__content">
@@ -194,25 +194,7 @@ include('php/mainHtml.php')
                     
                     <div class="home__product" >
                         <div id="pagination-result">
-                        <li class="home__product--info">
-            <a href="product_detail.php?id='.$id.'">
-                <img src="' . $img . '" />
-                <h3>' . $title . '</h3>
-                <span class="price">' . number_format("$price", 0, ".", ".") . '<u>$</u></span>
-            </a>
-            <form class="form_item" >
-                <input type="hidden" name="name" value="' . $title . '">
-                <input type="hidden" name="id" value="' . $id . '">
-                <input type="hidden" name="price" value="' . $price . '">
-                <input type="hidden" name="image" value="' . $img . '">
-                <div class="tooltip">
-                    <button class="themvaogio" type="button" name="add_to_cart" value="addToCart">
-                        <span class="tooltiptext" style="font-size: 15px;">add to cart</span>
-                        +
-                    </button>
-                </div>
-            </form>
-            </li>
+                        
                         <input type="hidden" name="rowcount" id="rowcount" />
                         </div>
                     </div>
@@ -234,7 +216,7 @@ function getresult(url) {
 	$.ajax({
 		url: url,
 		type: "GET",
-		data:  {rowcount:$("#rowcount").val(),"pagination_setting":$("#pagination-setting").val(),"priceRange":$("#price-range").val(),"searchInput":$('#searchInput').val()},
+		data:  {"cate": $("#Cate").val(),rowcount:$("#rowcount").val(),"pagination_setting":$("#pagination-setting").val(),"priceRange":$("#price-range").val(),"searchInput":$('#searchInput').val()},
 		beforeSend: function(){$("#overlay").show();},
 		success: function(data){
             if(data != "false"){

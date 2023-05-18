@@ -8,13 +8,24 @@ $paginationlink = "php/getresult.php?page=";
 $pagination_setting = $_GET["pagination_setting"];
 $priceRange = $_GET["priceRange"];
 $searchInput = $_GET["searchInput"];
+$cate = $_GET["cate"];
 $whereFlag = 0;
 //Search
 if($searchInput != ""){
 	$sql.=" WHERE title LIKE '%".$searchInput."%'";
 	$whereFlag = 1;
 }
-
+if($cate != 0){
+	if($whereFlag == 0){
+		$sql .= " WHERE";
+		$whereFlag =1;
+	}else{
+		$sql .= " AND";
+	}
+	$sql.= " category_id = '".$cate."'";
+}
+if($cate != 0){
+}
 //Them khoang gia
 if($priceRange != 0){
 	if($whereFlag == 0){
@@ -42,6 +53,8 @@ switch ($priceRange){
 	default:
 		break;
 }
+
+
 function console_log($output, $with_script_tag = true){
 	$jscode = 'console.log('.json_encode($output,JSON_HEX_TAG).');';
 	if($with_script_tag){
@@ -64,7 +77,7 @@ $start = ($page-1)*$perPage->perpage;
 if($start < 0) $start = 0;
 
 $query =  $sql . " limit " . $start . "," . $perPage->perpage;
-$result = mysqli_query($conn,$sql);
+$result = mysqli_query($conn,$query);
 
 if($row=mysqli_fetch_assoc($result)){
 	$product[] = $row;

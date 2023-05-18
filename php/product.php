@@ -44,7 +44,7 @@ function innerProduct($img, $title, $price, $id)
             <a href="product_detail.php?id=' . $id . '">
                 <img src="' . $img . '" />
                 <h3>' . $title . '</h3>
-                <span class="price">' . number_format("$price", 0, ".", ".") . '<u>$</u></span>
+                <span class="price">' . $price. '$</span>
             </a>
             <form class="form_item" method="post">
                 <input type="hidden" name="name" value="' . $title . '">
@@ -68,7 +68,7 @@ function toStringProduct($img, $title, $price, $id)
             <a href="product_detail.php?id='.$id.'">
                 <img src="' . $img . '" />
                 <h3>' . $title . '</h3>
-                <span class="price">' . number_format("$price", 0, ".", ".") . '<u>$</u></span>
+                <span class="price">' . $price . '<u>$</u></span>
             </a>
             <form class="form_item" method="post">
                 <input type="hidden" name="name" value="' . $title . '">

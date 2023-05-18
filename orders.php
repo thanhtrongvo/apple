@@ -299,6 +299,7 @@
                                     <th>Name</th>
                                     <th>Phone</th>
                                     <th>Date</th>
+                                    <th>Status</th>
                                     <th>Note</th>
                                     <th>Total</th>
                                     <th></th>
@@ -310,6 +311,11 @@
                                 $result = mysqli_query($conn,"SELECT * FROM `orders` WHERE user_id = '$usrid';");
                                 $rs = mysqli_fetch_all($result,MYSQLI_ASSOC);
                                 foreach ($rs as $row) {
+                                    if($row['status'] == 0){
+                                        $status = "Chưa xử lí";
+                                    }
+                                    else
+                                        $status = "Đã xử lí";
                                     //vòng for in danh sách giỏ hảng
                                         echo '<tr>
                                             <td>
@@ -334,6 +340,12 @@
                                             <td>
                                                 <div class="display-flex align-center">
                                                 <div class="name-product">'.$row['order_date'].
+                                                    '</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="display-flex align-center">
+                                                <div class="name-product">'.$status.
                                                     '</div>
                                                 </div>
                                             </td>
