@@ -137,7 +137,8 @@ function addContainer()
 function addProduct()
 {
     if (isset($_GET['category'])) {
-        echo ' <div class="product">
+        echo '<div id="tries"></div><br><br>
+            <div class="product">
             <div class="product__content">
                 <h1 class="product__content-heading" id="product__content-heading" style="text-transform: uppercase;">all ';
         echo $_GET['namecate'];
@@ -150,8 +151,8 @@ function addProduct()
                     </div>
                 </div>
                 </div>';
-            echo '<script>document.getElementsByClassName("container")[0].style.display = "none";</script>';
-        
+        echo '<script>document.getElementsByClassName("container")[0].style.display = "none";</script>';
+
     } else {
         echo '
         <div class="product">

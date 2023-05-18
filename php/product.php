@@ -24,7 +24,7 @@ function product_home_all($id)
 {
     echo
         "<script>
-        window.location.hash = '#product__content-heading';
+        window.location.hash = '#tries';
         </script>
         ";
     include('database/connection.php');
@@ -65,7 +65,7 @@ function toStringProduct($img, $title, $price, $id)
 {
     return
         '<li class="home__product--info">
-            <a href="product_detail.php?id='.$id.'">
+            <a href="product_detail.php?id=' . $id . '">
                 <img src="' . $img . '" />
                 <h3>' . $title . '</h3>
                 <span class="price">' . number_format("$price", 0, ".", ".") . '<u>$</u></span>
