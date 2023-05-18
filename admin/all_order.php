@@ -115,15 +115,6 @@ include_once('../database/connection.php');
                       </tr>";
                                 }
                             }
-                            if (isset($_GET['action']) == 'delete' && isset($_GET['id'])) {
-                                $id = $_GET['id'];
-                                $sql = "DELETE FROM Product WHERE id = " . $_GET['id'] . "";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result) {
-                                    echo "<script>alert('Product Deleted Successfully')</script>";
-                                    echo "<script>window.location.href='all_product.php'</script>";
-                                }
-                            }
                             if(isset($_GET['action'])== 'process') {
                                 $id = $_GET['id'];
                                 $sql = "UPDATE orders SET status = 1 WHERE id = " . $id . "";
